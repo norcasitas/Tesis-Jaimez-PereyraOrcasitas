@@ -6,4 +6,7 @@
   <eMessages qName="SayHelloResponse">
     <eParts name="greeting" typeName="xsd:string"/>
   </eMessages>
+  <ePortTypes qName="Hello_PortType">
+    <eOperations name="sayHello"/>
+  </ePortTypes>
 </wsdl:Definition>

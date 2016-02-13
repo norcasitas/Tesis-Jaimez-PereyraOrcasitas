@@ -36,34 +36,54 @@ public class Main {
 		    WSDLFactory factory = WSDLFactory.eINSTANCE;
 		    // create an instance of myWeb
 		    Definition myWSDL = factory.createDefinition();
-		    myWSDL.setQName(QName.valueOf("HelloService"));
-		    myWSDL.setTargetNamespace("http://www.examples.com/wsdl/HelloService.wsdl");
-		    
-		    Message msgReq = factory.createMessage();
-		    msgReq.setQName(QName.valueOf("SayHelloRequest"));
-		    
-		    Part partReq = factory.createPart();
-		    partReq.setName("firstName");
-		    partReq.setTypeName(QName.valueOf("xsd:string"));
-		    
-		    msgReq.getEParts().add(partReq);
-		    myWSDL.getEMessages().add(msgReq);
-		    
-		    
-		    Message msgRes = factory.createMessage();
-		    msgRes.setQName(QName.valueOf("SayHelloResponse"));
-		    
-		    Part partRes = factory.createPart();
-		    partRes.setName("greeting");
-		    partRes.setTypeName(QName.valueOf("xsd:string"));
-		    
-		    msgRes.getEParts().add(partRes);
-		    myWSDL.getEMessages().add(msgRes);
 
-		   // System.out.println(myWSDL.toString());
-		   // System.out.println(myWSDL.getEMessages());
+			  
+		    WSDLParser parser = new WSDLParser();
 		    
-		    /*
+		    Definitions defs = parser
+		        .parse("helloService.wsdl");
+		    
+		    //obtengo los definitions
+		    for(Definitions df: defs.getAllWSDLs()){
+		    	System.out.println("name:" +df.getName());
+		    	myWSDL.setQName(QName.valueOf(df.getName()));
+		    	System.out.println("targetnameSpace: "+df.getTargetNamespace());
+		    	myWSDL.setTargetNamespace(df.getTargetNamespace());
+		    	System.out.println("xmlns: "+df.getNamespaceContext());
+		    	//obtengo messages
+		    	for(com.predic8.wsdl.Message msg: df.getMessages()){
+		    		System.out.println("	message name: "+msg.getName());
+				    Message msgRequest = factory.createMessage();				    
+				    myWSDL.getEMessages().add(msgRequest);
+		    		for(com.predic8.wsdl.Part part: msg.getParts()){
+		    			System.out.println("		part name: " +part.getName() +" type: "+ part.getTypePN() );
+		    			Part partRequest = factory.createPart();
+					    partRequest.setName(part.getName());
+					    partRequest.setTypeName(QName.valueOf(part.getTypePN().toString()));
+					    msgRequest.getEParts().add(partRequest);
+
+		    		}
+				    msgRequest.setQName(QName.valueOf(msg.getName()));
+
+		    	}
+		    	for(PortType portType:df.getPortTypes()){
+		    		System.out.println("portType name:"+ portType.getName());
+		    		tesis.unrc.wsdl.wsdl.PortType pt = factory.createPortType();
+		    		pt.setQName(QName.valueOf(portType.getName()));
+				      for (Operation op : portType.getOperations()) {
+				    	  	tesis.unrc.wsdl.wsdl.Operation operation=factory.createOperation();
+				    	  	operation.setName(op.getName());
+					        System.out.println("	op name: " + op.getName());
+					        pt.getEOperations().add(operation);
+					  }
+				      myWSDL.getEPortTypes().add(pt);
+				      
+				      
+		    	}
+		    }
+		 
+		  //PARA PODER EXPORTAR EL MODELO A XMI
+		    
 		    
 		    // Register the XMI resource factory for the .website extension
 
@@ -87,39 +107,7 @@ public class Main {
 		      // TODO Auto-generated catch block
 		      e.printStackTrace();
 		    }
-		    */
-			  
-		    WSDLParser parser = new WSDLParser();
 		    
-		    Definitions defs = parser
-		        .parse("helloService.wsdl");
-		    
-		    //obtengo los definitions
-		    for(Definitions df: defs.getAllWSDLs()){
-		    	System.out.println("name:" +df.getName());
-		    	System.out.println("targetnameSpace: "+df.getTargetNamespace());
-		    	System.out.println("xmlns: "+df.getNamespaceContext());
-		    	//obtengo messages
-		    	for(com.predic8.wsdl.Message msg: df.getMessages()){
-		    		System.out.println("	message name: "+msg.getName());
-		    		for(com.predic8.wsdl.Part part: msg.getParts()){
-		    			System.out.println("		part name: " +part.getName() +" type: "+ part.getTypePN() );
-		    		}
-		    	}
-		    	for(PortType portType:df.getPortTypes()){
-		    		System.out.println("portType name:"+ portType.getName());
-				      for (Operation op : portType.getOperations()) {
-					        System.out.println("	op name: " + op.getName());
-					      }
-		    	}
-		    }
-		 
-		    /*for (PortType pt : defs.getPortTypes()) {
-		      System.out.println(pt.getName());
-		      for (Operation op : pt.getOperations()) {
-		        System.out.println(" -" + op.getName());
-		      }
-		    }*/
 		    
 		  }
 		    
