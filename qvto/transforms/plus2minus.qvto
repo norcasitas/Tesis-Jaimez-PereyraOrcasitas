@@ -1,0 +1,26 @@
+modeltype pepe uses pepe('uri');
+
+transformation Plus_To_Minus(in source : pepe, out output:pepe);
+
+main() {
+	source.rootObjects()[RequestModel]->map modelT2model();
+	}
+	
+mapping RequestModel :: modelT2model() : RequestModel {
+		result.name := "nombrecito";
+		result.method += self.method -> mt2m();
+		
+}
+
+mapping Method :: mt2m() : Method{
+	result.parameter += self.parameter ->pt2p();
+}
+
+
+mapping Parameter :: pt2p() : Parameter
+	{
+	result.name := "la puta que te pario " + self.name;
+	result.type := self.name + " World!";
+}
+
+

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pepe:RequestModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pepe="uri" xsi:schemaLocation="uri ../request/pepe.ecore" name="nombrecito">
+  <method>
+    <parameter type="param World!" name="la puta que te pario param"/>
+  </method>
+</pepe:RequestModel>

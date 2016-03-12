@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<RequestModelPrefix:RequestModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:RequestModelPrefix="RequestModelURI" name="helloService.wsdl">
+  <methods name="getClimaCelsius" description="retorna el clima en celsius">
+    <inParameters type="String" name="ciudad"/>
+    <outParameters type="Int" name="temperatura"/>
+  </methods>
+  <methods name="getClimaFarangheit" description="retorna el clima en farangheit">
+    <inParameters type="String" name="ciudad"/>
+    <outParameters type="Int" name="temperatura"/>
+  </methods>
+</RequestModelPrefix:RequestModel>
