@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<pepe:RequestModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pepe="uri" name="This is a title">
-  <method name="Hallo" description="This is a description">
-    <parameter type="int" name="param"/>
-    <return type="int" name="param"/>
-  </method>
-</pepe:RequestModel>

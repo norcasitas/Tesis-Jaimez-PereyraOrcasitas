@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link tesis.request_model.RequestModel.RequestModel#getMethods <em>Methods</em>}</li>
  *   <li>{@link tesis.request_model.RequestModel.RequestModel#getName <em>Name</em>}</li>
+ *   <li>{@link tesis.request_model.RequestModel.RequestModel#getMethods <em>Methods</em>}</li>
  * </ul>
  *
  * @see tesis.request_model.RequestModel.RequestModelPackage#getRequestModel()

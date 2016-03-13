@@ -30,23 +30,13 @@ import tesis.request_model.RequestModel.RequestModelPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link tesis.request_model.RequestModel.impl.RequestModelImpl#getMethods <em>Methods</em>}</li>
  *   <li>{@link tesis.request_model.RequestModel.impl.RequestModelImpl#getName <em>Name</em>}</li>
+ *   <li>{@link tesis.request_model.RequestModel.impl.RequestModelImpl#getMethods <em>Methods</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class RequestModelImpl extends MinimalEObjectImpl.Container implements RequestModel {
-	/**
-	 * The cached value of the '{@link #getMethods() <em>Methods</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMethods()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Method> methods;
-
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -66,6 +56,16 @@ public class RequestModelImpl extends MinimalEObjectImpl.Container implements Re
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getMethods() <em>Methods</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMethods()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Method> methods;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -141,10 +141,10 @@ public class RequestModelImpl extends MinimalEObjectImpl.Container implements Re
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RequestModelPackage.REQUEST_MODEL__METHODS:
-				return getMethods();
 			case RequestModelPackage.REQUEST_MODEL__NAME:
 				return getName();
+			case RequestModelPackage.REQUEST_MODEL__METHODS:
+				return getMethods();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -158,12 +158,12 @@ public class RequestModelImpl extends MinimalEObjectImpl.Container implements Re
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case RequestModelPackage.REQUEST_MODEL__NAME:
+				setName((String)newValue);
+				return;
 			case RequestModelPackage.REQUEST_MODEL__METHODS:
 				getMethods().clear();
 				getMethods().addAll((Collection<? extends Method>)newValue);
-				return;
-			case RequestModelPackage.REQUEST_MODEL__NAME:
-				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -177,11 +177,11 @@ public class RequestModelImpl extends MinimalEObjectImpl.Container implements Re
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RequestModelPackage.REQUEST_MODEL__METHODS:
-				getMethods().clear();
-				return;
 			case RequestModelPackage.REQUEST_MODEL__NAME:
 				setName(NAME_EDEFAULT);
+				return;
+			case RequestModelPackage.REQUEST_MODEL__METHODS:
+				getMethods().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -195,10 +195,10 @@ public class RequestModelImpl extends MinimalEObjectImpl.Container implements Re
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RequestModelPackage.REQUEST_MODEL__METHODS:
-				return methods != null && !methods.isEmpty();
 			case RequestModelPackage.REQUEST_MODEL__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case RequestModelPackage.REQUEST_MODEL__METHODS:
+				return methods != null && !methods.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

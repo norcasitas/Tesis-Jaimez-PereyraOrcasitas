@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
 <uriMap:MappingContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uriMap="http:///www.eclipse.org/m2m/qvt/oml/MModelUriMap/1.0.0">
-  <mapping sourceURI="uri" targetURI="platform:/resource/qvto/request/pepe.ecore"/>
+  <mapping sourceURI="http://www.eclipse.org/wsdl/2003/WSDL" targetURI="platform:/resource/qvto/ecore/WSDL.ecore"/>
+  <mapping sourceURI="http:///request_model.ecore" targetURI="platform:/resource/qvto/ecore/request_model.ecore"/>
 </uriMap:MappingContainer>

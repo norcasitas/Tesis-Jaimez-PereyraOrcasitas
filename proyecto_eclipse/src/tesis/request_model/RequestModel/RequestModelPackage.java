@@ -38,7 +38,7 @@ public interface RequestModelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "RequestModelURI";
+	String eNS_URI = "http:///request_model.ecore";
 
 	/**
 	 * The package namespace name.
@@ -46,7 +46,7 @@ public interface RequestModelPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "RequestModelPrefix";
+	String eNS_PREFIX = "RequestModel";
 
 	/**
 	 * The singleton instance of the package.
@@ -67,22 +67,22 @@ public interface RequestModelPackage extends EPackage {
 	int REQUEST_MODEL = 0;
 
 	/**
-	 * The feature id for the '<em><b>Methods</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REQUEST_MODEL__METHODS = 0;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REQUEST_MODEL__NAME = 1;
+	int REQUEST_MODEL__NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Methods</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUEST_MODEL__METHODS = 1;
 
 	/**
 	 * The number of structural features of the '<em>Request Model</em>' class.

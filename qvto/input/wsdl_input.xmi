@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ASCII"?>
+<wsdl:Definition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:wsdl="http://www.eclipse.org/wsdl/2003/WSDL" targetNamespace="http://www.examples.com/wsdl/HelloService.wsdl" qName="HelloService">
+  <eMessages qName="SayHelloRequest">
+    <eParts name="firstName" typeName="xsd:string"/>
+  </eMessages>
+  <eMessages qName="SayHelloResponse">
+    <eParts name="greeting" typeName="xsd:string"/>
+  </eMessages>
+  <ePortTypes qName="Hello_PortType">
+    <eOperations name="sayHello">
+      <eInput eMessage="//@eMessages.0"/>
+    </eOperations>
+        <eOperations name="goodByeBebe">
+      <eInput eMessage="//@eMessages.1"/>
+    </eOperations>
+  </ePortTypes>
+  <eBindings qName="Hello_Binding">
+    <eBindingOperations name="sayHello">
+      <eBindingInput/>
+      <eBindingOutput/>
+    </eBindingOperations>
+  </eBindings>
+</wsdl:Definition>

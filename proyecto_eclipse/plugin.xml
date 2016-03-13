@@ -9,7 +9,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated request_model -->
       <package
-            uri="RequestModelURI"
+            uri="http:///request_model.ecore"
             class="tesis.request_model.RequestModel.RequestModelPackage"
             genModel="ecore_models/request/request_model.genmodel"/>
    </extension>

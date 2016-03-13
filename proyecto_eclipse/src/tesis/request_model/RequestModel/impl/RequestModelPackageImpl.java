@@ -119,7 +119,7 @@ public class RequestModelPackageImpl extends EPackageImpl implements RequestMode
 	 * @generated
 	 */
 	public EReference getRequestModel_Methods() {
-		return (EReference)requestModelEClass.getEStructuralFeatures().get(0);
+		return (EReference)requestModelEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -128,7 +128,7 @@ public class RequestModelPackageImpl extends EPackageImpl implements RequestMode
 	 * @generated
 	 */
 	public EAttribute getRequestModel_Name() {
-		return (EAttribute)requestModelEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)requestModelEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -232,8 +232,8 @@ public class RequestModelPackageImpl extends EPackageImpl implements RequestMode
 
 		// Create classes and their features
 		requestModelEClass = createEClass(REQUEST_MODEL);
-		createEReference(requestModelEClass, REQUEST_MODEL__METHODS);
 		createEAttribute(requestModelEClass, REQUEST_MODEL__NAME);
+		createEReference(requestModelEClass, REQUEST_MODEL__METHODS);
 
 		methodEClass = createEClass(METHOD);
 		createEReference(methodEClass, METHOD__IN_PARAMETERS);
@@ -277,8 +277,8 @@ public class RequestModelPackageImpl extends EPackageImpl implements RequestMode
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(requestModelEClass, RequestModel.class, "RequestModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRequestModel_Methods(), this.getMethod(), null, "methods", null, 0, -1, RequestModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRequestModel_Name(), ecorePackage.getEString(), "name", "", 0, 1, RequestModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRequestModel_Methods(), this.getMethod(), null, "methods", null, 0, -1, RequestModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(methodEClass, Method.class, "Method", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMethod_InParameters(), this.getParameter(), null, "inParameters", null, 0, -1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
