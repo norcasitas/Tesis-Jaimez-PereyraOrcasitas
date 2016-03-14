@@ -9,36 +9,45 @@ main() {
 	}
 	
 mapping Definition :: modelT2model() : RequestModel {
-		result.name := self.qName.toString();
-		result.methods ->union(self.ePortTypes -> map portTypeT2Methods());
+	init {
+		result := object RequestModel{};
+	}
+	result.name := self.qName.toString();
+	result.methods := result.methods ->union(self.ePortTypes -> map portTypeT2Methods());
+	
 }
 
 mapping OrderedSet(PortType) :: portTypeT2Methods() : OrderedSet(Method) {
-		result -> union(
+	init {
+		result := OrderedSet{};
+		result += result -> union(
 			self -> collect(porType| porType -> map portTypeT2Method() ) -> asOrderedSet());
-		
+	}
 }
 
 mapping PortType :: portTypeT2Method(): OrderedSet(Method){
-	result -> union(self.allInstances(Operation)-> asOrderedSet()
-		   ->collect(op| op -> map operationT2Method()) ->asOrderedSet());
+	init {
+		result := OrderedSet{};
+		result += result -> union(self.allInstances(Operation)-> asOrderedSet()
+			->collect(op| op -> map operationT2Method()) ->asOrderedSet());
+	}
 }
 
 
 mapping Operation :: operationT2Method(): Method{
+	init {
+		result := object Method{};
+	}
 	result.name := self.name;
-	result.inParameters
-	->union(self.eInput.eMessage 
-	-> allInstances(Part)
-	-> collect(p| p -> map partT2Parameter())->asOrderedSet());
+	result.inParameters +=result.inParameters
+		->union(self.eInput.eMessage 
+		-> allInstances(Part)
+		-> collect(p| p -> map partT2Parameter())->asOrderedSet());
 	
-	result.outParameters
-	->union(self.eOutput.eMessage 
-	-> allInstances(Part)
-	-> collect(p| p -> map partT2Parameter())->asOrderedSet());
-	 
-	//union(self.getInput()->  inputT2inParameter()) ->asOrderedSet();
-	
+	result.outParameters += result.outParameters
+		->union(self.eOutput.eMessage 
+		-> allInstances(Part)
+		-> collect(p| p -> map partT2Parameter())->asOrderedSet());	
 }
 
 mapping Part :: partT2Parameter(): Parameter{

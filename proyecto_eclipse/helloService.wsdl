@@ -1,51 +1,50 @@
-<definitions name="HelloService"
-   targetNamespace="http://www.examples.com/wsdl/HelloService.wsdl"
+<definitions name="FraseService"
+   targetNamespace="http://www.examples.com/wsdl/FraseService.wsdl"
    xmlns="http://schemas.xmlsoap.org/wsdl/"
    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-   xmlns:tns="http://www.examples.com/wsdl/HelloService.wsdl"
+   xmlns:tns="http://www.examples.com/wsdl/FraseService.wsdl"
    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
  
-   <message name="SayHelloRequest">
-      <part name="firstName" type="xsd:string"/>
-   </message>
-	
-   <message name="SayHelloResponse">
-      <part name="greeting" type="xsd:string"/>
+   <message name="frasedeldiaRequest">
+    </message>
+  
+   <message name="frasedeldiaResponse">
+      <part name="frase" type="xsd:string"/>
    </message>
 
-   <portType name="Hello_PortType">
-      <operation name="sayHello">
-         <input message="tns:SayHelloRequest"/>
-         <output message="tns:SayHelloResponse"/>
+   <portType name="Frase_PortType">
+      <operation name="frasedeldia">
+         <input message="tns:frasedeldiaRequest"/>
+         <output message="tns:frasedeldiaResponse"/>
       </operation>
    </portType>
 
-   <binding name="Hello_Binding" type="tns:Hello_PortType">
+   <binding name="Frase_Binding" type="tns:Frase_PortType">
       <soap:binding style="rpc"
          transport="http://schemas.xmlsoap.org/soap/http"/>
-      <operation name="sayHello">
-         <soap:operation soapAction="sayHello"/>
+      <operation name="frasedeldia">
+         <soap:operation soapAction="frasedeldia"/>
          <input>
             <soap:body
                encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
-               namespace="urn:examples:helloservice"
+               namespace="urn:examples:Fraseservice"
                use="encoded"/>
          </input>
-		
+    
          <output>
             <soap:body
                encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
-               namespace="urn:examples:helloservice"
+               namespace="urn:examples:Fraseservice"
                use="encoded"/>
          </output>
       </operation>
    </binding>
 
-   <service name="Hello_Service">
-      <documentation>WSDL File for HelloService</documentation>
-      <port binding="tns:Hello_Binding" name="Hello_Port">
+   <service name="Frase_Service">
+      <documentation>WSDL File for FraseService</documentation>
+      <port binding="tns:Frase_Binding" name="Frase_Port">
          <soap:address
-            location="http://www.examples.com/SayHello/" />
+            location="http://www.examples.com/frasedeldia/" />
       </port>
    </service>
 </definitions>
