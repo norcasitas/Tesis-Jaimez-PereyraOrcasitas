@@ -114,6 +114,8 @@ public class T2Mwsdl {
 		operationFactory.setName(operation.getName());
 		operationFactory.setEInput(parserInput(operation.getInput()));
 		operationFactory.setEOutput(parserOutput(operation.getOutput()));
+		if(operation.getDocumentation()!=null)
+			operationFactory.setDocumentation(operation.getDocumentation().getContent());
 		return operationFactory;
 	}
 	

@@ -47,6 +47,7 @@ import tesis.wsdl_ecore.wsdl.WsdlPackage;
  *   <li>{@link tesis.wsdl_ecore.wsdl.impl.OperationImpl#getEOutput <em>EOutput</em>}</li>
  *   <li>{@link tesis.wsdl_ecore.wsdl.impl.OperationImpl#getEFaults <em>EFaults</em>}</li>
  *   <li>{@link tesis.wsdl_ecore.wsdl.impl.OperationImpl#getEParameterOrdering <em>EParameter Ordering</em>}</li>
+ *   <li>{@link tesis.wsdl_ecore.wsdl.impl.OperationImpl#getDocumentation <em>Documentation</em>}</li>
  * </ul>
  *
  * @generated
@@ -151,6 +152,26 @@ public class OperationImpl extends ExtensibleElementImpl implements Operation {
 	 * @ordered
 	 */
 	protected EList<Part> eParameterOrdering;
+
+	/**
+	 * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDocumentation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DOCUMENTATION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDocumentation()
+	 * @generated
+	 * @ordered
+	 */
+	protected String documentation = DOCUMENTATION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -349,6 +370,27 @@ public class OperationImpl extends ExtensibleElementImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getDocumentation() {
+		return documentation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDocumentation(String newDocumentation) {
+		String oldDocumentation = documentation;
+		documentation = newDocumentation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, WsdlPackage.OPERATION__DOCUMENTATION, oldDocumentation, documentation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void addFault(javax.wsdl.Fault fault) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -483,6 +525,8 @@ public class OperationImpl extends ExtensibleElementImpl implements Operation {
 				return getEFaults();
 			case WsdlPackage.OPERATION__EPARAMETER_ORDERING:
 				return getEParameterOrdering();
+			case WsdlPackage.OPERATION__DOCUMENTATION:
+				return getDocumentation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -519,6 +563,9 @@ public class OperationImpl extends ExtensibleElementImpl implements Operation {
 				getEParameterOrdering().clear();
 				getEParameterOrdering().addAll((Collection<? extends Part>)newValue);
 				return;
+			case WsdlPackage.OPERATION__DOCUMENTATION:
+				setDocumentation((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -552,6 +599,9 @@ public class OperationImpl extends ExtensibleElementImpl implements Operation {
 			case WsdlPackage.OPERATION__EPARAMETER_ORDERING:
 				getEParameterOrdering().clear();
 				return;
+			case WsdlPackage.OPERATION__DOCUMENTATION:
+				setDocumentation(DOCUMENTATION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -578,6 +628,8 @@ public class OperationImpl extends ExtensibleElementImpl implements Operation {
 				return eFaults != null && !eFaults.isEmpty();
 			case WsdlPackage.OPERATION__EPARAMETER_ORDERING:
 				return eParameterOrdering != null && !eParameterOrdering.isEmpty();
+			case WsdlPackage.OPERATION__DOCUMENTATION:
+				return DOCUMENTATION_EDEFAULT == null ? documentation != null : !DOCUMENTATION_EDEFAULT.equals(documentation);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -656,6 +708,8 @@ public class OperationImpl extends ExtensibleElementImpl implements Operation {
 		result.append(name);
 		result.append(", undefined: ");
 		result.append(undefined);
+		result.append(", documentation: ");
+		result.append(documentation);
 		result.append(')');
 		return result.toString();
 	}

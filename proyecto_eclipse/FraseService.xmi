@@ -5,7 +5,7 @@
     <eParts name="frase" typeName="xsd:string"/>
   </eMessages>
   <ePortTypes qName="Frase_PortType">
-    <eOperations name="frasedeldia">
+    <eOperations name="frasedeldia" documentation="WSDL File for FraseService">
       <eInput eMessage="//@eMessages.0"/>
       <eOutput eMessage="//@eMessages.1"/>
     </eOperations>

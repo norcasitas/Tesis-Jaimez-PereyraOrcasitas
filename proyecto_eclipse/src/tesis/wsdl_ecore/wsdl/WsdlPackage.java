@@ -547,13 +547,22 @@ public interface WsdlPackage extends EPackage {
 	int OPERATION__EPARAMETER_ORDERING = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__DOCUMENTATION = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>Operation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_FEATURE_COUNT = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 7;
+	int OPERATION_FEATURE_COUNT = EXTENSIBLE_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The operation id for the '<em>Get Enclosing Definition</em>' operation.
@@ -6542,6 +6551,17 @@ public interface WsdlPackage extends EPackage {
 	EReference getOperation_EParameterOrdering();
 
 	/**
+	 * Returns the meta object for the attribute '{@link tesis.wsdl_ecore.wsdl.Operation#getDocumentation <em>Documentation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Documentation</em>'.
+	 * @see tesis.wsdl_ecore.wsdl.Operation#getDocumentation()
+	 * @see #getOperation()
+	 * @generated
+	 */
+	EAttribute getOperation_Documentation();
+
+	/**
 	 * Returns the meta object for class '{@link tesis.wsdl_ecore.wsdl.Message <em>Message</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8911,6 +8931,14 @@ public interface WsdlPackage extends EPackage {
 		 * @generated
 		 */
 		EReference OPERATION__EPARAMETER_ORDERING = eINSTANCE.getOperation_EParameterOrdering();
+
+		/**
+		 * The meta object literal for the '<em><b>Documentation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OPERATION__DOCUMENTATION = eINSTANCE.getOperation_Documentation();
 
 		/**
 		 * The meta object literal for the '{@link tesis.wsdl_ecore.wsdl.impl.MessageImpl <em>Message</em>}' class.

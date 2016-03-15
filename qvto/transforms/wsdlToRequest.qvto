@@ -39,6 +39,7 @@ mapping Operation :: operationT2Method(): Method{
 		result := object Method{};
 	}
 	result.name := self.name;
+	result.description := self.documentation;
 	result.inParameters +=result.inParameters
 		->union(self.eInput.eMessage 
 		-> allInstances(Part)
@@ -52,5 +53,6 @@ mapping Operation :: operationT2Method(): Method{
 
 mapping Part :: partT2Parameter(): Parameter{
 	result.name := self.name;
+	result.type := self.typeName.toString();
 }
 
