@@ -3,6 +3,7 @@ package t2m;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -14,6 +15,8 @@ import org.eclipse.emf.ecore.resource.Resource.Factory;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.xml.sax.SAXException;
 
 import tesis.request_model.RequestModel.Method;
@@ -22,28 +25,30 @@ import tesis.request_model.RequestModel.RequestModel;
 import tesis.request_model.RequestModel.RequestModelFactory;
 import tesis.request_model.RequestModel.RequestModelPackage;
 import tesis.request_model.RequestModel.impl.RequestModelFactoryImpl;
+import tesis.wsdl_ecore.wsdl.WsdlFactory;
 
 
 
 public class T2MRequest {
 
+	EPackage requestModelEPackage;
+	
+	
 	public RequestModel loadFromXMI(String path) throws IOException{
-		RequestModelFactory fac= RequestModelFactory.eINSTANCE;
-		RequestModelPackage pack=RequestModelPackage.eINSTANCE;
-		EPackage packag=pack.getEFactoryInstance().getEPackage();
-		// Register the XMI resource factory for the  extnsion
-		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-		Map<String, Object> m = reg.getExtensionToFactoryMap();
-		m.put("xmi", new XMIResourceFactoryImpl());
-		   // Obtain a new resource set
-	    ResourceSet resSet = new ResourceSetImpl();
-	    resSet.getPackageRegistry().put(packag.getNsURI(), packag);
-	    // Get the resource	    
-	    Resource resource = resSet.getResource(URI.createURI(path+".xmi"), true);
-	    // Get the first model element and cast it to the right type, in my
-	    // example everything is hierarchical included in this first node
-	    RequestModel request = (RequestModel) resource.getContents().get(0);
-	    return request;
+		 RequestModelPackage.eINSTANCE.eClass();  
+		 RequestModelPackage packageInstance = RequestModelPackage.eINSTANCE;
+		    Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+		    Map<String, Object> m = reg.getExtensionToFactoryMap();
+		    m.put("*", new XMIResourceFactoryImpl());
+		    // Obtain a new resource set
+		    ResourceSet resSet = new ResourceSetImpl();
+		    resSet.setResourceFactoryRegistry(reg);
+		    resSet.getPackageRegistry().put(RequestModelPackage.eNS_URI,RequestModelPackage.eINSTANCE);
+		    resSet.getPackageRegistry().put(null,RequestModelPackage.eINSTANCE);
+		    URI uri= URI.createURI(path+".xmi");
+		    Resource resource = resSet.getResource(uri, true);
+		    RequestModel r = (RequestModel) resource.getContents().get(0);
+	    return r;
 	}
 	
 	
