@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/jjaimez/Tesis-Jaimez-PereyraOrcasitas/QVTWSInvoker/lib/postgresql-9.4.1208.jre6.jar"/>
+	<classpathentry kind="lib" path="/Users/jjaimez/Tesis-Jaimez-PereyraOrcasitas/QVTWSInvoker/lib/activejdbc-instrumentation-1.4.11.jar"/>
+	<classpathentry kind="lib" path="/Users/jjaimez/Tesis-Jaimez-PereyraOrcasitas/QVTWSInvoker/lib/activejdbc-1.4.11.jar"/>
+	<classpathentry kind="lib" path="/Users/jjaimez/Tesis-Jaimez-PereyraOrcasitas/QVTWSInvoker/lib/SLF4J/javalite-common-1.4.6.jar"/>
+	<classpathentry kind="lib" path="/Users/jjaimez/Tesis-Jaimez-PereyraOrcasitas/QVTWSInvoker/lib/SLF4J/slf4j-api-1.6.4.jar"/>
+	<classpathentry kind="lib" path="/Users/jjaimez/Tesis-Jaimez-PereyraOrcasitas/QVTWSInvoker/lib/SLF4J/slf4j-simple-1.6.4.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
