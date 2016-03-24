@@ -7,8 +7,8 @@
   <genPackages prefix="RequestModel" basePackage="tesis.request_model" disposableProviderFactory="true"
       ecorePackage="request_model.ecore#/">
     <genClasses ecoreClass="request_model.ecore#//RequestModel">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference request_model.ecore#//RequestModel/methods"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute request_model.ecore#//RequestModel/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference request_model.ecore#//RequestModel/methods"/>
     </genClasses>
     <genClasses ecoreClass="request_model.ecore#//Method">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference request_model.ecore#//Method/inParameters"/>

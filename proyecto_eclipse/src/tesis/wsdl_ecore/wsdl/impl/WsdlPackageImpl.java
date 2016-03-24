@@ -685,6 +685,15 @@ public class WsdlPackageImpl extends EPackageImpl implements WsdlPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getOperation_Documentation() {
+		return (EAttribute)operationEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMessage() {
 		return messageEClass;
 	}
@@ -2635,6 +2644,7 @@ public class WsdlPackageImpl extends EPackageImpl implements WsdlPackage {
 		createEReference(operationEClass, OPERATION__EOUTPUT);
 		createEReference(operationEClass, OPERATION__EFAULTS);
 		createEReference(operationEClass, OPERATION__EPARAMETER_ORDERING);
+		createEAttribute(operationEClass, OPERATION__DOCUMENTATION);
 
 		messageEClass = createEClass(MESSAGE);
 		createEAttribute(messageEClass, MESSAGE__QNAME);
@@ -3014,6 +3024,7 @@ public class WsdlPackageImpl extends EPackageImpl implements WsdlPackage {
 		initEReference(getOperation_EOutput(), this.getOutput(), null, "eOutput", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOperation_EFaults(), this.getFault(), null, "eFaults", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOperation_EParameterOrdering(), this.getPart(), null, "eParameterOrdering", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperation_Documentation(), ecorePackage.getEString(), "documentation", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(messageEClass, Message.class, "Message", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMessage_QName(), this.getQName(), "qName", null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

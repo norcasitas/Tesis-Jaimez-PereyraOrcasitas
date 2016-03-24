@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ASCII"?>
+<wsdl:Definition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:wsdl="http://www.eclipse.org/wsdl/2003/WSDL" qName="FService">
+  <eMessages qName="fraseRandomRequest">
+    <eParts name="autor" typeName="xsd:string"/>
+  </eMessages>
+  <eMessages qName="fraseRandomResponse">
+    <eParts name="return" typeName="xsd:string"/>
+  </eMessages>
+  <eMessages qName="frasePorAutorRequest">
+    <eParts name="firstName" typeName="xsd:string"/>
+  </eMessages>
+  <eMessages qName="frasePorAutorResponse">
+    <eParts name="greeting" typeName="xsd:string"/>
+  </eMessages>
+  <ePortTypes qName="Random_PortType">
+    <eOperations name="fraseRandom">
+      <eInput eMessage="//@eMessages.0"/>
+      <eOutput eMessage="//@eMessages.1"/>
+    </eOperations>
+  </ePortTypes>
+  <ePortTypes qName="PorAutor_PortType">
+    <eOperations name="frasePorAutor">
+      <eInput eMessage="//@eMessages.2"/>
+      <eOutput eMessage="//@eMessages.3"/>
+    </eOperations>
+  </ePortTypes>
+</wsdl:Definition>

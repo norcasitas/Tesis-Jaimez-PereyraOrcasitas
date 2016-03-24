@@ -3,85 +3,60 @@ package t2m;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.Resource.Factory;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.xml.sax.SAXException;
 
 import tesis.request_model.RequestModel.Method;
 import tesis.request_model.RequestModel.Parameter;
 import tesis.request_model.RequestModel.RequestModel;
 import tesis.request_model.RequestModel.RequestModelFactory;
+import tesis.request_model.RequestModel.RequestModelPackage;
+import tesis.request_model.RequestModel.impl.RequestModelFactoryImpl;
+import tesis.wsdl_ecore.wsdl.WsdlFactory;
 
 
 
 public class T2MRequest {
 
+	EPackage requestModelEPackage;
 	
-	  public static void main(String[] args) throws FileNotFoundException, SAXException, IOException, ParserConfigurationException {
-		 
-		  RequestModelFactory factory = RequestModelFactory.eINSTANCE;		
-		  RequestModel requestModel = factory.createRequestModel();
-		  requestModel.setName("helloService.wsdl");
-		  
-		  Method method1 = factory.createMethod();
-		  method1.setName("getClimaCelsius");
-		  method1.setDescription("retorna el clima en celsius");
-		  Parameter inParameter1 = factory.createParameter();
-		  inParameter1.setName("ciudad");
-		  inParameter1.setType("String");
-		  method1.getInParameters().add(inParameter1);
-		  Parameter outParameter1 = factory.createParameter();
-		  outParameter1.setName("temperatura");
-		  outParameter1.setType("Int");
-		  method1.getOutParameters().add(outParameter1);
-		  
-		  Method method2 = factory.createMethod();
-		  method2.setName("getClimaFarangheit");
-		  method2.setDescription("retorna el clima en farangheit");
-		  Parameter inParameter2 = factory.createParameter();
-		  inParameter2.setName("ciudad");
-		  inParameter2.setType("String");
-		  method2.getInParameters().add(inParameter2);
-		  Parameter outParameter2 = factory.createParameter();
-		  outParameter2.setName("temperatura");
-		  outParameter2.setType("Int");
-		  method2.getOutParameters().add(outParameter2);
-
-
-		  requestModel.getMethods().add(method1);
-		  requestModel.getMethods().add(method2);
-		    
-//PARA PODER EXPORTAR EL MODELO A XMI
-		    
-		    
-		    // Register the XMI resource factory for the .website extension
-
+	
+	public RequestModel loadFromXMI(String path) throws IOException{
+		 RequestModelPackage.eINSTANCE.eClass();  
+		 RequestModelPackage packageInstance = RequestModelPackage.eINSTANCE;
 		    Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		    Map<String, Object> m = reg.getExtensionToFactoryMap();
-		    m.put("xmi", new XMIResourceFactoryImpl());
-
+		    m.put("*", new XMIResourceFactoryImpl());
 		    // Obtain a new resource set
 		    ResourceSet resSet = new ResourceSetImpl();
-
-		    // create a resource
-		    Resource resource = resSet.createResource(org.eclipse.emf.common.util.URI.createURI("requestModel.xmi"));
-		    // Get the first model element and cast it to the right type, in my
-		    // example everything is hierarchical included in this first node
-		    resource.getContents().add(requestModel);
-
-		    // now save the content.
-		    try {
-		      resource.save(Collections.EMPTY_MAP);
-		    } catch (IOException e) {
-		      // TODO Auto-generated catch block
-		      e.printStackTrace();
-		    }
+		    resSet.setResourceFactoryRegistry(reg);
+		    resSet.getPackageRegistry().put(RequestModelPackage.eNS_URI,RequestModelPackage.eINSTANCE);
+		    resSet.getPackageRegistry().put(null,RequestModelPackage.eINSTANCE);
+		    URI uri= URI.createURI(path+".xmi");
+		    Resource resource = resSet.getResource(uri, true);
+		    RequestModel r = (RequestModel) resource.getContents().get(0);
+	    return r;
+	}
+	
+	
+	  public static void main(String[] args) throws FileNotFoundException, SAXException, IOException, ParserConfigurationException {
+		 T2MRequest t2mRequest = new T2MRequest();
+		 RequestModel request = t2mRequest.loadFromXMI("output");
+		 System.out.println(request.getName());
+		 System.out.println(request.getMethods().get(0).getName());
 	  }
 	
 }

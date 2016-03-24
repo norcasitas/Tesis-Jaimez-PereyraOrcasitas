@@ -3,7 +3,7 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/tesis/src" modelPluginID="WSDL_ecore" modelName="WSDL"
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="5.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
-  <foreignModel>../../qvtoooo/WSDL.ecore</foreignModel>
+  <foreignModel>WSDL.ecore</foreignModel>
   <genPackages prefix="Wsdl" basePackage="tesis.wsdl_ecore" disposableProviderFactory="true"
       ecorePackage="WSDL.ecore#/">
     <genDataTypes ecoreDataType="WSDL.ecore#//QName"/>
@@ -32,6 +32,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WSDL.ecore#//Operation/eOutput"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WSDL.ecore#//Operation/eFaults"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference WSDL.ecore#//Operation/eParameterOrdering"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WSDL.ecore#//Operation/documentation"/>
     </genClasses>
     <genClasses ecoreClass="WSDL.ecore#//Message">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WSDL.ecore#//Message/qName"/>

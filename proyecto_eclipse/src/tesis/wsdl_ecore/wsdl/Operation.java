@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link tesis.wsdl_ecore.wsdl.Operation#getEOutput <em>EOutput</em>}</li>
  *   <li>{@link tesis.wsdl_ecore.wsdl.Operation#getEFaults <em>EFaults</em>}</li>
  *   <li>{@link tesis.wsdl_ecore.wsdl.Operation#getEParameterOrdering <em>EParameter Ordering</em>}</li>
+ *   <li>{@link tesis.wsdl_ecore.wsdl.Operation#getDocumentation <em>Documentation</em>}</li>
  * </ul>
  *
  * @see tesis.wsdl_ecore.wsdl.WsdlPackage#getOperation()
@@ -194,5 +195,31 @@ public interface Operation extends ExtensibleElement, javax.wsdl.Operation {
 	 * @generated
 	 */
 	EList<Part> getEParameterOrdering();
+
+	/**
+	 * Returns the value of the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Documentation</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Documentation</em>' attribute.
+	 * @see #setDocumentation(String)
+	 * @see tesis.wsdl_ecore.wsdl.WsdlPackage#getOperation_Documentation()
+	 * @model
+	 * @generated
+	 */
+	String getDocumentation();
+
+	/**
+	 * Sets the value of the '{@link tesis.wsdl_ecore.wsdl.Operation#getDocumentation <em>Documentation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Documentation</em>' attribute.
+	 * @see #getDocumentation()
+	 * @generated
+	 */
+	void setDocumentation(String value);
 
 } // Operation
