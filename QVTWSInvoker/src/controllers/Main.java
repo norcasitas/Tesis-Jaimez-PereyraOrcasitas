@@ -65,7 +65,7 @@ public class Main implements ActionListener {
     private void openDB() {
         if (!Base.hasConnection()) {
             try {
-                Base.open("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/qvtwsinvoker", "tesis", "tesis");
+                Base.open("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/qvtwsinvoker", "postgres", "root");
                 Base.connection().setAutoCommit(true);
 
             } catch (Exception e) {

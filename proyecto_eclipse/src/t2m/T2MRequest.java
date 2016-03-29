@@ -28,7 +28,6 @@ import tesis.request_model.RequestModel.impl.RequestModelFactoryImpl;
 import tesis.wsdl_ecore.wsdl.WsdlFactory;
 
 
-
 public class T2MRequest {
 
 	EPackage requestModelEPackage;
@@ -57,6 +56,9 @@ public class T2MRequest {
 		 RequestModel request = t2mRequest.loadFromXMI("output");
 		 System.out.println(request.getName());
 		 System.out.println(request.getMethods().get(0).getName());
+		 
 	  }
+	  
+	  
 	
 }
