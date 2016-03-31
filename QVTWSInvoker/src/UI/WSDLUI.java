@@ -6,6 +6,7 @@ import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.ImageIcon;
 
 public class WSDLUI extends javax.swing.JInternalFrame {
 
@@ -36,6 +37,7 @@ public class WSDLUI extends javax.swing.JInternalFrame {
         save.setEnabled(true);
         edit.setEnabled(false);
         delete.setEnabled(false);
+        
     }
 
     public void enableFields(boolean b) {
@@ -48,6 +50,7 @@ public class WSDLUI extends javax.swing.JInternalFrame {
         id.setText("");
         name.setText("");
         url.setText("");
+        cbCategory.removeAll();
         cbCategory.setSelectedIndex(-1);
     }
 
@@ -140,9 +143,13 @@ public class WSDLUI extends javax.swing.JInternalFrame {
         cbCategory = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         delete = new javax.swing.JButton();
+        delete.setIcon(new ImageIcon(WSDLUI.class.getResource("/UI/Icons/borrar.png")));
         newWSDL = new javax.swing.JButton();
+        newWSDL.setIcon(new ImageIcon(WSDLUI.class.getResource("/UI/Icons/nuevo.png")));
         edit = new javax.swing.JButton();
+        edit.setIcon(new ImageIcon(WSDLUI.class.getResource("/UI/Icons/modificar.png")));
         save = new javax.swing.JButton();
+        save.setIcon(new ImageIcon(WSDLUI.class.getResource("/UI/Icons/guardar.png")));
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -221,8 +228,6 @@ public class WSDLUI extends javax.swing.JInternalFrame {
         url.setEnabled(false);
 
         jLabel2.setText("Category");
-
-        cbCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbCategory.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

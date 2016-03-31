@@ -3,6 +3,8 @@ package controllers;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -23,15 +25,18 @@ public class Main implements ActionListener {
     private WSDLController wsdlController;
 
     public Main() {
+    	
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        openDB();
+        if (!Base.hasConnection()) {
+        Base.open("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/qvtwsinvoker", "postgres", "root");
+        }
         mainUI = new MainUI();
         mainUI.setCursor(Cursor.WAIT_CURSOR);
-        mainUI.setActionListener(this);
+       
         mainUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
         categoryUI = new CategoryUI();
         invoketUI = new InvokerUI();
@@ -44,6 +49,7 @@ public class Main implements ActionListener {
         mainUI.getContainer().add(categoryUI);
         mainUI.setVisible(true);
         mainUI.toFront();
+        mainUI.setActionListener(this);
     }
 
     @Override
@@ -62,12 +68,11 @@ public class Main implements ActionListener {
         }
     }
 
-    private void openDB() {
+    static public void openDB() {
         if (!Base.hasConnection()) {
             try {
                 Base.open("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/qvtwsinvoker", "postgres", "root");
                 Base.connection().setAutoCommit(true);
-
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Ocurrió un error, no se realizó la conexión con el servidor, verifique la conexión \n " + e.getMessage(), null, JOptionPane.ERROR_MESSAGE);
             }
@@ -75,7 +80,7 @@ public class Main implements ActionListener {
     }
 
     public static void main(String[] args) {
-        
+    	openDB();
          Main m = new Main();
     }
 

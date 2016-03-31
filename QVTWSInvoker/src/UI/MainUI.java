@@ -6,6 +6,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.CardLayout;
+import java.awt.BorderLayout;
 
 
 public class MainUI extends javax.swing.JFrame {
@@ -63,8 +68,6 @@ public class MainUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("QVTWSInvoker");
 
-        container.setLayout(null);
-
         panelBotones.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelBotones.setLayout(new java.awt.GridLayout(1, 0));
 
@@ -104,19 +107,21 @@ public class MainUI extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelBotones, javax.swing.GroupLayout.DEFAULT_SIZE, 841, Short.MAX_VALUE)
-            .addComponent(container, javax.swing.GroupLayout.Alignment.TRAILING)
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addComponent(container, GroupLayout.DEFAULT_SIZE, 1028, Short.MAX_VALUE)
+        		.addComponent(panelBotones, GroupLayout.DEFAULT_SIZE, 1028, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(container, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE))
+        	layout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addComponent(panelBotones, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(container, GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
+        			.addContainerGap())
         );
+        container.setLayout(null);
+        getContentPane().setLayout(layout);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

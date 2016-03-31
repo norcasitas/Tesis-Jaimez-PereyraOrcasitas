@@ -2,7 +2,6 @@ package crud;
 
 import java.util.List;
 import org.javalite.activejdbc.Base;
-import static org.javalite.activejdbc.Model.findById;
 import models.Category;
 
 public class CategoryCRUD {
@@ -11,14 +10,17 @@ public class CategoryCRUD {
     }
 
     public Category getCategory(Category c) {
-        return Category.first("name = ?", c.get("name"));
+        Category b = Category.first("name = ?", c.get("name"));
+        return b;
     }
 
     public boolean findCategory(Category c) {
-        return (Category.first("name = ?", c.get("name")) != null);
+        boolean b = (Category.first("name = ?", c.get("name")) != null);
+        return b;
     }
 
     public boolean create(Category c) {
+
         boolean ret = true;
         if (!findCategory(c)) {
             Base.openTransaction();

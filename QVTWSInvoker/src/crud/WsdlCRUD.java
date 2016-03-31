@@ -11,11 +11,13 @@ public class WsdlCRUD {
     }
 
     public Wsdl getWSDL(Wsdl w) {
-        return Wsdl.first("name = ?", w.get("name"));
+        Wsdl ws =  Wsdl.first("name = ?", w.get("name"));
+        return ws;
     }
 
     public boolean findWSDL(Wsdl w) {
-        return (Wsdl.first("name = ?", w.get("name")) != null);
+        boolean b = (Wsdl.first("name = ?", w.get("name")) != null);
+        return b;
     }
 
     public boolean create(Wsdl w) {
@@ -57,7 +59,7 @@ public class WsdlCRUD {
 
     public boolean editInformation(Wsdl w) {
         boolean ret = true;
-        Wsdl old = findById(w.getId());
+        Wsdl old = Wsdl.findById(w.getId());
         if (old != null) {
             Base.openTransaction();
             ret &= old.set("name", w.get("name"), "url", w.get("url"), "category_id", w.get("category_id")).saveIt();
@@ -79,6 +81,14 @@ public class WsdlCRUD {
         return !ret;
     }
 
+    public List<Wsdl> searchWSDLbyName(String s) {
+        List<Wsdl> result;
+        Base.openTransaction();
+        result = Wsdl.where("name like ?", "%" + s + "%");
+        Base.commitTransaction();
+        return result;
+    }
+    
     public List<Wsdl> searchWSDL(String s) {
         List<Wsdl> result;
         Base.openTransaction();

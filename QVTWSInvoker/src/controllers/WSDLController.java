@@ -12,6 +12,8 @@ import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+
+import org.javalite.activejdbc.Base;
 import org.javalite.activejdbc.Model;
 import utils.StringTreatment;
 import UI.MainUI;
@@ -35,6 +37,9 @@ public class WSDLController implements ActionListener {
     private java.util.List<Category> categories;
 
     public WSDLController(MainUI mainUI, WSDLUI wsdlUI) {
+    	if (!Base.hasConnection()) {
+    	        Base.open("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/qvtwsinvoker", "postgres", "root");
+    	}
         this.wsdlUI = wsdlUI;
         this.mainUI = mainUI;
         isNew = true;
@@ -43,14 +48,9 @@ public class WSDLController implements ActionListener {
         wsdlCRUD = new WsdlCRUD();
         tableWSDLDefault = wsdlUI.getWsdlDefault();
         tableWSDL = wsdlUI.getTableWSDL();
-        wsdls = new LinkedList<>();
-        categories  = new LinkedList<>();
-        //wsdls = Wsdl.findAll();
+        wsdls = wsdlCRUD.searchWSDLbyName("");
         refreshList();
-//        categories = Category.findAll();
-        for (Category c : categories) {
-            wsdlUI.getCbCategory().addItem(c.getString("name"));
-        }
+        loadCB();
         wsdlUI.getSearch().addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -72,6 +72,14 @@ public class WSDLController implements ActionListener {
         });
         wsdlUI.setActionListener(this);
     }
+    
+    private void loadCB(){
+    	wsdlUI.getCbCategory().removeAllItems();
+    	 categories  = categoryCRUD.searchCategory("");
+         for (Category c : categories) {
+             wsdlUI.getCbCategory().addItem(c.getString("name"));
+         }
+    }
 
     private void searchKeyReleased(KeyEvent evt) {
         wsdlCRUD.searchWSDL(wsdlUI.getSearch().getText());
@@ -81,6 +89,10 @@ public class WSDLController implements ActionListener {
     private void tableWSDLEvent() {
         int r = tableWSDL.getSelectedRow();
         if (r != -1) {
+        	wsdlUI.getId().setText((String) tableWSDLDefault.getValueAt(r, 0));
+        	wsdlUI.getNameWSDL().setText((String) tableWSDLDefault.getValueAt(r, 1));
+        	wsdlUI.getUrl().setText((String) tableWSDLDefault.getValueAt(r, 2));
+        	wsdlUI.getCbCategory().setSelectedItem((String) tableWSDLDefault.getValueAt(r, 3));
             wsdlUI.wsdlSelected(true);
         } else {
             wsdlUI.wsdlSelected(false);
@@ -90,8 +102,12 @@ public class WSDLController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+    	 if (!Base.hasConnection()) {
+		        Base.open("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/qvtwsinvoker", "postgres", "root");
+		}
         if (e.getSource() == wsdlUI.getNewWSDL()) {
             wsdlUI.clickNew();
+            loadCB();
             isNew = true;
             editing = true;
         }
@@ -101,6 +117,8 @@ public class WSDLController implements ActionListener {
                 if (wsdlCRUD.delete(Integer.valueOf(wsdlUI.getId().getText()))) {
                     JOptionPane.showMessageDialog(wsdlUI, "WSDL deleted successfully!");
                     wsdlUI.clickSave();
+                    wsdls = wsdlCRUD.searchWSDLbyName("");
+                    refreshList();
                 } else {
                     JOptionPane.showMessageDialog(wsdlUI, "An error has occurred, the WSDL wasn't deleted", "Error!", JOptionPane.ERROR_MESSAGE);
                 }
@@ -117,6 +135,8 @@ public class WSDLController implements ActionListener {
                 if (wsdlCRUD.create(w)) {
                     wsdlUI.clickSave();
                     editing = false;
+                    wsdls = wsdlCRUD.searchWSDLbyName("");
+                    refreshList();
                     JOptionPane.showMessageDialog(wsdlUI, "¡WSDL successfully saved!");
                 } else {
                     JOptionPane.showMessageDialog(wsdlUI, "There was an error, review the data", "Error!", JOptionPane.ERROR_MESSAGE);
@@ -129,15 +149,19 @@ public class WSDLController implements ActionListener {
                 if (wsdlCRUD.editInformation(w)) {
                     wsdlUI.clickSave();
                     editing = false;
+                    wsdls = wsdlCRUD.searchWSDLbyName("");
+                    refreshList();
                     JOptionPane.showMessageDialog(wsdlUI, "¡WSDL successfully saved!");
                 } else {
                     JOptionPane.showMessageDialog(wsdlUI, "There was an error, review the data", "Error!", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
+        Base.close();
     }
 
     private void refreshList() {
+    	
         tableWSDLDefault.setRowCount(0);
         Iterator<Wsdl> it = wsdls.iterator();
         while (it.hasNext()) {
@@ -146,13 +170,16 @@ public class WSDLController implements ActionListener {
             row[0] = w.getString("id");
             row[1] = w.getString("name");
             row[2] = w.getString("url");
-            row[3] = Category.findById(w.getString("category_id")).getString("name");
+            row[3] = Category.findById(w.getInteger("category_id")).getString("name");
             tableWSDLDefault.addRow(row);
         }
     }
 
     private boolean loadData(Wsdl w) {
         boolean ret = true;
+        if (!wsdlUI.getId().getText().isEmpty()){
+        	w.set("id", Integer.valueOf(wsdlUI.getId().getText()));
+        }
         try {
             String name = StringTreatment.deleteAccent(wsdlUI.getNameWSDL().getText());
             w.set("name", name);
@@ -168,7 +195,7 @@ public class WSDLController implements ActionListener {
             JOptionPane.showMessageDialog(wsdlUI, "Error in the url", "Error!", JOptionPane.ERROR_MESSAGE);
         }
         try {
-            String id = categories.get(wsdlUI.getCbCategory().getSelectedIndex()).getString("id");
+            int id = categories.get(wsdlUI.getCbCategory().getSelectedIndex()).getInteger("id");
             w.set("category_id", id);
         } catch (ClassCastException e) {
             ret = false;

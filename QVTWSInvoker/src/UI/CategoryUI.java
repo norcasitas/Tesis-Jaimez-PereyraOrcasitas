@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.ImageIcon;
 
 
 public class CategoryUI extends javax.swing.JInternalFrame {
@@ -156,9 +157,13 @@ public class CategoryUI extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         delete = new javax.swing.JButton();
+        delete.setIcon(new ImageIcon(CategoryUI.class.getResource("/UI/Icons/borrar.png")));
         newCat = new javax.swing.JButton();
+        newCat.setIcon(new ImageIcon(CategoryUI.class.getResource("/UI/Icons/nuevo.png")));
         edit = new javax.swing.JButton();
+        edit.setIcon(new ImageIcon(CategoryUI.class.getResource("/UI/Icons/modificar.png")));
         save = new javax.swing.JButton();
+        save.setIcon(new ImageIcon(CategoryUI.class.getResource("/UI/Icons/guardar.png")));
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);

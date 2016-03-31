@@ -11,6 +11,9 @@ import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+
+import org.javalite.activejdbc.Base;
+
 import utils.StringTreatment;
 import UI.CategoryUI;
 import UI.MainUI;
@@ -29,6 +32,9 @@ public class CategoryController implements ActionListener {
     private java.util.List<Category> categories;
 
     public CategoryController(MainUI mainUI, CategoryUI categoryUI) {
+    	if (!Base.hasConnection()) {
+            Base.open("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/qvtwsinvoker", "postgres", "root");
+         }
         this.categoryUI = categoryUI;
         this.mainUI = mainUI;
         isNew = true;
@@ -37,8 +43,7 @@ public class CategoryController implements ActionListener {
         tableCategory = categoryUI.getTableCategory();
         tableCategoryDefault = categoryUI.getCategoriesDefault();
         categoryNameSearch = categoryUI.getSearch();
-        categories = new LinkedList<>();
-       // categories = Category.findAll();
+        categories  = categoryCRUD.searchCategory("");
         refreshList();
         categoryNameSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
@@ -63,13 +68,20 @@ public class CategoryController implements ActionListener {
     }
 
     private void searchKeyReleased(KeyEvent evt) {
+    	if (!Base.hasConnection()) {
+            Base.open("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/qvtwsinvoker", "postgres", "root");
+         }
         categories = categoryCRUD.searchCategory(categoryUI.getSearch().getText());
         refreshList();
+        Base.close();
     }
 
     private void tableCategoryEvent() {
         int r = tableCategory.getSelectedRow();
+       
         if (r != -1) {
+        	categoryUI.getId().setText( (String) tableCategoryDefault.getValueAt(r, 0));
+        	categoryUI.getNameCat().setText((String) tableCategoryDefault.getValueAt(r, 1));
             categoryUI.categorySelected(true);
         } else {
             categoryUI.categorySelected(false);
@@ -78,6 +90,9 @@ public class CategoryController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+    	if (!Base.hasConnection()) {
+            Base.open("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/qvtwsinvoker", "postgres", "root");
+            }
         if (e.getSource() == categoryUI.getNewCat()) {
             categoryUI.clickNew();
             isNew = true;
@@ -89,6 +104,8 @@ public class CategoryController implements ActionListener {
                 if (categoryCRUD.delete(Integer.valueOf(categoryUI.getId().getText()))) {
                     JOptionPane.showMessageDialog(categoryUI, "Category deleted successfully!");
                     categoryUI.clickSave();
+                    categories  = categoryCRUD.searchCategory("");
+                    refreshList();
                 } else {
                     JOptionPane.showMessageDialog(categoryUI, "An error has occurred, the category wasn't deleted", "Error!", JOptionPane.ERROR_MESSAGE);
                 }
@@ -105,6 +122,8 @@ public class CategoryController implements ActionListener {
                 if (categoryCRUD.create(c)) {
                     categoryUI.clickSave();
                     editing = false;
+                    categories  = categoryCRUD.searchCategory("");
+                    refreshList();
                     JOptionPane.showMessageDialog(categoryUI, "¡Category successfully saved!");
                 } else {
                     JOptionPane.showMessageDialog(categoryUI, "There was an error, review the data", "Error!", JOptionPane.ERROR_MESSAGE);
@@ -117,17 +136,22 @@ public class CategoryController implements ActionListener {
                 if (categoryCRUD.edit(c)) {
                     categoryUI.clickSave();
                     editing = false;
+                    categories  = categoryCRUD.searchCategory("");
+                    refreshList();
                     JOptionPane.showMessageDialog(categoryUI, "¡Category successfully saved!");
                 } else {
                     JOptionPane.showMessageDialog(categoryUI, "There was an error, review the data", "Error!", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
-
+        Base.close();
     }
 
     private boolean loadData(Category c) {
         boolean ret = true;
+        if (!categoryUI.getId().getText().isEmpty()){
+        	 c.set("id", Integer.valueOf(categoryUI.getId().getText()));
+        }
         try {
             String name = StringTreatment.deleteAccent(categoryUI.getNameCat().getText());
             c.set("name", name);
