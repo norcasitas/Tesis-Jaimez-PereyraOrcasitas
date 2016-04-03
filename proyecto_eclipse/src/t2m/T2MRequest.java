@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.Resource.Factory;
@@ -50,6 +51,7 @@ public class T2MRequest {
 	    return r;
 	}
 	
+
 	
 	  public static void main(String[] args) throws FileNotFoundException, SAXException, IOException, ParserConfigurationException {
 		 T2MRequest t2mRequest = new T2MRequest();
