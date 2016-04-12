@@ -348,16 +348,16 @@ public class PortTypeImpl extends ExtensibleElementImpl implements PortType {
 		return result.toString();
 	}
 
-	@Override
 	public ExtensibilityElement removeExtensibilityElement(ExtensibilityElement arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public javax.wsdl.Operation removeOperation(String arg0, String arg1, String arg2) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 } //PortTypeImpl

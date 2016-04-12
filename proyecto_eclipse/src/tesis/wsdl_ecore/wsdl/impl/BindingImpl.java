@@ -438,16 +438,16 @@ public class BindingImpl extends ExtensibleElementImpl implements Binding {
 		return result.toString();
 	}
 
-	@Override
 	public ExtensibilityElement removeExtensibilityElement(ExtensibilityElement arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public javax.wsdl.BindingOperation removeBindingOperation(String arg0, String arg1, String arg2) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 } //BindingImpl

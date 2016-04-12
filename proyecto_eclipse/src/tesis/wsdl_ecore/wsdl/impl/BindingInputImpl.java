@@ -266,10 +266,11 @@ public class BindingInputImpl extends ExtensibleElementImpl implements BindingIn
 		return result.toString();
 	}
 
-	@Override
 	public ExtensibilityElement removeExtensibilityElement(ExtensibilityElement arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 } //BindingInputImpl

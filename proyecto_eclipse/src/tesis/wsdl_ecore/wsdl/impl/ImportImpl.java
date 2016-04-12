@@ -382,22 +382,21 @@ public class ImportImpl extends ExtensibleElementImpl implements Import {
 		return result.toString();
 	}
 
-	@Override
 	public ExtensibilityElement removeExtensibilityElement(ExtensibilityElement arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public javax.wsdl.Definition getDefinition() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public void setDefinition(javax.wsdl.Definition arg0) {
 		// TODO Auto-generated method stub
 		
 	}
+
+
 
 } //ImportImpl

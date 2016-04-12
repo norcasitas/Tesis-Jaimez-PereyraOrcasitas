@@ -215,16 +215,15 @@ public class ExtensibilityElementImpl extends WSDLElementImpl implements Extensi
 		return result.toString();
 	}
 
-	@Override
 	public Boolean getRequired() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public void setRequired(Boolean arg0) {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 } //ExtensibilityElementImpl

@@ -455,10 +455,10 @@ public class PartImpl extends ExtensibleElementImpl implements Part {
 		return result.toString();
 	}
 
-	@Override
 	public ExtensibilityElement removeExtensibilityElement(ExtensibilityElement arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 } //PartImpl

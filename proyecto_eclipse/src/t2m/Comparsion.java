@@ -23,27 +23,12 @@ public class Comparsion {
 	private RequestModel requestModelWSDL;
 	private RequestModel requestModelClient;
 
-	public RequestModel loadFromXMI(String path) throws IOException{
-		 RequestModelPackage.eINSTANCE.eClass();  
-		 RequestModelPackage packageInstance = RequestModelPackage.eINSTANCE;
-		    Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-		    Map<String, Object> m = reg.getExtensionToFactoryMap();
-		    m.put("*", new XMIResourceFactoryImpl());
-		    // Obtain a new resource set
-		    ResourceSet resSet = new ResourceSetImpl();
-		    resSet.setResourceFactoryRegistry(reg);
-		    resSet.getPackageRegistry().put(RequestModelPackage.eNS_URI,RequestModelPackage.eINSTANCE);
-		    resSet.getPackageRegistry().put(null,RequestModelPackage.eINSTANCE);
-		    URI uri= URI.createURI(path+".xmi");
-		    Resource resource = resSet.getResource(uri, true);
-		    RequestModel r = (RequestModel) resource.getContents().get(0);
-	    return r;
-	}
+
 
 	
 	public ArrayList<String> getMachOperations(RequestModel requestClient){
 		this.requestModelClient = requestClient;
-		ArrayList<String> ret = new ArrayList<>();
+		ArrayList<String> ret = new ArrayList<String>();
 		for(Method method : requestModelWSDL.getMethods()){
 			if(method.getName().equals(requestClient.getMethods().get(0).getName())){
 				if(matchInputParams(method.getInParameters())){
@@ -79,8 +64,8 @@ public class Comparsion {
 	
 	public static void main(String[] args) throws IOException {
 		Comparsion comparsion = new Comparsion();
-		 comparsion.setRequestModelWSDL(comparsion.loadFromXMI("output"));
-		 String operation =comparsion.getMachOperations(comparsion.loadFromXMI("FService")).get(0);
+		 comparsion.setRequestModelWSDL((RequestModel)Utils.getFromXMI("/home/nico/Escritorio/output.xmi").get(0));
+		 String operation =comparsion.getMachOperations((RequestModel)Utils.getFromXMI("/home/nico/Escritorio/output.xmi").get(0)).get(0);
 		 System.out.println(operation);
 	}
 

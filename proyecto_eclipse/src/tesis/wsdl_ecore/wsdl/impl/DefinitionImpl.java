@@ -1338,40 +1338,35 @@ public class DefinitionImpl extends ExtensibleElementImpl implements Definition 
 		return super.eInvoke(operationID, arguments);
 	}
 
-	@Override
 	public ExtensibilityElement removeExtensibilityElement(ExtensibilityElement arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Map getAllBindings() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Map getAllPortTypes() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Map getAllServices() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public javax.wsdl.Import removeImport(javax.wsdl.Import arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public String removeNamespace(String arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 } //DefinitionImpl

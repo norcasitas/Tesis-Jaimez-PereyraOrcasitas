@@ -283,10 +283,11 @@ public class PortImpl extends ExtensibleElementImpl implements Port {
 		return result.toString();
 	}
 
-	@Override
 	public ExtensibilityElement removeExtensibilityElement(ExtensibilityElement arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 } //PortImpl

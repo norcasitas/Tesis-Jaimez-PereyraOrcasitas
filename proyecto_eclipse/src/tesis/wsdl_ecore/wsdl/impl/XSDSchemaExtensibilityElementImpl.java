@@ -247,58 +247,51 @@ public class XSDSchemaExtensibilityElementImpl extends ExtensibilityElementImpl 
 		return result.toString();
 	}
 
-	@Override
 	public void addImport(SchemaImport arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void addInclude(SchemaReference arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void addRedefine(SchemaReference arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public SchemaImport createImport() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public SchemaReference createInclude() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public SchemaReference createRedefine() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Map getImports() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List getIncludes() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List getRedefines() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 
 } //XSDSchemaExtensibilityElementImpl

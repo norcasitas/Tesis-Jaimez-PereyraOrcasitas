@@ -714,16 +714,15 @@ public class OperationImpl extends ExtensibleElementImpl implements Operation {
 		return result.toString();
 	}
 
-	@Override
 	public ExtensibilityElement removeExtensibilityElement(ExtensibilityElement arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public javax.wsdl.Fault removeFault(String arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 } //OperationImpl

@@ -575,16 +575,15 @@ public class BindingOperationImpl extends ExtensibleElementImpl implements Bindi
 		return result.toString();
 	}
 
-	@Override
 	public ExtensibilityElement removeExtensibilityElement(ExtensibilityElement arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public javax.wsdl.BindingFault removeBindingFault(String arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 } //BindingOperationImpl
