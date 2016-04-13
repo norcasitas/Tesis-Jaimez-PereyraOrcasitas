@@ -1,26 +1,31 @@
-package UI;
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package tesis.ui;
 
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ImageIcon;
 
-public class WSDLUI extends javax.swing.JInternalFrame {
 
-    private DefaultTableModel wsdlDefault;
+public class CategoryUI extends javax.swing.JInternalFrame {
 
-    public WSDLUI() {
+    private DefaultTableModel categoriesDefault;
+
+
+    public CategoryUI() {
         initComponents();
-        wsdlDefault = (DefaultTableModel) tableWSDL.getModel();
+        categoriesDefault = (DefaultTableModel) tableCategory.getModel();
     }
 
     public void setActionListener(ActionListener lis) {
         this.save.addActionListener(lis);
         this.delete.addActionListener(lis);
-        this.newWSDL.addActionListener(lis);
+        this.newCat.addActionListener(lis);
         this.edit.addActionListener(lis);
     }
 
@@ -29,92 +34,105 @@ public class WSDLUI extends javax.swing.JInternalFrame {
         clickEdit();
     }
 
-    public void clickEdit() {
-        newWSDL.setEnabled(false);
-        name.setEnabled(true);
-        url.setEnabled(true);
-        cbCategory.setEnabled(true);
-        save.setEnabled(true);
-        edit.setEnabled(false);
-        delete.setEnabled(false);
-        
-    }
-
-    public void enableFields(boolean b) {
-        name.setEnabled(b);
-        url.setEnabled(b);
-        cbCategory.setEnabled(b);
-    }
-
-    public void clear() {
-        id.setText("");
-        name.setText("");
-        url.setText("");
-        cbCategory.removeAll();
-        cbCategory.setSelectedIndex(-1);
-    }
-
     public void clickSave() {
         clear();
         name.setEnabled(false);
-        newWSDL.setEnabled(true);
-        url.setEnabled(false);
-        cbCategory.setEnabled(false);
+        newCat.setEnabled(true);
         save.setEnabled(false);
         edit.setEnabled(false);
         delete.setEnabled(false);
     }
 
-    public void wsdlSelected(boolean b) {
-        if (!b) {
+      public void clickEdit() {
+        newCat.setEnabled(false);
+        name.setEnabled(true);
+        save.setEnabled(true);
+        edit.setEnabled(false);
+        delete.setEnabled(true);
+    }
+    
+    public void clear() {
+        id.setText("");
+        name.setText("");
+    }
+    
+    public void categorySelected(boolean b){
+        if (!b)
             clear();
-        }
         edit.setEnabled(b);
         delete.setEnabled(b);
     }
 
-    public DefaultTableModel getWsdlDefault() {
-        return wsdlDefault;
+    public DefaultTableModel getCategoriesDefault() {
+        return categoriesDefault;
     }
 
-    public JComboBox<String> getCbCategory() {
-        return cbCategory;
+    public void setCategoriesDefault(DefaultTableModel categoriesDefault) {
+        this.categoriesDefault = categoriesDefault;
     }
 
     public JButton getDelete() {
         return delete;
     }
 
+    public void setDelete(JButton delete) {
+        this.delete = delete;
+    }
+
     public JButton getEdit() {
         return edit;
+    }
+
+    public void setEdit(JButton edit) {
+        this.edit = edit;
     }
 
     public JTextField getId() {
         return id;
     }
 
-    public JTextField getNameWSDL() {
+    public void setId(JTextField id) {
+        this.id = id;
+    }
+
+    public JTextField getNameCat() {
         return name;
     }
 
-    public JButton getNewWSDL() {
-        return newWSDL;
+    public void setName(JTextField name) {
+        this.name = name;
+    }
+
+    public JButton getNewCat() {
+        return newCat;
+    }
+
+    public void setNewCat(JButton newCat) {
+        this.newCat = newCat;
     }
 
     public JButton getSave() {
         return save;
     }
 
+    public void setSave(JButton save) {
+        this.save = save;
+    }
+
     public JTextField getSearch() {
         return search;
     }
 
-    public JTable getTableWSDL() {
-        return tableWSDL;
+    public void setSearch(JTextField search) {
+        this.search = search;
     }
 
-    public JTextField getUrl() {
-        return url;
+    public JTable getTableCategory() {
+        return tableCategory;
+    }
+
+    public void setTableCategory(JTable tableCategory) {
+        this.tableCategory = tableCategory;
     }
 
     /**
@@ -130,33 +148,29 @@ public class WSDLUI extends javax.swing.JInternalFrame {
         panelEnteroClientes = new javax.swing.JPanel();
         panelClientes = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tableWSDL = new javax.swing.JTable();
+        tableCategory = new javax.swing.JTable();
         search = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         name = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         id = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        url = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        cbCategory = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         delete = new javax.swing.JButton();
-        delete.setIcon(new ImageIcon(WSDLUI.class.getResource("/UI/Icons/borrar.png")));
-        newWSDL = new javax.swing.JButton();
-        newWSDL.setIcon(new ImageIcon(WSDLUI.class.getResource("/UI/Icons/nuevo.png")));
+        delete.setIcon(new ImageIcon(CategoryUI.class.getResource("/resources/Icons/borrar.png")));
+        newCat = new javax.swing.JButton();
+        newCat.setIcon(new ImageIcon(CategoryUI.class.getResource("/resources/Icons/nuevo.png")));
         edit = new javax.swing.JButton();
-        edit.setIcon(new ImageIcon(WSDLUI.class.getResource("/UI/Icons/modificar.png")));
+        edit.setIcon(new ImageIcon(CategoryUI.class.getResource("/resources/Icons/modificar.png")));
         save = new javax.swing.JButton();
-        save.setIcon(new ImageIcon(WSDLUI.class.getResource("/UI/Icons/guardar.png")));
+        save.setIcon(new ImageIcon(CategoryUI.class.getResource("/resources/Icons/guardar.png")));
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Management wsdl");
+        setTitle("Management category");
         setPreferredSize(new java.awt.Dimension(876, 600));
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
@@ -166,22 +180,22 @@ public class WSDLUI extends javax.swing.JInternalFrame {
 
         panelEnteroClientes.setPreferredSize(new java.awt.Dimension(825, 475));
 
-        panelClientes.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "WSDL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Schoolbook L", 3, 15))); // NOI18N
+        panelClientes.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Category", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Schoolbook L", 3, 15))); // NOI18N
 
-        tableWSDL.setAutoCreateRowSorter(true);
-        tableWSDL.setModel(new javax.swing.table.DefaultTableModel(
+        tableCategory.setAutoCreateRowSorter(true);
+        tableCategory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Name", "Url", "Categoty"
+                "ID", "Name"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, true
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -192,8 +206,8 @@ public class WSDLUI extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        tableWSDL.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane2.setViewportView(tableWSDL);
+        tableCategory.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane2.setViewportView(tableCategory);
 
         search.setToolTipText("Búsqueda personalizada");
 
@@ -210,10 +224,10 @@ public class WSDLUI extends javax.swing.JInternalFrame {
                 .addGap(2, 2, 2)
                 .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "WSDL data", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Schoolbook L", 3, 15))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Category data", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Schoolbook L", 3, 15))); // NOI18N
 
         name.setEnabled(false);
 
@@ -223,39 +237,21 @@ public class WSDLUI extends javax.swing.JInternalFrame {
 
         jLabel3.setText("ID");
 
-        jLabel4.setText("Url");
-
-        url.setEnabled(false);
-
-        jLabel2.setText("Category");
-        cbCategory.setEnabled(false);
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(name)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3))
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(name)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(url)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(cbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 655, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -268,33 +264,25 @@ public class WSDLUI extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(url, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
         delete.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
-        delete.setToolTipText("Delete");
+        delete.setToolTipText("Borrar cliente seleccionado");
         delete.setEnabled(false);
         delete.setPreferredSize(new java.awt.Dimension(55, 33));
         jPanel4.add(delete);
 
-        newWSDL.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
-        newWSDL.setToolTipText("New");
-        newWSDL.setPreferredSize(new java.awt.Dimension(55, 33));
-        jPanel4.add(newWSDL);
+        newCat.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
+        newCat.setToolTipText("Crear cliente nuevo");
+        newCat.setPreferredSize(new java.awt.Dimension(55, 33));
+        jPanel4.add(newCat);
 
         edit.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
-        edit.setToolTipText("Edit");
+        edit.setToolTipText("Modificar cliente seleccionado");
         edit.setEnabled(false);
         edit.setPreferredSize(new java.awt.Dimension(55, 33));
         edit.addActionListener(new java.awt.event.ActionListener() {
@@ -305,7 +293,7 @@ public class WSDLUI extends javax.swing.JInternalFrame {
         jPanel4.add(edit);
 
         save.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
-        save.setToolTipText("Save");
+        save.setToolTipText("Guardar cambios realizados");
         save.setEnabled(false);
         save.setPreferredSize(new java.awt.Dimension(55, 33));
         jPanel4.add(save);
@@ -349,26 +337,21 @@ public class WSDLUI extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_editActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cbCategory;
     private javax.swing.JButton delete;
     private javax.swing.JButton edit;
     private javax.swing.JTextField id;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField name;
-    private javax.swing.JButton newWSDL;
+    private javax.swing.JButton newCat;
     private javax.swing.JPanel panelClientes;
     private javax.swing.JPanel panelEnteroClientes;
     private javax.swing.JButton save;
     private javax.swing.JScrollPane scroolClientes;
     private javax.swing.JTextField search;
-    private javax.swing.JTable tableWSDL;
-    private javax.swing.JTextField url;
+    private javax.swing.JTable tableCategory;
     // End of variables declaration//GEN-END:variables
-
 }

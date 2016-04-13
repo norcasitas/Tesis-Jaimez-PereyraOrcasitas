@@ -1,4 +1,4 @@
-package controllers;
+package tesis.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,13 +15,14 @@ import javax.swing.table.DefaultTableModel;
 
 import org.javalite.activejdbc.Base;
 import org.javalite.activejdbc.Model;
-import utils.StringTreatment;
-import UI.MainUI;
-import UI.WSDLUI;
-import crud.CategoryCRUD;
-import crud.WsdlCRUD;
-import models.Category;
-import models.Wsdl;
+import tesis.utils.StringTreatment;
+import tesis.ui.MainUI;
+import tesis.ui.WSDLUI;
+import tesis.crud.CategoryCRUD;
+import tesis.crud.WsdlCRUD;
+import tesis.models.Category;
+import tesis.models.Wsdl;
+import tesis.utils.DataBase;
 
 public class WSDLController implements ActionListener {
 
@@ -37,9 +38,7 @@ public class WSDLController implements ActionListener {
     private java.util.List<Category> categories;
 
     public WSDLController(MainUI mainUI, WSDLUI wsdlUI) {
-    	if (!Base.hasConnection()) {
-    	        Base.open("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/qvtwsinvoker", "postgres", "root");
-    	}
+        DataBase.openDataBase();
         this.wsdlUI = wsdlUI;
         this.mainUI = mainUI;
         isNew = true;
@@ -82,7 +81,8 @@ public class WSDLController implements ActionListener {
     }
 
     private void searchKeyReleased(KeyEvent evt) {
-        wsdlCRUD.searchWSDL(wsdlUI.getSearch().getText());
+        DataBase.openDataBase();
+        wsdls = wsdlCRUD.searchWSDL(wsdlUI.getSearch().getText());
         refreshList();
     }
 
@@ -102,9 +102,7 @@ public class WSDLController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-    	 if (!Base.hasConnection()) {
-		        Base.open("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/qvtwsinvoker", "postgres", "root");
-		}
+        DataBase.openDataBase();
         if (e.getSource() == wsdlUI.getNewWSDL()) {
             wsdlUI.clickNew();
             loadCB();

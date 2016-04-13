@@ -1,8 +1,8 @@
-package crud;
+package tesis.crud;
 
 import java.util.List;
 import org.javalite.activejdbc.Base;
-import models.Category;
+import tesis.models.Category;
 
 public class CategoryCRUD {
 

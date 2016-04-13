@@ -1,9 +1,9 @@
-package controllers;
+package tesis.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import UI.InvokerUI;
-import UI.MainUI;
+import tesis.ui.InvokerUI;
+import tesis.ui.MainUI;
 
 
 

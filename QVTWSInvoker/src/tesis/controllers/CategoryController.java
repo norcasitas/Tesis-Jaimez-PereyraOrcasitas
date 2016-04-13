@@ -1,10 +1,9 @@
-package controllers;
+package tesis.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.Iterator;
-import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -14,11 +13,12 @@ import javax.swing.table.DefaultTableModel;
 
 import org.javalite.activejdbc.Base;
 
-import utils.StringTreatment;
-import UI.CategoryUI;
-import UI.MainUI;
-import crud.CategoryCRUD;
-import models.Category;
+import tesis.utils.StringTreatment;
+import tesis.ui.CategoryUI;
+import tesis.ui.MainUI;
+import tesis.crud.CategoryCRUD;
+import tesis.models.Category;
+import tesis.utils.DataBase;
 
 public class CategoryController implements ActionListener {
 
@@ -32,9 +32,7 @@ public class CategoryController implements ActionListener {
     private java.util.List<Category> categories;
 
     public CategoryController(MainUI mainUI, CategoryUI categoryUI) {
-    	if (!Base.hasConnection()) {
-            Base.open("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/qvtwsinvoker", "postgres", "root");
-         }
+        DataBase.openDataBase();
         this.categoryUI = categoryUI;
         this.mainUI = mainUI;
         isNew = true;
@@ -68,9 +66,7 @@ public class CategoryController implements ActionListener {
     }
 
     private void searchKeyReleased(KeyEvent evt) {
-    	if (!Base.hasConnection()) {
-            Base.open("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/qvtwsinvoker", "postgres", "root");
-         }
+        DataBase.openDataBase();
         categories = categoryCRUD.searchCategory(categoryUI.getSearch().getText());
         refreshList();
         Base.close();
@@ -90,9 +86,7 @@ public class CategoryController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-    	if (!Base.hasConnection()) {
-            Base.open("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/qvtwsinvoker", "postgres", "root");
-            }
+        DataBase.openDataBase();
         if (e.getSource() == categoryUI.getNewCat()) {
             categoryUI.clickNew();
             isNew = true;

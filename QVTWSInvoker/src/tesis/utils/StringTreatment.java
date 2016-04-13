@@ -1,4 +1,4 @@
-package utils;
+package tesis.utils;
 
 
 public class StringTreatment {

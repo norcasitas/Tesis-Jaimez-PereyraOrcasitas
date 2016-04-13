@@ -1,4 +1,4 @@
-package models;
+package tesis.models;
 
 import org.javalite.activejdbc.Model;
 

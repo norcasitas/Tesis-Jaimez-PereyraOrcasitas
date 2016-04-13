@@ -1,4 +1,4 @@
-package controllers;
+package tesis.controllers;
 
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
@@ -6,13 +6,12 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.UIManager;
-import org.javalite.activejdbc.Base;
-import UI.CategoryUI;
-import UI.InvokerUI;
-import UI.MainUI;
-import UI.WSDLUI;
+import tesis.ui.CategoryUI;
+import tesis.ui.InvokerUI;
+import tesis.ui.MainUI;
+import tesis.ui.WSDLUI;
+import tesis.utils.DataBase;
 
 public class Main implements ActionListener {
 
@@ -31,12 +30,8 @@ public class Main implements ActionListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (!Base.hasConnection()) {
-        Base.open("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/qvtwsinvoker", "postgres", "root");
-        }
+        DataBase.openDataBase();
         mainUI = new MainUI();
-        mainUI.setCursor(Cursor.WAIT_CURSOR);
-       
         mainUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
         categoryUI = new CategoryUI();
         invoketUI = new InvokerUI();
@@ -68,19 +63,8 @@ public class Main implements ActionListener {
         }
     }
 
-    static public void openDB() {
-        if (!Base.hasConnection()) {
-            try {
-                Base.open("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/qvtwsinvoker", "postgres", "root");
-                Base.connection().setAutoCommit(true);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Ocurrió un error, no se realizó la conexión con el servidor, verifique la conexión \n " + e.getMessage(), null, JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }
 
     public static void main(String[] args) {
-    	openDB();
          Main m = new Main();
     }
 

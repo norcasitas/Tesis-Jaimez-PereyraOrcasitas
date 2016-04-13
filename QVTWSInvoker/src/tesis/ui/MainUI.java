@@ -1,16 +1,10 @@
 
-package UI;
+package tesis.ui;
 
 import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.GroupLayout;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.CardLayout;
-import java.awt.BorderLayout;
 
 
 public class MainUI extends javax.swing.JFrame {
@@ -71,13 +65,21 @@ public class MainUI extends javax.swing.JFrame {
         panelBotones.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelBotones.setLayout(new java.awt.GridLayout(1, 0));
 
-        category.setToolTipText("Gestión de artículos");
+        category.setText("CRUD Categories");
+        category.setToolTipText("");
+        category.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoryActionPerformed(evt);
+            }
+        });
         panelBotones.add(category);
 
-        wsdl.setToolTipText("Gestión de proveedores");
+        wsdl.setText("CRUD WSDL");
+        wsdl.setToolTipText("");
         panelBotones.add(wsdl);
 
-        invoker.setToolTipText("Gestión de clientes");
+        invoker.setText("RUN SELECTION");
+        invoker.setToolTipText("");
         panelBotones.add(invoker);
 
         jMenu1.setText("File");
@@ -107,21 +109,20 @@ public class MainUI extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-        	layout.createParallelGroup(Alignment.LEADING)
-        		.addComponent(container, GroupLayout.DEFAULT_SIZE, 1028, Short.MAX_VALUE)
-        		.addComponent(panelBotones, GroupLayout.DEFAULT_SIZE, 1028, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelBotones, javax.swing.GroupLayout.DEFAULT_SIZE, 841, Short.MAX_VALUE)
+            .addComponent(container, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
-        	layout.createParallelGroup(Alignment.TRAILING)
-        		.addGroup(layout.createSequentialGroup()
-        			.addComponent(panelBotones, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
-        			.addPreferredGap(ComponentPlacement.RELATED)
-        			.addComponent(container, GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
-        			.addContainerGap())
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(container, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-        container.setLayout(null);
-        getContentPane().setLayout(layout);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -139,6 +140,10 @@ public class MainUI extends javax.swing.JFrame {
         acercaDe.setLocationRelativeTo(this);
         acercaDe.setVisible(true);*/
     }//GEN-LAST:event_authorsActionPerformed
+
+    private void categoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_categoryActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem authors;

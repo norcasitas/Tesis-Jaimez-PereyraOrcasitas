@@ -1,9 +1,9 @@
-package crud;
+package tesis.crud;
 
 import java.util.List;
 import org.javalite.activejdbc.Base;
 import static org.javalite.activejdbc.Model.findById;
-import models.Wsdl;
+import tesis.models.Wsdl;
 
 public class WsdlCRUD {
 
