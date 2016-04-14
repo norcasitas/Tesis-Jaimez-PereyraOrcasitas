@@ -99,7 +99,7 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="category">
           <Properties>
-            <Property name="text" type="java.lang.String" value="CRUD Categories"/>
+            <Property name="text" type="java.lang.String" value="Management Categories"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
@@ -108,13 +108,13 @@
         </Component>
         <Component class="javax.swing.JButton" name="wsdl">
           <Properties>
-            <Property name="text" type="java.lang.String" value="CRUD WSDL"/>
+            <Property name="text" type="java.lang.String" value="Management WSDL"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="invoker">
           <Properties>
-            <Property name="text" type="java.lang.String" value="RUN SELECTION"/>
+            <Property name="text" type="java.lang.String" value="Web services Invoker"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
         </Component>

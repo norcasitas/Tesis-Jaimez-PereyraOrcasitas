@@ -1,105 +1,113 @@
 package tesis.ui;
 
 import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+import tesis.utils.TypesOfWsdl;
 
 public class InvokerUI extends javax.swing.JInternalFrame {
 
-
     public InvokerUI() {
         initComponents();
+        setTypes();
+    }
+
+    private void setTypes() {
+        spnType1.addItem(TypesOfWsdl.typeFloat);
+        spnType1.addItem(TypesOfWsdl.typeInteger);
+        spnType1.addItem(TypesOfWsdl.typeString);
+        spnType2.addItem(TypesOfWsdl.typeFloat);
+        spnType2.addItem(TypesOfWsdl.typeInteger);
+        spnType2.addItem(TypesOfWsdl.typeString);
+        spnType3.addItem(TypesOfWsdl.typeFloat);
+        spnType3.addItem(TypesOfWsdl.typeInteger);
+        spnType3.addItem(TypesOfWsdl.typeString);
+        spnType4.addItem(TypesOfWsdl.typeFloat);
+        spnType4.addItem(TypesOfWsdl.typeInteger);
+        spnType4.addItem(TypesOfWsdl.typeString);
+        spnType5.addItem(TypesOfWsdl.typeFloat);
+        spnType5.addItem(TypesOfWsdl.typeInteger);
+        spnType5.addItem(TypesOfWsdl.typeString);
+
     }
 
     public void setActionListener(ActionListener lis) {
-        this.searchInvoke.addActionListener(lis);
-        this.yes.addActionListener(lis);
-        this.no.addActionListener(lis);
-        this.numberParam.addActionListener(lis);
-        this.category.addActionListener(lis);
+        this.btnSearchInvoke.addActionListener(lis);
+        this.btnYes.addActionListener(lis);
+        this.btnNo.addActionListener(lis);
+        this.spnCategory.addActionListener(lis);
+    }
+
+    public void setItemListener(ItemListener lis) {
+        this.spnNumberParam.addItemListener(lis);
     }
 
     public void enableResult(Boolean b) {
-        yes.setEnabled(b);
-        no.setEnabled(b);
+        btnYes.setEnabled(b);
+        btnNo.setEnabled(b);
     }
 
-    public void enableParams(int i, Boolean b) {
+    public JComboBox getSpnNumberParam() {
+        return spnNumberParam;
+    }
+
+    public void enableParams(int i) {
+        for (int j = 0; j < 5; j++) {
+            getPanelParamater(j).setVisible(j < i ? true : false);
+        }
+
+    }
+
+    public JComboBox getSpnCategory() {
+        return spnCategory;
+    }
+
+    private JPanel getPanelParamater(int i) {
         switch (i) {
+            case 0:
+                return pnlParam1;
             case 1:
-                labelType1.setVisible(b);
-                type1.setVisible(b);
-                value1.setVisible(b);
-                labelValue1.setVisible(b);
-                break;
+                return pnlParam2;
             case 2:
-                labelType1.setVisible(b);
-                labelType2.setVisible(b);
-                type1.setVisible(b);
-                type2.setVisible(b);
-                value1.setVisible(b);
-                value2.setVisible(b);
-                labelValue1.setVisible(b);
-                labelValue2.setVisible(b);
-                break;
+                return pnlParam3;
             case 3:
-                labelType1.setVisible(b);
-                labelType2.setVisible(b);
-                type1.setVisible(b);
-                type2.setVisible(b);
-                value1.setVisible(b);
-                value2.setVisible(b);
-                labelValue1.setVisible(b);
-                labelValue2.setVisible(b);
-                break;
+                return pnlParam4;
             case 4:
-                labelType1.setVisible(b);
-                labelType2.setVisible(b);
-                labelType4.setVisible(b);
-                type1.setVisible(b);
-                type2.setVisible(b);
-                type4.setVisible(b);
-                value1.setVisible(b);
-                value2.setVisible(b);
-                value4.setVisible(b);
-                labelValue1.setVisible(b);
-                labelValue2.setVisible(b);
-                labelValue4.setVisible(b);
-                break;
-            case 5:
-                labelType1.setVisible(b);
-                labelType2.setVisible(b);
-                labelType4.setVisible(b);
-                labelType5.setVisible(b);
-                type1.setVisible(b);
-                type2.setVisible(b);
-                type4.setVisible(b);
-                type5.setVisible(b);
-                value1.setVisible(b);
-                value2.setVisible(b);
-                value4.setVisible(b);
-                value5.setVisible(b);
-                labelValue1.setVisible(b);
-                labelValue2.setVisible(b);
-                labelValue4.setVisible(b);
-                labelValue5.setVisible(b);
-                break;
+                return pnlParam5;
+            default:
+                return null;
         }
     }
 
-    public JTextField getAceiteUsa() {
-        return methodName;
+    public JTextField getTxtMethodName() {
+        return txtMethodName;
+    }
+
+    public JButton getBtnNo() {
+        return btnNo;
+    }
+
+    public JButton getBtnSearchInvoke() {
+        return btnSearchInvoke;
+    }
+
+    public JButton getBtnYes() {
+        return btnYes;
     }
 
     public void clear() {
-        value1.setText("");
-        value2.setText("");
-        value4.setText("");
-        value5.setText("");
-        methodName.setText("");
-        category.setSelectedIndex(-1);
-        numberParam.setSelectedIndex(0);
-        result.setText("");
-        enableParams(0, false);
+        txtValue1.setText("");
+        txtValue2.setText("");
+        txtValue4.setText("");
+        txtValue5.setText("");
+        txtMethodName.setText("");
+        spnCategory.setSelectedIndex(-1);
+        spnNumberParam.setSelectedIndex(0);
+        txtResult.setText("");
+        enableParams(0);
         enableResult(false);
     }
 
@@ -116,64 +124,74 @@ public class InvokerUI extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        result = new javax.swing.JTextArea();
+        txtResult = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         wsInvoked = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        yes = new javax.swing.JButton();
-        no = new javax.swing.JButton();
+        btnYes = new javax.swing.JButton();
+        btnNo = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        searchInvoke = new javax.swing.JButton();
+        btnSearchInvoke = new javax.swing.JButton();
         jLabel35 = new javax.swing.JLabel();
-        category = new javax.swing.JComboBox();
-        methodName = new javax.swing.JTextField();
+        spnCategory = new javax.swing.JComboBox();
+        txtMethodName = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        numberParam = new javax.swing.JComboBox();
+        spnNumberParam = new javax.swing.JComboBox();
+        jPanel4 = new javax.swing.JPanel();
+        pnlParam1 = new javax.swing.JPanel();
         labelType1 = new javax.swing.JLabel();
-        type1 = new javax.swing.JComboBox();
-        labelType2 = new javax.swing.JLabel();
-        type2 = new javax.swing.JComboBox();
-        labelType4 = new javax.swing.JLabel();
-        type4 = new javax.swing.JComboBox();
-        labelType5 = new javax.swing.JLabel();
-        type5 = new javax.swing.JComboBox();
-        value1 = new javax.swing.JTextField();
         labelValue1 = new javax.swing.JLabel();
+        txtValue1 = new javax.swing.JTextField();
+        spnType1 = new javax.swing.JComboBox();
+        pnlParam2 = new javax.swing.JPanel();
+        labelType2 = new javax.swing.JLabel();
         labelValue2 = new javax.swing.JLabel();
-        labelValue4 = new javax.swing.JLabel();
-        labelValue5 = new javax.swing.JLabel();
-        value2 = new javax.swing.JTextField();
-        value4 = new javax.swing.JTextField();
-        value5 = new javax.swing.JTextField();
+        txtValue2 = new javax.swing.JTextField();
+        spnType2 = new javax.swing.JComboBox();
+        pnlParam3 = new javax.swing.JPanel();
+        labelType20 = new javax.swing.JLabel();
+        labelValue20 = new javax.swing.JLabel();
+        txtValue3 = new javax.swing.JTextField();
+        spnType3 = new javax.swing.JComboBox();
+        pnlParam4 = new javax.swing.JPanel();
+        labelType21 = new javax.swing.JLabel();
+        labelValue21 = new javax.swing.JLabel();
+        txtValue4 = new javax.swing.JTextField();
+        spnType4 = new javax.swing.JComboBox();
+        pnlParam5 = new javax.swing.JPanel();
+        labelType22 = new javax.swing.JLabel();
+        labelValue22 = new javax.swing.JLabel();
+        txtValue5 = new javax.swing.JTextField();
+        spnType5 = new javax.swing.JComboBox();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Trabajos");
-        setPreferredSize(new java.awt.Dimension(1059, 412));
+        setTitle("Web services Invoker");
+        setPreferredSize(new java.awt.Dimension(950, 516));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Result", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Schoolbook L", 1, 18))); // NOI18N
 
         jScrollPane5.setAutoscrolls(true);
 
-        result.setEditable(false);
-        result.setColumns(14);
-        result.setRows(7);
-        result.setEnabled(false);
-        jScrollPane5.setViewportView(result);
+        txtResult.setEditable(false);
+        txtResult.setColumns(14);
+        txtResult.setRows(7);
+        txtResult.setEnabled(false);
+        jScrollPane5.setViewportView(txtResult);
 
         jLabel5.setText(" Web service invoked");
 
         jLabel6.setText(" Are you satisfied with the result?");
 
-        yes.setText("Yes");
-        yes.setEnabled(false);
+        btnYes.setText("Yes");
+        btnYes.setEnabled(false);
 
-        no.setText("No");
-        no.setEnabled(false);
+        btnNo.setText("No");
+        btnNo.setEnabled(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -184,18 +202,18 @@ public class InvokerUI extends javax.swing.JInternalFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(wsInvoked))
-                            .addComponent(jLabel6)))
+                            .addComponent(jLabel6)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addComponent(yes, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnYes, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(no, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addComponent(btnNo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,82 +228,249 @@ public class InvokerUI extends javax.swing.JInternalFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(yes)
-                    .addComponent(no))
+                    .addComponent(btnYes)
+                    .addComponent(btnNo))
                 .addGap(0, 0, 0))
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Schoolbook L", 1, 14))); // NOI18N
 
-        searchInvoke.setText("Search & Invoke");
-        searchInvoke.setEnabled(false);
+        btnSearchInvoke.setText("Search & Invoke");
 
         jLabel35.setText("Category");
 
-        category.setPreferredSize(new java.awt.Dimension(85, 21));
-        category.addActionListener(new java.awt.event.ActionListener() {
+        spnCategory.setPreferredSize(new java.awt.Dimension(85, 21));
+        spnCategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                categoryActionPerformed(evt);
+                spnCategoryActionPerformed(evt);
             }
         });
-        category.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        spnCategory.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                categoryPropertyChange(evt);
+                spnCategoryPropertyChange(evt);
             }
         });
 
-        methodName.setToolTipText("Aceite que usa");
-        methodName.setEnabled(false);
+        txtMethodName.setToolTipText("Aceite que usa");
 
         jLabel36.setText("Method name");
 
         jLabel21.setText("Number of parameters");
 
-        numberParam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5" }));
-        numberParam.setEnabled(false);
-        numberParam.setPreferredSize(new java.awt.Dimension(85, 21));
+        spnNumberParam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1", "2", "3", "4", "5" }));
+        spnNumberParam.setSelectedIndex(5);
+        spnNumberParam.setPreferredSize(new java.awt.Dimension(85, 21));
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Parameters"));
 
         labelType1.setText("Type of 1º parameter");
 
-        type1.setPreferredSize(new java.awt.Dimension(85, 21));
+        labelValue1.setText("Value");
+
+        spnType1.setPreferredSize(new java.awt.Dimension(85, 21));
+
+        javax.swing.GroupLayout pnlParam1Layout = new javax.swing.GroupLayout(pnlParam1);
+        pnlParam1.setLayout(pnlParam1Layout);
+        pnlParam1Layout.setHorizontalGroup(
+            pnlParam1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlParam1Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(labelType1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(spnType1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(labelValue1)
+                .addGap(10, 10, 10)
+                .addComponent(txtValue1)
+                .addContainerGap())
+        );
+        pnlParam1Layout.setVerticalGroup(
+            pnlParam1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlParam1Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(pnlParam1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spnType1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlParam1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelType1)
+                        .addComponent(labelValue1)
+                        .addComponent(txtValue1)))
+                .addGap(5, 5, 5))
+        );
 
         labelType2.setText("Type of 2º parameter");
 
-        type2.setPreferredSize(new java.awt.Dimension(85, 21));
-
-        labelType4.setText("Type of 3º parameter");
-
-        type4.setPreferredSize(new java.awt.Dimension(85, 21));
-
-        labelType5.setText("Type of 4º parameter");
-
-        type5.setPreferredSize(new java.awt.Dimension(85, 21));
-
-        value1.setEnabled(false);
-
-        labelValue1.setText("Value");
-
         labelValue2.setText("Value");
 
-        labelValue4.setText("Value");
+        spnType2.setPreferredSize(new java.awt.Dimension(85, 21));
 
-        labelValue5.setText("Value");
+        javax.swing.GroupLayout pnlParam2Layout = new javax.swing.GroupLayout(pnlParam2);
+        pnlParam2.setLayout(pnlParam2Layout);
+        pnlParam2Layout.setHorizontalGroup(
+            pnlParam2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlParam2Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(labelType2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(spnType2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(labelValue2)
+                .addGap(10, 10, 10)
+                .addComponent(txtValue2, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pnlParam2Layout.setVerticalGroup(
+            pnlParam2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlParam2Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(pnlParam2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spnType2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlParam2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelType2)
+                        .addComponent(labelValue2)
+                        .addComponent(txtValue2)))
+                .addGap(5, 5, 5))
+        );
 
-        value2.setEnabled(false);
-        value2.addActionListener(new java.awt.event.ActionListener() {
+        labelType20.setText("Type of 3º parameter");
+
+        labelValue20.setText("Value");
+
+        spnType3.setPreferredSize(new java.awt.Dimension(85, 21));
+        spnType3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                value2ActionPerformed(evt);
+                spnType3ActionPerformed(evt);
             }
         });
 
-        value4.setEnabled(false);
-        value4.addActionListener(new java.awt.event.ActionListener() {
+        javax.swing.GroupLayout pnlParam3Layout = new javax.swing.GroupLayout(pnlParam3);
+        pnlParam3.setLayout(pnlParam3Layout);
+        pnlParam3Layout.setHorizontalGroup(
+            pnlParam3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlParam3Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(labelType20, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(spnType3, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(labelValue20)
+                .addGap(10, 10, 10)
+                .addComponent(txtValue3, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pnlParam3Layout.setVerticalGroup(
+            pnlParam3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlParam3Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(pnlParam3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spnType3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlParam3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelType20)
+                        .addComponent(labelValue20)
+                        .addComponent(txtValue3)))
+                .addGap(5, 5, 5))
+        );
+
+        labelType21.setText("Type of 4º parameter");
+
+        labelValue21.setText("Value");
+
+        spnType4.setPreferredSize(new java.awt.Dimension(85, 21));
+        spnType4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                value4ActionPerformed(evt);
+                spnType4ActionPerformed(evt);
             }
         });
 
-        value5.setEnabled(false);
+        javax.swing.GroupLayout pnlParam4Layout = new javax.swing.GroupLayout(pnlParam4);
+        pnlParam4.setLayout(pnlParam4Layout);
+        pnlParam4Layout.setHorizontalGroup(
+            pnlParam4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlParam4Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(labelType21, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(spnType4, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(labelValue21)
+                .addGap(10, 10, 10)
+                .addComponent(txtValue4, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pnlParam4Layout.setVerticalGroup(
+            pnlParam4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlParam4Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(pnlParam4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spnType4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlParam4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelType21)
+                        .addComponent(labelValue21)
+                        .addComponent(txtValue4)))
+                .addGap(5, 5, 5))
+        );
+
+        labelType22.setText("Type of 5º parameter");
+
+        labelValue22.setText("Value");
+
+        spnType5.setPreferredSize(new java.awt.Dimension(85, 21));
+
+        javax.swing.GroupLayout pnlParam5Layout = new javax.swing.GroupLayout(pnlParam5);
+        pnlParam5.setLayout(pnlParam5Layout);
+        pnlParam5Layout.setHorizontalGroup(
+            pnlParam5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlParam5Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(labelType22, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(spnType5, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(labelValue22)
+                .addGap(10, 10, 10)
+                .addComponent(txtValue5, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pnlParam5Layout.setVerticalGroup(
+            pnlParam5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlParam5Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(pnlParam5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spnType5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlParam5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelType22)
+                        .addComponent(labelValue22)
+                        .addComponent(txtValue5)))
+                .addGap(5, 5, 5))
+        );
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlParam1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlParam2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlParam3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlParam4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlParam5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(pnlParam1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(pnlParam2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(pnlParam3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(pnlParam4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(pnlParam5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -293,59 +478,26 @@ public class InvokerUI extends javax.swing.JInternalFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel35)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnSearchInvoke, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel21)
-                            .addComponent(jLabel36))
-                        .addGap(5, 5, 5)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(methodName, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
-                            .addComponent(numberParam, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(category, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(labelType2)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel21))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(type2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(labelType1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(type1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(labelValue2)
-                                .addGap(18, 18, 18)
-                                .addComponent(value2, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(labelValue1)
-                                .addGap(18, 18, 18)
-                                .addComponent(value1, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)))
-                        .addGap(1, 1, 1))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelType4)
-                            .addComponent(labelType5))
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(type5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(labelValue5)
-                                .addGap(18, 18, 18)
-                                .addComponent(value5, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(type4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelValue4)
-                                .addGap(18, 18, 18)
-                                .addComponent(value4, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)))))
-                .addGap(10, 10, 10))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addComponent(searchInvoke, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(spnNumberParam, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 232, Short.MAX_VALUE))
+                                    .addComponent(txtMethodName)
+                                    .addComponent(spnCategory, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -354,45 +506,26 @@ public class InvokerUI extends javax.swing.JInternalFrame {
                 .addGap(0, 0, 0)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel35)
-                    .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spnCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel36)
-                    .addComponent(methodName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(txtMethodName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
+                        .addGap(14, 14, 14)
                         .addComponent(jLabel21))
-                    .addComponent(numberParam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelType1)
-                    .addComponent(type1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelValue1)
-                    .addComponent(value1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelType2)
-                    .addComponent(type2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelValue2)
-                    .addComponent(value2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(type4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelValue4)
-                    .addComponent(value4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelType4))
-                .addGap(13, 13, 13)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(type5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelValue5)
-                    .addComponent(value5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelType5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(searchInvoke)
-                .addContainerGap())
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(spnNumberParam, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSearchInvoke)
+                .addGap(10, 10, 10))
         );
+
+        jPanel5Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {spnCategory, spnNumberParam, txtMethodName});
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -401,8 +534,7 @@ public class InvokerUI extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -419,44 +551,43 @@ public class InvokerUI extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jScrollPane1)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void categoryPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_categoryPropertyChange
+    private void spnCategoryPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_spnCategoryPropertyChange
 
 
-    }//GEN-LAST:event_categoryPropertyChange
+    }//GEN-LAST:event_spnCategoryPropertyChange
 
-    private void categoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryActionPerformed
-        if (category.getSelectedIndex() == 1) {
-            methodName.setEnabled(true);
-        } else {
-            methodName.setText("");
-            methodName.setEnabled(false);
-
-        }        // TODO add your handling code here:
-    }//GEN-LAST:event_categoryActionPerformed
-
-    private void value4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_value4ActionPerformed
+    private void spnCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spnCategoryActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_value4ActionPerformed
+    }//GEN-LAST:event_spnCategoryActionPerformed
 
-    private void value2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_value2ActionPerformed
+    private void spnType3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spnType3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_value2ActionPerformed
+    }//GEN-LAST:event_spnType3ActionPerformed
+
+    private void spnType4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spnType4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_spnType4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox category;
+    private javax.swing.JButton btnNo;
+    private javax.swing.JButton btnSearchInvoke;
+    private javax.swing.JButton btnYes;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
@@ -464,31 +595,39 @@ public class InvokerUI extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLabel labelType1;
     private javax.swing.JLabel labelType2;
-    private javax.swing.JLabel labelType4;
-    private javax.swing.JLabel labelType5;
+    private javax.swing.JLabel labelType20;
+    private javax.swing.JLabel labelType21;
+    private javax.swing.JLabel labelType22;
     private javax.swing.JLabel labelValue1;
     private javax.swing.JLabel labelValue2;
-    private javax.swing.JLabel labelValue4;
-    private javax.swing.JLabel labelValue5;
-    private javax.swing.JTextField methodName;
-    private javax.swing.JButton no;
-    private javax.swing.JComboBox numberParam;
-    private javax.swing.JTextArea result;
-    private javax.swing.JButton searchInvoke;
-    private javax.swing.JComboBox type1;
-    private javax.swing.JComboBox type2;
-    private javax.swing.JComboBox type4;
-    private javax.swing.JComboBox type5;
-    private javax.swing.JTextField value1;
-    private javax.swing.JTextField value2;
-    private javax.swing.JTextField value4;
-    private javax.swing.JTextField value5;
+    private javax.swing.JLabel labelValue20;
+    private javax.swing.JLabel labelValue21;
+    private javax.swing.JLabel labelValue22;
+    private javax.swing.JPanel pnlParam1;
+    private javax.swing.JPanel pnlParam2;
+    private javax.swing.JPanel pnlParam3;
+    private javax.swing.JPanel pnlParam4;
+    private javax.swing.JPanel pnlParam5;
+    private javax.swing.JComboBox spnCategory;
+    private javax.swing.JComboBox spnNumberParam;
+    private javax.swing.JComboBox spnType1;
+    private javax.swing.JComboBox spnType2;
+    private javax.swing.JComboBox spnType3;
+    private javax.swing.JComboBox spnType4;
+    private javax.swing.JComboBox spnType5;
+    private javax.swing.JTextField txtMethodName;
+    private javax.swing.JTextArea txtResult;
+    private javax.swing.JTextField txtValue1;
+    private javax.swing.JTextField txtValue2;
+    private javax.swing.JTextField txtValue3;
+    private javax.swing.JTextField txtValue4;
+    private javax.swing.JTextField txtValue5;
     private javax.swing.JLabel wsInvoked;
-    private javax.swing.JButton yes;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,4 +1,3 @@
-
 package tesis.ui;
 
 import java.awt.event.ActionListener;
@@ -6,14 +5,11 @@ import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
-
 public class MainUI extends javax.swing.JFrame {
 
-  
     public MainUI() {
         initComponents();
     }
-
 
     public void setActionListener(ActionListener lis) {
         this.category.addActionListener(lis);
@@ -37,8 +33,6 @@ public class MainUI extends javax.swing.JFrame {
         return wsdl;
     }
 
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,7 +59,7 @@ public class MainUI extends javax.swing.JFrame {
         panelBotones.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelBotones.setLayout(new java.awt.GridLayout(1, 0));
 
-        category.setText("CRUD Categories");
+        category.setText("Management Categories");
         category.setToolTipText("");
         category.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,11 +68,11 @@ public class MainUI extends javax.swing.JFrame {
         });
         panelBotones.add(category);
 
-        wsdl.setText("CRUD WSDL");
+        wsdl.setText("Management WSDL");
         wsdl.setToolTipText("");
         panelBotones.add(wsdl);
 
-        invoker.setText("RUN SELECTION");
+        invoker.setText("Web services Invoker");
         invoker.setToolTipText("");
         panelBotones.add(invoker);
 
@@ -136,9 +130,9 @@ public class MainUI extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void authorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_authorsActionPerformed
-      /*  AcercaDe acercaDe = new AcercaDe(this, true);
-        acercaDe.setLocationRelativeTo(this);
-        acercaDe.setVisible(true);*/
+        /*  AcercaDe acercaDe = new AcercaDe(this, true);
+         acercaDe.setLocationRelativeTo(this);
+         acercaDe.setVisible(true);*/
     }//GEN-LAST:event_authorsActionPerformed
 
     private void categoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryActionPerformed

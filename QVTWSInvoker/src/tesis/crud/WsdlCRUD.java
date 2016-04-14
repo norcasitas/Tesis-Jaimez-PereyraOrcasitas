@@ -11,7 +11,7 @@ public class WsdlCRUD {
     }
 
     public Wsdl getWSDL(Wsdl w) {
-        Wsdl ws =  Wsdl.first("name = ?", w.get("name"));
+        Wsdl ws = Wsdl.first("name = ?", w.get("name"));
         return ws;
     }
 
@@ -88,7 +88,7 @@ public class WsdlCRUD {
         Base.commitTransaction();
         return result;
     }
-    
+
     public List<Wsdl> searchWSDL(String s) {
         List<Wsdl> result;
         Base.openTransaction();

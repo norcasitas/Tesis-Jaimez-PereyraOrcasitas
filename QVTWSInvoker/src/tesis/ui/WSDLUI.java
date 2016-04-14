@@ -6,7 +6,6 @@ import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.ImageIcon;
 
 public class WSDLUI extends javax.swing.JInternalFrame {
 
@@ -18,10 +17,10 @@ public class WSDLUI extends javax.swing.JInternalFrame {
     }
 
     public void setActionListener(ActionListener lis) {
-        this.save.addActionListener(lis);
-        this.delete.addActionListener(lis);
-        this.newWSDL.addActionListener(lis);
-        this.edit.addActionListener(lis);
+        this.btnSave.addActionListener(lis);
+        this.btnDelete.addActionListener(lis);
+        this.btnNewWSDL.addActionListener(lis);
+        this.btnEdit.addActionListener(lis);
     }
 
     public void clickNew() {
@@ -30,91 +29,92 @@ public class WSDLUI extends javax.swing.JInternalFrame {
     }
 
     public void clickEdit() {
-        newWSDL.setEnabled(false);
-        name.setEnabled(true);
-        url.setEnabled(true);
-        cbCategory.setEnabled(true);
-        save.setEnabled(true);
-        edit.setEnabled(false);
-        delete.setEnabled(false);
-        
+        btnNewWSDL.setEnabled(false);
+        txtName.setEnabled(true);
+        txtUrl.setEnabled(true);
+        spnCategory.setEnabled(true);
+        btnSave.setEnabled(true);
+        btnEdit.setEnabled(false);
+        btnDelete.setEnabled(false);
+
     }
 
     public void enableFields(boolean b) {
-        name.setEnabled(b);
-        url.setEnabled(b);
-        cbCategory.setEnabled(b);
+        txtName.setEnabled(b);
+        txtUrl.setEnabled(b);
+        spnCategory.setEnabled(b);
     }
 
-    public void clear() {
-        id.setText("");
-        name.setText("");
-        url.setText("");
-        cbCategory.removeAll();
-        cbCategory.setSelectedIndex(-1);
+    private void clear() {
+        txtId.setText("");
+        txtName.setText("");
+        txtUrl.setText("");
+        spnCategory.removeAll();
+        spnCategory.setSelectedIndex(-1);
+        tableWSDL.clearSelection();
     }
 
     public void clickSave() {
         clear();
-        name.setEnabled(false);
-        newWSDL.setEnabled(true);
-        url.setEnabled(false);
-        cbCategory.setEnabled(false);
-        save.setEnabled(false);
-        edit.setEnabled(false);
-        delete.setEnabled(false);
+        txtName.setEnabled(false);
+        btnNewWSDL.setEnabled(true);
+        txtUrl.setEnabled(false);
+        spnCategory.setEnabled(false);
+        btnSave.setEnabled(false);
+        btnEdit.setEnabled(false);
+        btnDelete.setEnabled(false);
     }
 
     public void wsdlSelected(boolean b) {
         if (!b) {
             clear();
         }
-        edit.setEnabled(b);
-        delete.setEnabled(b);
+        btnEdit.setEnabled(b);
+        btnDelete.setEnabled(b);
     }
 
     public DefaultTableModel getWsdlDefault() {
         return wsdlDefault;
     }
 
-    public JComboBox<String> getCbCategory() {
-        return cbCategory;
+    public JButton getBtnDelete() {
+        return btnDelete;
     }
 
-    public JButton getDelete() {
-        return delete;
+    public JButton getBtnEdit() {
+        return btnEdit;
     }
 
-    public JButton getEdit() {
-        return edit;
+    public JButton getBtnNewWSDL() {
+        return btnNewWSDL;
     }
 
-    public JTextField getId() {
-        return id;
+    public JButton getBtnSave() {
+        return btnSave;
     }
 
-    public JTextField getNameWSDL() {
-        return name;
-    }
-
-    public JButton getNewWSDL() {
-        return newWSDL;
-    }
-
-    public JButton getSave() {
-        return save;
-    }
-
-    public JTextField getSearch() {
-        return search;
+    public JComboBox<String> getSpnCategory() {
+        return spnCategory;
     }
 
     public JTable getTableWSDL() {
         return tableWSDL;
     }
 
-    public JTextField getUrl() {
-        return url;
+    public JTextField getTxtId() {
+        return txtId;
+    }
+
+    public JTextField getTxtName() {
+        return txtName;
+    }
+
+    public JTextField getTxtSearch() {
+        return txtSearch;
+    }
+
+    public JTextField getTxtUrl() {
+        return txtUrl;
     }
 
     /**
@@ -126,30 +126,26 @@ public class WSDLUI extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        scroolClientes = new javax.swing.JScrollPane();
-        panelEnteroClientes = new javax.swing.JPanel();
-        panelClientes = new javax.swing.JPanel();
+        pnlScroll = new javax.swing.JScrollPane();
+        panel1 = new javax.swing.JPanel();
+        panel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableWSDL = new javax.swing.JTable();
-        search = new javax.swing.JTextField();
+        txtSearch = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        name = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        id = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        url = new javax.swing.JTextField();
+        txtUrl = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        cbCategory = new javax.swing.JComboBox();
+        spnCategory = new javax.swing.JComboBox<String>();
         jPanel4 = new javax.swing.JPanel();
-        delete = new javax.swing.JButton();
-        delete.setIcon(new ImageIcon(WSDLUI.class.getResource("/resources/Icons/borrar.png")));
-        newWSDL = new javax.swing.JButton();
-        newWSDL.setIcon(new ImageIcon(WSDLUI.class.getResource("/resources/Icons/nuevo.png")));
-        edit = new javax.swing.JButton();
-        edit.setIcon(new ImageIcon(WSDLUI.class.getResource("/resources/Icons/modificar.png")));
-        save = new javax.swing.JButton();
-        save.setIcon(new ImageIcon(WSDLUI.class.getResource("/resources/Icons/guardar.png")));
+        btnDelete = new javax.swing.JButton();
+        btnNewWSDL = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -160,13 +156,13 @@ public class WSDLUI extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(876, 600));
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
-        scroolClientes.setName(""); // NOI18N
-        scroolClientes.setPreferredSize(new java.awt.Dimension(855, 480));
-        scroolClientes.setRequestFocusEnabled(false);
+        pnlScroll.setName(""); // NOI18N
+        pnlScroll.setPreferredSize(new java.awt.Dimension(855, 480));
+        pnlScroll.setRequestFocusEnabled(false);
 
-        panelEnteroClientes.setPreferredSize(new java.awt.Dimension(825, 475));
+        panel1.setPreferredSize(new java.awt.Dimension(825, 475));
 
-        panelClientes.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "WSDL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Schoolbook L", 3, 15))); // NOI18N
+        panel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "WSDL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Schoolbook L", 3, 15))); // NOI18N
 
         tableWSDL.setAutoCreateRowSorter(true);
         tableWSDL.setModel(new javax.swing.table.DefaultTableModel(
@@ -195,40 +191,42 @@ public class WSDLUI extends javax.swing.JInternalFrame {
         tableWSDL.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(tableWSDL);
 
-        search.setToolTipText("Búsqueda personalizada");
+        txtSearch.setToolTipText("Búsqueda personalizada");
 
-        javax.swing.GroupLayout panelClientesLayout = new javax.swing.GroupLayout(panelClientes);
-        panelClientes.setLayout(panelClientesLayout);
-        panelClientesLayout.setHorizontalGroup(
-            panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
+        panel2.setLayout(panel2Layout);
+        panel2Layout.setHorizontalGroup(
+            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(search)
+            .addComponent(txtSearch)
         );
-        panelClientesLayout.setVerticalGroup(
-            panelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelClientesLayout.createSequentialGroup()
+        panel2Layout.setVerticalGroup(
+            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
                 .addGap(2, 2, 2)
-                .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "WSDL data", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Schoolbook L", 3, 15))); // NOI18N
 
-        name.setEnabled(false);
+        txtName.setEnabled(false);
 
         jLabel1.setText("Name");
 
-        id.setEnabled(false);
+        txtId.setEnabled(false);
 
         jLabel3.setText("ID");
 
         jLabel4.setText("Url");
 
-        url.setEnabled(false);
+        txtUrl.setEnabled(false);
 
         jLabel2.setText("Category");
-        cbCategory.setEnabled(false);
+
+        spnCategory.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        spnCategory.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -243,18 +241,18 @@ public class WSDLUI extends javax.swing.JInternalFrame {
                         .addGap(26, 26, 26)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(name)))
+                            .addComponent(txtName)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(url)
+                            .addComponent(txtUrl)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(cbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(spnCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -263,96 +261,100 @@ public class WSDLUI extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(url, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUrl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(cbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spnCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
-        delete.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
-        delete.setToolTipText("Delete");
-        delete.setEnabled(false);
-        delete.setPreferredSize(new java.awt.Dimension(55, 33));
-        jPanel4.add(delete);
+        btnDelete.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Icons/borrar.png"))); // NOI18N
+        btnDelete.setToolTipText("Delete");
+        btnDelete.setEnabled(false);
+        btnDelete.setPreferredSize(new java.awt.Dimension(55, 33));
+        jPanel4.add(btnDelete);
 
-        newWSDL.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
-        newWSDL.setToolTipText("New");
-        newWSDL.setPreferredSize(new java.awt.Dimension(55, 33));
-        jPanel4.add(newWSDL);
+        btnNewWSDL.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
+        btnNewWSDL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Icons/nuevo.png"))); // NOI18N
+        btnNewWSDL.setToolTipText("New");
+        btnNewWSDL.setPreferredSize(new java.awt.Dimension(55, 33));
+        jPanel4.add(btnNewWSDL);
 
-        edit.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
-        edit.setToolTipText("Edit");
-        edit.setEnabled(false);
-        edit.setPreferredSize(new java.awt.Dimension(55, 33));
-        edit.addActionListener(new java.awt.event.ActionListener() {
+        btnEdit.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Icons/modificar.png"))); // NOI18N
+        btnEdit.setToolTipText("Edit");
+        btnEdit.setEnabled(false);
+        btnEdit.setPreferredSize(new java.awt.Dimension(55, 33));
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editActionPerformed(evt);
+                btnEditActionPerformed(evt);
             }
         });
-        jPanel4.add(edit);
+        jPanel4.add(btnEdit);
 
-        save.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
-        save.setToolTipText("Save");
-        save.setEnabled(false);
-        save.setPreferredSize(new java.awt.Dimension(55, 33));
-        jPanel4.add(save);
+        btnSave.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Icons/guardar.png"))); // NOI18N
+        btnSave.setToolTipText("Save");
+        btnSave.setEnabled(false);
+        btnSave.setPreferredSize(new java.awt.Dimension(55, 33));
+        jPanel4.add(btnSave);
 
-        javax.swing.GroupLayout panelEnteroClientesLayout = new javax.swing.GroupLayout(panelEnteroClientes);
-        panelEnteroClientes.setLayout(panelEnteroClientesLayout);
-        panelEnteroClientesLayout.setHorizontalGroup(
-            panelEnteroClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelEnteroClientesLayout.createSequentialGroup()
-                .addGroup(panelEnteroClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
+        panel1.setLayout(panel1Layout);
+        panel1Layout.setHorizontalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel1Layout.createSequentialGroup()
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelClientes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE))
                 .addGap(0, 0, 0))
         );
-        panelEnteroClientesLayout.setVerticalGroup(
-            panelEnteroClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelEnteroClientesLayout.createSequentialGroup()
-                .addComponent(panelClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        panel1Layout.setVerticalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel1Layout.createSequentialGroup()
+                .addComponent(panel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(7, 7, 7)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        scroolClientes.setViewportView(panelEnteroClientes);
-        panelEnteroClientes.getAccessibleContext().setAccessibleName("");
-        panelEnteroClientes.getAccessibleContext().setAccessibleDescription("");
+        pnlScroll.setViewportView(panel1);
+        panel1.getAccessibleContext().setAccessibleName("");
+        panel1.getAccessibleContext().setAccessibleDescription("");
 
-        getContentPane().add(scroolClientes);
-        scroolClientes.getAccessibleContext().setAccessibleName("Panel");
-        scroolClientes.getAccessibleContext().setAccessibleDescription("");
+        getContentPane().add(pnlScroll);
+        pnlScroll.getAccessibleContext().setAccessibleName("Panel");
+        pnlScroll.getAccessibleContext().setAccessibleDescription("");
 
         getAccessibleContext().setAccessibleName("clienteGui");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editActionPerformed
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_editActionPerformed
+    }//GEN-LAST:event_btnEditActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cbCategory;
-    private javax.swing.JButton delete;
-    private javax.swing.JButton edit;
-    private javax.swing.JTextField id;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnNewWSDL;
+    private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -360,15 +362,15 @@ public class WSDLUI extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField name;
-    private javax.swing.JButton newWSDL;
-    private javax.swing.JPanel panelClientes;
-    private javax.swing.JPanel panelEnteroClientes;
-    private javax.swing.JButton save;
-    private javax.swing.JScrollPane scroolClientes;
-    private javax.swing.JTextField search;
+    private javax.swing.JPanel panel1;
+    private javax.swing.JPanel panel2;
+    private javax.swing.JScrollPane pnlScroll;
+    private javax.swing.JComboBox<String> spnCategory;
     private javax.swing.JTable tableWSDL;
-    private javax.swing.JTextField url;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtSearch;
+    private javax.swing.JTextField txtUrl;
     // End of variables declaration//GEN-END:variables
 
 }

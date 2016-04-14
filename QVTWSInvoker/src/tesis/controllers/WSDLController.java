@@ -3,18 +3,13 @@ package tesis.controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseEvent;
 import java.util.Iterator;
-import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-
 import org.javalite.activejdbc.Base;
-import org.javalite.activejdbc.Model;
 import tesis.utils.StringTreatment;
 import tesis.ui.MainUI;
 import tesis.ui.WSDLUI;
@@ -50,7 +45,7 @@ public class WSDLController implements ActionListener {
         wsdls = wsdlCRUD.searchWSDLbyName("");
         refreshList();
         loadCB();
-        wsdlUI.getSearch().addKeyListener(new java.awt.event.KeyAdapter() {
+        wsdlUI.getTxtSearch().addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 searchKeyReleased(evt);
@@ -71,28 +66,28 @@ public class WSDLController implements ActionListener {
         });
         wsdlUI.setActionListener(this);
     }
-    
-    private void loadCB(){
-    	wsdlUI.getCbCategory().removeAllItems();
-    	 categories  = categoryCRUD.searchCategory("");
-         for (Category c : categories) {
-             wsdlUI.getCbCategory().addItem(c.getString("name"));
-         }
+
+    private void loadCB() {
+        wsdlUI.getSpnCategory().removeAllItems();
+        categories = categoryCRUD.searchCategory("");
+        for (Category c : categories) {
+            wsdlUI.getSpnCategory().addItem(c.getString("name"));
+        }
     }
 
     private void searchKeyReleased(KeyEvent evt) {
         DataBase.openDataBase();
-        wsdls = wsdlCRUD.searchWSDL(wsdlUI.getSearch().getText());
+        wsdls = wsdlCRUD.searchWSDL(wsdlUI.getTxtSearch().getText());
         refreshList();
     }
 
     private void tableWSDLEvent() {
         int r = tableWSDL.getSelectedRow();
         if (r != -1) {
-        	wsdlUI.getId().setText((String) tableWSDLDefault.getValueAt(r, 0));
-        	wsdlUI.getNameWSDL().setText((String) tableWSDLDefault.getValueAt(r, 1));
-        	wsdlUI.getUrl().setText((String) tableWSDLDefault.getValueAt(r, 2));
-        	wsdlUI.getCbCategory().setSelectedItem((String) tableWSDLDefault.getValueAt(r, 3));
+            wsdlUI.getTxtId().setText((String) tableWSDLDefault.getValueAt(r, 0));
+            wsdlUI.getTxtName().setText((String) tableWSDLDefault.getValueAt(r, 1));
+            wsdlUI.getTxtUrl().setText((String) tableWSDLDefault.getValueAt(r, 2));
+            wsdlUI.getSpnCategory().setSelectedItem((String) tableWSDLDefault.getValueAt(r, 3));
             wsdlUI.wsdlSelected(true);
         } else {
             wsdlUI.wsdlSelected(false);
@@ -103,31 +98,38 @@ public class WSDLController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         DataBase.openDataBase();
-        if (e.getSource() == wsdlUI.getNewWSDL()) {
+        if (e.getSource() == wsdlUI.getBtnNewWSDL()) {
             wsdlUI.clickNew();
             loadCB();
             isNew = true;
             editing = true;
         }
-        if (e.getSource() == wsdlUI.getDelete()) {
-            Integer resp = JOptionPane.showConfirmDialog(wsdlUI, "Do you want to delete the WSDL " + wsdlUI.getNameWSDL().getText() + "?", "Confirm deletion", JOptionPane.YES_NO_OPTION);
-            if (resp == JOptionPane.YES_OPTION) {
-                if (wsdlCRUD.delete(Integer.valueOf(wsdlUI.getId().getText()))) {
-                    JOptionPane.showMessageDialog(wsdlUI, "WSDL deleted successfully!");
+        if (e.getSource() == wsdlUI.getBtnDelete()) {
+            if (!editing) {
+                Integer resp = JOptionPane.showConfirmDialog(wsdlUI, "Do you want to delete the WSDL " + wsdlUI.getTxtName().getText() + "?", "Confirm deletion", JOptionPane.YES_NO_OPTION);
+                if (resp == JOptionPane.YES_OPTION) {
+                    if (wsdlCRUD.delete(Integer.valueOf(wsdlUI.getTxtId().getText()))) {
+                        JOptionPane.showMessageDialog(wsdlUI, "WSDL deleted successfully!");
+                        wsdlUI.clickSave();
+                        wsdls = wsdlCRUD.searchWSDLbyName("");
+                        refreshList();
+                    } else {
+                        JOptionPane.showMessageDialog(wsdlUI, "An error has occurred, the WSDL wasn't deleted", "Error!", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            } else {
+                Integer resp = JOptionPane.showConfirmDialog(wsdlUI, "Do you want to cancel the edition? ", "Confirm cancel", JOptionPane.YES_NO_OPTION);
+                if (resp == JOptionPane.YES_OPTION) {
                     wsdlUI.clickSave();
-                    wsdls = wsdlCRUD.searchWSDLbyName("");
-                    refreshList();
-                } else {
-                    JOptionPane.showMessageDialog(wsdlUI, "An error has occurred, the WSDL wasn't deleted", "Error!", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
-        if (e.getSource() == wsdlUI.getEdit()) {
+        if (e.getSource() == wsdlUI.getBtnEdit()) {
             isNew = false;
             editing = true;
             wsdlUI.clickEdit();
         }
-        if (e.getSource() == wsdlUI.getSave() && editing && isNew) {
+        if (e.getSource() == wsdlUI.getBtnSave() && editing && isNew) {
             Wsdl w = new Wsdl();
             if (loadData(w)) {
                 if (wsdlCRUD.create(w)) {
@@ -141,7 +143,7 @@ public class WSDLController implements ActionListener {
                 }
             }
         }
-        if (e.getSource() == wsdlUI.getSave() && editing && !isNew) {
+        if (e.getSource() == wsdlUI.getBtnSave() && editing && !isNew) {
             Wsdl w = new Wsdl();
             if (loadData(w)) {
                 if (wsdlCRUD.editInformation(w)) {
@@ -159,7 +161,7 @@ public class WSDLController implements ActionListener {
     }
 
     private void refreshList() {
-    	
+
         tableWSDLDefault.setRowCount(0);
         Iterator<Wsdl> it = wsdls.iterator();
         while (it.hasNext()) {
@@ -175,25 +177,25 @@ public class WSDLController implements ActionListener {
 
     private boolean loadData(Wsdl w) {
         boolean ret = true;
-        if (!wsdlUI.getId().getText().isEmpty()){
-        	w.set("id", Integer.valueOf(wsdlUI.getId().getText()));
+        if (!wsdlUI.getTxtId().getText().isEmpty()) {
+            w.set("id", Integer.valueOf(wsdlUI.getTxtId().getText()));
         }
         try {
-            String name = StringTreatment.deleteAccent(wsdlUI.getNameWSDL().getText());
+            String name = StringTreatment.deleteAccent(wsdlUI.getTxtName().getText());
             w.set("name", name);
         } catch (ClassCastException e) {
             ret = false;
             JOptionPane.showMessageDialog(wsdlUI, "Error in the name", "Error!", JOptionPane.ERROR_MESSAGE);
         }
         try {
-            String url = wsdlUI.getUrl().getText();
+            String url = wsdlUI.getTxtUrl().getText();
             w.set("url", url);
         } catch (ClassCastException e) {
             ret = false;
             JOptionPane.showMessageDialog(wsdlUI, "Error in the url", "Error!", JOptionPane.ERROR_MESSAGE);
         }
         try {
-            int id = categories.get(wsdlUI.getCbCategory().getSelectedIndex()).getInteger("id");
+            int id = categories.get(wsdlUI.getSpnCategory().getSelectedIndex()).getInteger("id");
             w.set("category_id", id);
         } catch (ClassCastException e) {
             ret = false;

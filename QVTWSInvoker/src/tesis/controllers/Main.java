@@ -1,10 +1,7 @@
 package tesis.controllers;
 
-import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
-
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import tesis.ui.CategoryUI;
@@ -24,7 +21,6 @@ public class Main implements ActionListener {
     private WSDLController wsdlController;
 
     public Main() {
-    	
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
         } catch (Exception e) {
@@ -63,9 +59,8 @@ public class Main implements ActionListener {
         }
     }
 
-
     public static void main(String[] args) {
-         Main m = new Main();
+        Main m = new Main();
     }
 
 }

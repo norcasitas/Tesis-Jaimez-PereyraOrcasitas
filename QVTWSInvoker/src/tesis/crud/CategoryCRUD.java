@@ -3,6 +3,7 @@ package tesis.crud;
 import java.util.List;
 import org.javalite.activejdbc.Base;
 import tesis.models.Category;
+import tesis.models.Wsdl;
 
 public class CategoryCRUD {
 
@@ -50,18 +51,26 @@ public class CategoryCRUD {
         Category old = Category.findById(c.getId());
         if (old != null) {
             Base.openTransaction();
-            ret &=  old.set("name", c.get("name")).saveIt();
+            ret &= old.set("name", c.get("name")).saveIt();
             Base.commitTransaction();
             return ret;
         }
         return !ret;
     }
-    
-        public List<Category> searchCategory(String name) {
+
+    public List<Category> searchCategory(String name) {
         List<Category> result;
         Base.openTransaction();
         result = Category.where("name like ?", "%" + name + "%");
         Base.commitTransaction();
         return result;
+    }
+
+    public List<Category> getAllCategories() {
+        return Category.findAll();
+    }
+
+    public List<Wsdl> getChilds(Category c) {
+        return c.getAll(Wsdl.class);
     }
 }
