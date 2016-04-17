@@ -1,11 +1,9 @@
 package t2m;
 
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.*;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.EList;
@@ -20,13 +18,14 @@ import org.eclipse.m2m.qvt.oml.ExecutionContextImpl;
 import org.eclipse.m2m.qvt.oml.ExecutionDiagnostic;
 import org.eclipse.m2m.qvt.oml.ModelExtent;
 import org.eclipse.m2m.qvt.oml.TransformationExecutor;
-import org.eclipse.m2m.qvt.oml.util.WriterLog;
+import utils.Utils;
 
 
 public class Transformation {
 
 	/**
 	 * las paths deben ser absolutas por ejemplo /home/user/desktop...
+	 * o la url de un wsdl 
 	 * 
 	 * @param qvtoPath
 	 * @param ginpath
@@ -40,7 +39,7 @@ public class Transformation {
 		EList<EObject> inObjects = Utils.getFromXMI(inpath);
 		TransformationExecutor fExecutor = new TransformationExecutor(uriTransformation);
 		// para	debugear la transformacion qvto
-		context.setLog(new WriterLog(new OutputStreamWriter(System.out)));
+		//context.setLog(new WriterLog(new OutputStreamWriter(System.out)));
 		// create the input extent with its initial contents
 		ModelExtent input = new BasicModelExtent(inObjects);
 		// create an empty extent to catch the output
@@ -69,11 +68,12 @@ public class Transformation {
 
 	public static void main(String[] args) throws IOException {
 		//realizo transformacion y obtengo los nombres de las definitions que puede contener un wsdl, a esos le realizo la transformacion
-		ArrayList<String> namesOfDefinitions = new T2Mwsdl().transformT2M(Utils.getAbsolutePathRunning()+"/folder_inputs/helloService.wsdl");
-		for(String nameDefinition : namesOfDefinitions ){
-			new Transformation().startTransformation(Utils.getAbsolutePathRunning()+"/folder_outputs/"+nameDefinition+".xmi", Utils.getAbsolutePathRunning()+"/folder_outputs/"+nameDefinition+".xmi");
+		//String nameDefinition = new T2Mwsdl().transformT2M(Utils.getAbsolutePathRunning()+"/folder_inputs/helloService.wsdl");
+		String nameDefinition = new T2Mwsdl().transformT2M("http://www.webservicex.net/globalweather.asmx?WSDL");
 
-		}
+		//for(String nameDefinition : namesOfDefinitions ){
+		new Transformation().startTransformation(Utils.getAbsolutePathRunning()+"/folder_outputs/"+nameDefinition+".xmi", Utils.getAbsolutePathRunning()+"/folder_outputs/"+nameDefinition+".xmi");
+
 	}
 
 }

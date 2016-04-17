@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ASCII"?>
+<RequestModel:RequestModel xmlns:RequestModel="http:///request_model.ecore" name="globalweather">
+  <methods name="GetWeather" description="Get weather report for all major cities around the world.">
+    <inParameters type="string" name="CityName"/>
+    <inParameters type="string" name="CountryName"/>
+    <outParameters type="string" name="GetWeatherResult"/>
+  </methods>
+  <methods name="GetCitiesByCountry" description="Get all major cities by country name(full / part).">
+    <inParameters type="string" name="CountryName"/>
+    <outParameters type="string" name="GetCitiesByCountryResult"/>
+  </methods>
+  <methods name="GetCitiesByCountry" description="Get all major cities by country name(full / part).">
+    <inParameters type="string" name="CountryName"/>
+    <outParameters type="string" name="string"/>
+  </methods>
+  <methods name="GetWeather" description="Get weather report for all major cities around the world.">
+    <inParameters type="string" name="CountryName"/>
+    <inParameters type="string" name="CityName"/>
+    <outParameters type="string" name="string"/>
+  </methods>
+  <methods name="GetCitiesByCountry" description="Get all major cities by country name(full / part).">
+    <inParameters type="string" name="CountryName"/>
+    <outParameters type="string" name="string"/>
+  </methods>
+  <methods name="GetWeather" description="Get weather report for all major cities around the world.">
+    <inParameters type="string" name="CountryName"/>
+    <inParameters type="string" name="CityName"/>
+    <outParameters type="string" name="string"/>
+  </methods>
+</RequestModel:RequestModel>

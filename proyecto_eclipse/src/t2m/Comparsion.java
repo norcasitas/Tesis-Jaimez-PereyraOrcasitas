@@ -16,6 +16,7 @@ import tesis.request_model.RequestModel.Method;
 import tesis.request_model.RequestModel.Parameter;
 import tesis.request_model.RequestModel.RequestModel;
 import tesis.request_model.RequestModel.RequestModelPackage;
+import utils.Utils;
 
 
 public class Comparsion {
@@ -62,11 +63,11 @@ public class Comparsion {
 		this.requestModelWSDL = requestModelWSDL;
 	}
 	
-	public static void main(String[] args) throws IOException {
+	/*public static void main(String[] args) throws IOException {
 		Comparsion comparsion = new Comparsion();
 		 comparsion.setRequestModelWSDL((RequestModel)Utils.getFromXMI("/home/nico/Escritorio/output.xmi").get(0));
 		 String operation =comparsion.getMachOperations((RequestModel)Utils.getFromXMI("/home/nico/Escritorio/output.xmi").get(0)).get(0);
 		 System.out.println(operation);
 	}
-
+*/
 }

@@ -1,182 +1,218 @@
 package t2m;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.File;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.Map;
-
 import javax.xml.namespace.QName;
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
-import org.omg.CORBA.OMGVMCID;
-import org.xml.sax.SAXException;
-
+import com.predic8.schema.ComplexType;
+import com.predic8.schema.Element;
+import com.predic8.schema.Sequence;
+import com.predic8.schema.TypeDefinition;
 import com.predic8.wsdl.Definitions;
 import com.predic8.wsdl.Operation;
 import com.predic8.wsdl.PortType;
 import com.predic8.wsdl.WSDLParser;
-
 import tesis.wsdl_ecore.wsdl.Definition;
 import tesis.wsdl_ecore.wsdl.Input;
 import tesis.wsdl_ecore.wsdl.Message;
 import tesis.wsdl_ecore.wsdl.Output;
 import tesis.wsdl_ecore.wsdl.Part;
 import tesis.wsdl_ecore.wsdl.WsdlFactory;
-
+import utils.Pair;
+import utils.Utils;
 
 public class T2Mwsdl {
 
 	private WsdlFactory factory;
 	private Definition definition;
-	
-	public T2Mwsdl(){
-	    factory = WsdlFactory.eINSTANCE;
-	}
-	
-	/**
-	 * Parsea una Definition de un achivo wsdl y retorna una Definition
-	 * del modelo wsdl.ecore
-	 * @param df
-	 * @return
-	 */
-	private Definition getDefinitions(Definitions df){
-		definition =  factory.createDefinition();
-		if(df.getName()!=null) //set the name of wsdl
-			definition.setQName(QName.valueOf(df.getName()));
-		for(com.predic8.wsdl.Message msg: df.getMessages()){
-			definition.getEMessages().add(parserMessage(msg));
-		}
-		for(PortType portType: df.getPortTypes()){
-			definition.getEPortTypes().add(parserPortType(portType));
-		}
-		return definition;
+
+	public T2Mwsdl() {
+		factory = WsdlFactory.eINSTANCE;
 	}
 
 	/**
-	 * Parsea un message de un archivo wsdl y retorna un Message 
-	 * de un modelo wsdl.ecore
-	 * @param msg
+	 * Parsea un archivo o ruta wsdl y retorna un Definition
+	 * 
+	 * @param url
 	 * @return
 	 */
-	private Message parserMessage(com.predic8.wsdl.Message msg){
-	    Message msgFactory = factory.createMessage();		
-		msgFactory.setQName(QName.valueOf(msg.getName()));
-		for(com.predic8.wsdl.Part part: msg.getParts()){
-		    msgFactory.getEParts().add(parserPart(part));
+	public Definition parser(String url) {
+		definition = factory.createDefinition();
+		WSDLParser parser = new WSDLParser();
+		Definitions defs = parser.parse(url);
+		if (defs.getName() == null) { // Si la definition no tiene nombre, le
+										// seteo el nombre de la url
+			definition.setQName(QName.valueOf(new File(url).getName().split("\\.")[0]));
+		} else {
+			definition.setQName(org.eclipse.emf.ecore.xml.type.internal.QName.valueOf(defs.getName()));
 		}
-		return msgFactory;
-		
+		// System.out.println("PortTypes: ");
+		// parseo todos los messages, para luego poder linkearlos en los
+		// portTypes
+		for (com.predic8.wsdl.Message msg : defs.getMessages()) {
+			definition.getEMessages().add(parserMessage(msg));
+		}
+		// parseo los portTypes
+		for (PortType pt : defs.getPortTypes()) {
+			definition.getEPortTypes().add(parserPortType(pt));
+		}
+		return definition;
+
 	}
-	
+
 	/**
-	 * Parsea un Part de un archivo wsdl y retorna un Part 
-	 * de un modelo wsdl.ecore
+	 * Parsea un Part de un archivo wsdl y retorna un Part de un modelo
+	 * wsdl.ecore
+	 * 
 	 * @param part
 	 * @return
 	 */
-	private Part parserPart(com.predic8.wsdl.Part part){
+	private Part parserPart(Pair<String, String> part) {
 		Part partFactory = factory.createPart();
-		partFactory.setName(part.getName());
-		if(part.getTypePN()!=null )
-	    	partFactory.setTypeName(QName.valueOf(part.getTypePN().toString()));
+		partFactory.setName(part.fst());
+		partFactory.setTypeName(QName.valueOf(part.snd().toString()));
 		return partFactory;
 	}
 
 	/**
-	 * Parsea un PortType de un archivo wsdl y retorna un PortType 
-	 * de un modelo wsdl.ecore
+	 * Parsea un PortType de un archivo wsdl y retorna un PortType de un modelo
+	 * wsdl.ecore
+	 * 
 	 * @param portType
 	 * @return
 	 */
-	private tesis.wsdl_ecore.wsdl.PortType parserPortType(PortType portType){
+	private tesis.wsdl_ecore.wsdl.PortType parserPortType(PortType pt) {
 		tesis.wsdl_ecore.wsdl.PortType portTypeFactory = factory.createPortType();
-		portTypeFactory.setQName(QName.valueOf(portType.getName()));
-		for(Operation operation: portType.getOperations()){
-			portTypeFactory.getEOperations().add(parserOperation(operation));
-
+		portTypeFactory.setQName(QName.valueOf(pt.getName()));
+		// System.out.println(" PortType Name: " + pt.getName());
+		// System.out.println(" PortType Operations: ");
+		for (Operation op : pt.getOperations()) {
+			portTypeFactory.getEOperations().add(parserOperation(op));
 		}
 		return portTypeFactory;
 
 	}
-	
+
 	/**
-	 * Parsea una Operation de un archivo wsdl y retorna una Operation 
-	 * de un modelo wsdl.ecore
+	 * Parsea una Operation de un archivo wsdl y retorna una Operation de un
+	 * modelo wsdl.ecore
+	 * 
 	 * @param operation
 	 * @return
 	 */
-	private tesis.wsdl_ecore.wsdl.Operation parserOperation(Operation operation){
-		tesis.wsdl_ecore.wsdl.Operation operationFactory=factory.createOperation();
-		operationFactory.setName(operation.getName());
-		operationFactory.setEInput(parserInput(operation.getInput()));
-		operationFactory.setEOutput(parserOutput(operation.getOutput()));
-		if(operation.getDocumentation()!=null)
-			operationFactory.setDocumentation(operation.getDocumentation().getContent());
+	private tesis.wsdl_ecore.wsdl.Operation parserOperation(Operation op) {
+		// System.out.println(" Operation Name: " + op.getName());
+		tesis.wsdl_ecore.wsdl.Operation operationFactory = factory.createOperation();
+		operationFactory.setName(op.getName());
+		operationFactory.setEInput(parserInputOperation(op.getInput()));
+		operationFactory.setEOutput(parserOutputOperation(op.getOutput()));
+		if (op.getDocumentation() != null)
+			operationFactory.setDocumentation(op.getDocumentation().getContent());
 		return operationFactory;
 	}
-	
+
 	/**
-	 * Parsea un Input de un archivo wsdl y retorna un Input 
-	 * de un modelo wsdl.ecore
+	 * Parsea un Input de un archivo wsdl y retorna un Input de un modelo
+	 * wsdl.ecore
+	 * 
 	 * @param input
 	 * @return
 	 */
-	private Input parserInput(com.predic8.wsdl.Input input){
-        Input inputFactory = factory.createInput();
-        inputFactory.setEMessage(findMessage(input.getMessage().getName()));
+	private Input parserInputOperation(com.predic8.wsdl.Input input) {
+		Input inputFactory = factory.createInput();
+		inputFactory.setEMessage(findMessage(input.getMessage().getName()));
 		return inputFactory;
 	}
-	
+
 	/**
-	 * Parsea un Output de un archivo wsdl y retorna un Output 
-	 * de un modelo wsdl.ecore
+	 * Parsea un Output de un archivo wsdl y retorna un Output de un modelo
+	 * wsdl.ecore
+	 * 
 	 * @param output
 	 * @return
 	 */
-	private Output parserOutput(com.predic8.wsdl.Output output){
-        Output outputFactory = factory.createOutput();
-        outputFactory.setEMessage(findMessage(output.getMessage().getName()));
-        return outputFactory;
+	private Output parserOutputOperation(com.predic8.wsdl.Output output) {
+		Output outputFactory = factory.createOutput();
+		outputFactory.setEMessage(findMessage(output.getMessage().getName()));
+		return outputFactory;
 	}
-	
 
 	/**
-	 * Dado el nombre de un message, lo busca en la lista de messages de Definition
-	 * y lo retorna, en caso de no existir, retorna null
+	 * Dado el nombre de un message, lo busca en la lista de messages de
+	 * Definition y lo retorna, en caso de no existir, retorna null
+	 * 
 	 * @param name
 	 * @return
 	 */
-	private Message findMessage(String name){
-		Iterator<Message> it=definition.getEMessages().iterator();
-		while(it.hasNext()){
-			Message msg= it.next();
-			if(msg.getQName().toString()== name){
+	private Message findMessage(String name) {
+		Iterator<Message> it = definition.getEMessages().iterator();
+		while (it.hasNext()) {
+			Message msg = it.next();
+			if (msg.getQName().toString() == name) {
 				return msg;
 			}
 		}
 		return null;
 	}
-	
-	public ArrayList<String> transformT2M(String inputFile){
-		T2Mwsdl t2Model = new T2Mwsdl();
-		WSDLParser parser = new WSDLParser();	    
-		Definitions defs = parser.parse(inputFile);
-		ArrayList<String> namesOfDefinitions = new ArrayList<String>();
-		//obtengo los definitions
-		for(Definitions df: defs.getAllWSDLs()){
-			Definition definition = t2Model.getDefinitions(df);
-			Utils.exportWSDLtoXMI(definition);
-			namesOfDefinitions.add(definition.getQName().toString());
-		}
-		return namesOfDefinitions;
-	}
-		  
-}
 
+	/**
+	 * Parsea un message de un archivo wsdl y retorna un Message de un modelo
+	 * wsdl.ecore
+	 * 
+	 * @param msg
+	 * @return
+	 */
+	private Message parserMessage(com.predic8.wsdl.Message msg) {
+		Message msgFactory = factory.createMessage();
+		msgFactory.setQName(QName.valueOf(msg.getName()));
+		// System.out.println(" Message Name: " + msg.getName());
+		// System.out.print(" Message Parts: ");
+		for (com.predic8.wsdl.Part part : msg.getParts()) {
+			if (part.getElement() != null) {
+				Element element = part.getElement();
+				ArrayList<Pair<String, String>> parameters = parserEmbebedType(element);
+				for (Pair<String, String> param : parameters) {
+					// System.out.println(param);
+					msgFactory.getEParts().add(parserPart(param));
+				}
+			} else {
+				msgFactory.getEParts().add(parserPart(new Pair<String, String>(part.getName(),
+						((com.predic8.schema.BuiltInSchemaType) part.getType()).getQname().getLocalPart())));
+				// System.out.print("name: " + part.getName() + " type: "+
+				// ((com.predic8.schema.BuiltInSchemaType)
+				// part.getType()).getQname().getLocalPart());
+			}
+		}
+		return msgFactory;
+	}
+
+	/**
+	 * Metodo que parsea un Element, si este es de un complexType lo convierte a
+	 * un arraylist que contiene el nombre y tipo del parametro
+	 * 
+	 * @param element
+	 * @return
+	 */
+	private ArrayList<Pair<String, String>> parserEmbebedType(Element element) {
+		TypeDefinition typeDefinition = element.getEmbeddedType();
+		ArrayList<Pair<String, String>> ret = new ArrayList<Pair<String, String>>();
+		if (typeDefinition != null) {
+			Sequence model = ((Sequence) ((ComplexType) typeDefinition).getModel());
+			for (Element elementAux : model.getElements()) {
+				ret.addAll(parserEmbebedType(elementAux));
+			}
+		} else {
+			ret.add(new Pair<String, String>(element.getQname().getLocalPart(), element.getType().getLocalPart()));
+		}
+		return ret;
+	}
+
+	public String transformT2M(String inputFile) throws MalformedURLException {
+		T2Mwsdl t2Model = new T2Mwsdl();
+		Definition def = t2Model.parser(inputFile);
+		Utils.exportWSDLtoXMI(def);
+		return def.getQName().toString();
+	}
+
+}
