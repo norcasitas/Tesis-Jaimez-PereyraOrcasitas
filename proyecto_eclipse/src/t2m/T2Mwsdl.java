@@ -4,15 +4,20 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+
 import javax.xml.namespace.QName;
 import com.predic8.schema.ComplexType;
 import com.predic8.schema.Element;
 import com.predic8.schema.Sequence;
 import com.predic8.schema.TypeDefinition;
+import com.predic8.wsdl.Binding;
 import com.predic8.wsdl.Definitions;
 import com.predic8.wsdl.Operation;
 import com.predic8.wsdl.PortType;
 import com.predic8.wsdl.WSDLParser;
+import com.predic8.wsdl.soap11.SOAPBinding;
+
 import tesis.wsdl_ecore.wsdl.Definition;
 import tesis.wsdl_ecore.wsdl.Input;
 import tesis.wsdl_ecore.wsdl.Message;
@@ -47,20 +52,31 @@ public class T2Mwsdl {
 		} else {
 			definition.setQName(org.eclipse.emf.ecore.xml.type.internal.QName.valueOf(defs.getName()));
 		}
-		// System.out.println("PortTypes: ");
-		// parseo todos los messages, para luego poder linkearlos en los
-		// portTypes
-		for (com.predic8.wsdl.Message msg : defs.getMessages()) {
-			definition.getEMessages().add(parserMessage(msg));
-		}
-		// parseo los portTypes
-		for (PortType pt : defs.getPortTypes()) {
-			definition.getEPortTypes().add(parserPortType(pt));
-		}
+		
+        List<Binding> bindings = defs.getBindings();
+        for (Binding binding : bindings) {
+            //es protocolo SOAP V 1.1 O V 1.2
+            if (binding.getBinding() instanceof SOAPBinding || binding.getBinding() instanceof com.predic8.wsdl.soap12.SOAPBinding) {
+                PortType portType = defs.getPortType(binding.getType());
+                if(!existsEPortType(portType.getQName().getLocalPart())){
+                	definition.getEPortTypes().add(parserPortType(portType));
+                }
+            }
+        }
 		return definition;
 
 	}
 
+	
+    public boolean existsEPortType(String name){
+    	for(tesis.wsdl_ecore.wsdl.PortType pt :definition.getEPortTypes()){
+    		if (pt.getQName().toString().equals(name)){
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+    
 	/**
 	 * Parsea un Part de un archivo wsdl y retorna un Part de un modelo
 	 * wsdl.ecore
@@ -88,7 +104,11 @@ public class T2Mwsdl {
 		// System.out.println(" PortType Name: " + pt.getName());
 		// System.out.println(" PortType Operations: ");
 		for (Operation op : pt.getOperations()) {
-			portTypeFactory.getEOperations().add(parserOperation(op));
+			tesis.wsdl_ecore.wsdl.Operation operationFac =parserOperation(op);
+			for(tesis.wsdl_ecore.wsdl.Operation o:portTypeFactory.getEOperations()){
+				//System.out.println(o.getName() +" " +op.getName());
+			}
+			portTypeFactory.getEOperations().add(operationFac);
 		}
 		return portTypeFactory;
 
@@ -121,7 +141,15 @@ public class T2Mwsdl {
 	 */
 	private Input parserInputOperation(com.predic8.wsdl.Input input) {
 		Input inputFactory = factory.createInput();
-		inputFactory.setEMessage(findMessage(input.getMessage().getName()));
+		Message message =findMessage(input.getMessage().getName());
+		if(message!=null)
+			inputFactory.setEMessage(message);
+		else{
+			message = parserMessage(input.getMessage());
+			definition.getEMessages().add(message);
+			inputFactory.setEMessage(message);
+		}
+
 		return inputFactory;
 	}
 
@@ -133,9 +161,16 @@ public class T2Mwsdl {
 	 * @return
 	 */
 	private Output parserOutputOperation(com.predic8.wsdl.Output output) {
-		Output outputFactory = factory.createOutput();
-		outputFactory.setEMessage(findMessage(output.getMessage().getName()));
-		return outputFactory;
+		Output outFactory = factory.createOutput();
+		Message message =findMessage(output.getMessage().getName());
+		if(message!=null)
+			outFactory.setEMessage(message);
+		else{
+			message = parserMessage(output.getMessage());
+			definition.getEMessages().add(message);
+			outFactory.setEMessage(message);
+		}
+		return outFactory;
 	}
 
 	/**
@@ -214,5 +249,7 @@ public class T2Mwsdl {
 		Utils.exportWSDLtoXMI(def);
 		return def.getQName().toString();
 	}
+	
+
 
 }

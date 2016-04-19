@@ -66,14 +66,14 @@ public class Transformation {
 
 	}
 
-	public static void main(String[] args) throws IOException {
+	/*public static void main(String[] args) throws IOException {
 		//realizo transformacion y obtengo los nombres de las definitions que puede contener un wsdl, a esos le realizo la transformacion
 		//String nameDefinition = new T2Mwsdl().transformT2M(Utils.getAbsolutePathRunning()+"/folder_inputs/helloService.wsdl");
-		String nameDefinition = new T2Mwsdl().transformT2M("http://www.webservicex.net/globalweather.asmx?WSDL");
+		String nameDefinition = new T2Mwsdl().transformT2M("http://www.webservicex.net/ConvertTemperature.asmx?WSDL");
 
 		//for(String nameDefinition : namesOfDefinitions ){
-		new Transformation().startTransformation(Utils.getAbsolutePathRunning()+"/folder_outputs/"+nameDefinition+".xmi", Utils.getAbsolutePathRunning()+"/folder_outputs/"+nameDefinition+".xmi");
+		new Transformation().startTransformation(Utils.getAbsolutePathRunning()+"/folder_outputs/"+nameDefinition+".xmi", Utils.getAbsolutePathRunning()+"/folder_outputs/"+nameDefinition+"s.xmi");
 
-	}
+	}*/
 
 }

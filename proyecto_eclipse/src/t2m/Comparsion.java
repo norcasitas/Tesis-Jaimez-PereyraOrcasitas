@@ -31,7 +31,7 @@ public class Comparsion {
 		this.requestModelClient = requestClient;
 		ArrayList<String> ret = new ArrayList<String>();
 		for(Method method : requestModelWSDL.getMethods()){
-			if(method.getName().equals(requestClient.getMethods().get(0).getName())){
+			if(method.getName().toLowerCase().equals(requestClient.getMethods().get(0).getName().toLowerCase())){
 				if(matchInputParams(method.getInParameters())){
 					ret.add(method.getName());
 				}
@@ -65,9 +65,9 @@ public class Comparsion {
 	
 	/*public static void main(String[] args) throws IOException {
 		Comparsion comparsion = new Comparsion();
-		 comparsion.setRequestModelWSDL((RequestModel)Utils.getFromXMI("/home/nico/Escritorio/output.xmi").get(0));
-		 String operation =comparsion.getMachOperations((RequestModel)Utils.getFromXMI("/home/nico/Escritorio/output.xmi").get(0)).get(0);
+		 comparsion.setRequestModelWSDL((RequestModel)Utils.getFromXMI("/home/nico/Universidad/Tesis/Tesis-Jaimez-PereyraOrcasitas/QVTWSInvoker/folder_outputs/globalweather.xmi").get(0));
+		 ArrayList<String> operation =comparsion.getMachOperations((RequestModel)Utils.getFromXMI("/home/nico/Universidad/Tesis/Tesis-Jaimez-PereyraOrcasitas/QVTWSInvoker/folder_outputs/GetWeather.xmi").get(0));
 		 System.out.println(operation);
-	}
-*/
+	}*/
+
 }

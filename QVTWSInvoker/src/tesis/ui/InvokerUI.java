@@ -5,6 +5,7 @@ import java.awt.event.ItemListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import tesis.utils.TypesOfWsdl;
 
@@ -13,6 +14,7 @@ public class InvokerUI extends javax.swing.JInternalFrame {
     public InvokerUI() {
         initComponents();
         setTypes();
+
     }
 
     private void setTypes() {
@@ -65,7 +67,7 @@ public class InvokerUI extends javax.swing.JInternalFrame {
         return spnCategory;
     }
 
-    private JPanel getPanelParamater(int i) {
+    public JPanel getPanelParamater(int i) {
         switch (i) {
             case 0:
                 return pnlParam1;
@@ -109,6 +111,50 @@ public class InvokerUI extends javax.swing.JInternalFrame {
         txtResult.setText("");
         enableParams(0);
         enableResult(false);
+    }
+
+    public JComboBox getSpnType1() {
+        return spnType1;
+    }
+
+    public JComboBox getSpnType2() {
+        return spnType2;
+    }
+
+    public JComboBox getSpnType3() {
+        return spnType3;
+    }
+
+    public JComboBox getSpnType4() {
+        return spnType4;
+    }
+
+    public JComboBox getSpnType5() {
+        return spnType5;
+    }
+
+    public JTextArea getTxtResult() {
+        return txtResult;
+    }
+
+    public JTextField getTxtValue1() {
+        return txtValue1;
+    }
+
+    public JTextField getTxtValue2() {
+        return txtValue2;
+    }
+
+    public JTextField getTxtValue3() {
+        return txtValue3;
+    }
+
+    public JTextField getTxtValue4() {
+        return txtValue4;
+    }
+
+    public JTextField getTxtValue5() {
+        return txtValue5;
     }
 
     /**
@@ -179,8 +225,6 @@ public class InvokerUI extends javax.swing.JInternalFrame {
 
         txtResult.setEditable(false);
         txtResult.setColumns(14);
-        txtResult.setRows(7);
-        txtResult.setEnabled(false);
         jScrollPane5.setViewportView(txtResult);
 
         jLabel5.setText(" Web service invoked");
@@ -198,21 +242,22 @@ public class InvokerUI extends javax.swing.JInternalFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(wsInvoked))
                             .addComponent(jLabel6)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(btnYes, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnNo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(btnYes, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnNo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -223,14 +268,14 @@ public class InvokerUI extends javax.swing.JInternalFrame {
                     .addComponent(jLabel5)
                     .addComponent(wsInvoked))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnYes)
                     .addComponent(btnNo))
-                .addGap(0, 0, 0))
+                .addContainerGap())
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Schoolbook L", 1, 14))); // NOI18N
@@ -281,7 +326,7 @@ public class InvokerUI extends javax.swing.JInternalFrame {
                 .addGap(10, 10, 10)
                 .addComponent(labelValue1)
                 .addGap(10, 10, 10)
-                .addComponent(txtValue1)
+                .addComponent(txtValue1, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlParam1Layout.setVerticalGroup(
@@ -532,7 +577,7 @@ public class InvokerUI extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -559,7 +604,7 @@ public class InvokerUI extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addGap(0, 0, 0))
         );
 

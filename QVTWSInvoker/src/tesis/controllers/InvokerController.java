@@ -8,18 +8,29 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+import t2m.Comparsion;
 import t2m.T2Mwsdl;
 import t2m.Transformation;
 import tesis.crud.CategoryCRUD;
 import tesis.crud.WsdlCRUD;
 import tesis.models.Category;
 import tesis.models.Wsdl;
+import tesis.request_model.RequestModel.Method;
+import tesis.request_model.RequestModel.Parameter;
+import tesis.request_model.RequestModel.RequestModel;
+import tesis.request_model.RequestModel.RequestModelFactory;
 import tesis.ui.InvokerUI;
 import tesis.ui.MainUI;
 import tesis.utils.DataBase;
+import tesis.utils.InvokeWS;
+import tesis.utils.StringTreatment;
+import utils.Pair;
 import utils.Utils;
 
 public class InvokerController implements ActionListener, ItemListener {
@@ -29,6 +40,8 @@ public class InvokerController implements ActionListener, ItemListener {
     private CategoryCRUD categoryCRUD;
     private WsdlCRUD wsdlCRUD;
     private List<Category> categories;
+    private ArrayList<Object> params;
+    private InvokeWS invokeWS;
 
     public InvokerController(MainUI mainUI, InvokerUI invokerUI) {
         this.invokerUI = invokerUI;
@@ -37,6 +50,7 @@ public class InvokerController implements ActionListener, ItemListener {
         loadCategories();
         invokerUI.setActionListener(this);
         invokerUI.setItemListener(this);
+        invokeWS = new InvokeWS();
     }
 
     private void loadCategories() {
@@ -51,18 +65,39 @@ public class InvokerController implements ActionListener, ItemListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        RequestModel request = getDataFromUI();
         DataBase.openDataBase();
         if (e.getSource() == invokerUI.getBtnSearchInvoke()) {
             List<Wsdl> wsdls = categoryCRUD.getChilds(categories.get(invokerUI.getSpnCategory().getSelectedIndex()));
+            ArrayList<Pair<String, String>> methods = new ArrayList<>();//tengo (url,method)
             for (Wsdl wsdl : wsdls) {
                 try {
-                    String nameDefinition = new T2Mwsdl().transformT2M(wsdl.getString("url"));
-                    new Transformation().startTransformation(Utils.getAbsolutePathRunning() + "/folder_outputs/" + nameDefinition + ".xmi", Utils.getAbsolutePathRunning() + "/folder_outputs/" + nameDefinition + ".xmi");
+                    String url = wsdl.getString("url");
+                    String nameDefinition = new T2Mwsdl().transformT2M(url);
+                    String outputPath = Utils.getAbsolutePathRunning() + "/folder_outputs/" + nameDefinition + ".xmi";
+                    new Transformation().startTransformation(Utils.getAbsolutePathRunning() + "/folder_outputs/" + nameDefinition + ".xmi", outputPath);
+                    for (String methodName : comparsion(outputPath, request)) {
+                        methods.add(new Pair<>(url, methodName));
+
+                    }
+                    //aca en methods tengo todos los metodos que machean con la request
                 } catch (MalformedURLException ex) {
                     Logger.getLogger(InvokerController.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
                     Logger.getLogger(InvokerController.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }
+            //ahora debo quedarme con el mejor metodo de los que machean
+            if (methods.size() > 0) {
+                //llamo el primer metodo que macheo
+                String callMethod = methods.get(0).snd();
+                String url = methods.get(0).fst();
+                String result = invokeWS.obtainDataAndCallWS(url, callMethod, params);
+                //muestro el resultado por la gui
+                invokerUI.getTxtResult().setText(result);
+            } else {
+                invokerUI.getTxtResult().setText("There was no coincidence with the method and parameters selected");
+
             }
         }
     }
@@ -86,5 +121,43 @@ public class InvokerController implements ActionListener, ItemListener {
             return new File(url).exists();
         }
         return false;
+    }
+
+    private RequestModel getDataFromUI() {
+        Category catSelected = categories.get(invokerUI.getSpnCategory().getSelectedIndex());
+        RequestModelFactory factory = RequestModelFactory.eINSTANCE;
+        RequestModel requestModel = factory.createRequestModel();
+        String methodName = invokerUI.getTxtMethodName().getText();
+        requestModel.setName(methodName);
+        Method method = factory.createMethod();
+        method.setName(methodName);
+        Parameter outputParam = factory.createParameter();
+        outputParam.setName("output");
+        outputParam.setType("string");
+        method.getOutParameters().add(outputParam);
+        params = new ArrayList<>();
+        Integer numParams = Integer.valueOf((String) invokerUI.getSpnNumberParam().getSelectedItem());
+        for (int i = 0; i < numParams; i++) {
+
+            String type = ((JComboBox) (invokerUI.getPanelParamater(i).getComponent(1))).getSelectedItem().toString();
+            String value = StringTreatment.deleteAccent(((JTextField) invokerUI.getPanelParamater(i).getComponent(3)).getText());
+            //ACA HAY QUE EVALUAR QUE LOS VALUES SEAN DEL TIPO ELEGIDO
+            params.add(value);
+            //-----------
+            Parameter inputParam = factory.createParameter();
+            inputParam.setName("param-" + i);
+            inputParam.setType(type);
+            method.getInParameters().add(inputParam);
+        }
+        requestModel.getMethods().add(method);
+        Utils.exportRequestModeltoXMI(requestModel);
+        return requestModel;
+    }
+
+    private ArrayList<String> comparsion(String pathWsdl, RequestModel request) throws IOException {
+        Comparsion comparsion = new Comparsion();
+        comparsion.setRequestModelWSDL((RequestModel) Utils.getFromXMI(pathWsdl).get(0));
+        ArrayList<String> operations = comparsion.getMachOperations(request);
+        return operations;
     }
 }

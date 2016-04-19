@@ -60,6 +60,31 @@ public class Utils {
 	    }
 	}
 	
+	
+	
+	/**
+	 * Exporta una Definition de un modelo ecore a un archivo de texto con extensión .xmi
+	 * @param definition
+	 */
+	public static void exportRequestModeltoXMI(RequestModel requestModel){
+		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+	    Map<String, Object> m = reg.getExtensionToFactoryMap();
+	    m.put("xmi", new XMIResourceFactoryImpl());
+	    // Obtain a new resource set
+	    ResourceSet resSet = new ResourceSetImpl();
+	    // create a resource
+	    Resource resource = resSet.createResource(org.eclipse.emf.common.util.URI.createURI(getAbsolutePathRunning()+"/folder_outputs/"+requestModel.getName() +".xmi"));
+	    // Get the first model element and cast it to the right type, in my
+	    // example everything is hierarchical included in this first node
+	    resource.getContents().add(requestModel);
+	    // now save the content.
+	    try {
+	      resource.save(Collections.EMPTY_MAP);
+	    } catch (IOException e) {
+	      // TODO Auto-generated catch block
+	      e.printStackTrace();
+	    }
+	}
 	/**
 	 * retorna la path absoluta donde se está corriendo el jar
 	 * @return

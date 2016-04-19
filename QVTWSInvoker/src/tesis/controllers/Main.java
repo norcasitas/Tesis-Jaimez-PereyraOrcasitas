@@ -2,6 +2,7 @@ package tesis.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyVetoException;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import tesis.ui.CategoryUI;
@@ -41,6 +42,11 @@ public class Main implements ActionListener {
         mainUI.setVisible(true);
         mainUI.toFront();
         mainUI.setActionListener(this);
+        try {
+            invoketUI.setMaximum(true);
+        } catch (PropertyVetoException e) {
+            // Vetoed by internalFrame
+        }
     }
 
     @Override
