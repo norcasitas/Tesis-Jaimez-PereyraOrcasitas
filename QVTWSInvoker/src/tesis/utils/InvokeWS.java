@@ -34,6 +34,8 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import tesis.controllers.Main;
+import tesis.crud.WsdlCRUD;
+import tesis.models.Wsdl;
 
 /**
  *
@@ -112,27 +114,47 @@ public class InvokeWS {
     }
 
     public static void main(String[] args) {
+        System.out.println("asdasd");
+    }
+
+    public void stadistics() {
         WSDLParser parser = new WSDLParser();
-        try {
-            Definitions defs = parser.parse("http://localhost:8080/WebApplication1/NewWebService?WSDL");
-            InvokeWS i = new InvokeWS();
-            List<Binding> bindings = defs.getBindings();
-            int j = 0;
-            for (Binding binding : bindings) {
-                //es protocolo SOAP V 1.1 O V 1.2
-                if (binding.getBinding() instanceof SOAPBinding || binding.getBinding() instanceof com.predic8.wsdl.soap12.SOAPBinding) {
-                    List<BindingOperation> operations = binding.getOperations();
-                    for (BindingOperation bindingOperation : operations) {
-                        PortType portType = defs.getPortType(binding.getType());
-                        Operation operation = portType.getOperation(bindingOperation.getName());
-                        System.out.println(j + i.callWS(defs, portType.getName(), operation.getName(), binding.getName(), "http://localhost:8080/WebApplication1/NewWebService?WSDL", new ArrayList<>()));
-                    j++;
-                    }      
+        WsdlCRUD wsdlCRUD = new WsdlCRUD();
+        for (Wsdl w : wsdlCRUD.findAll()) {
+            try {
+                Definitions defs = parser.parse(w.getString("url"));
+                InvokeWS i = new InvokeWS();
+                List<Binding> bindings = defs.getBindings();
+                long totalTime = 0;
+                int quantity = 1;
+                for (Binding binding : bindings) {
+                    //es protocolo SOAP V 1.1 O V 1.2
+                    if (binding.getBinding() instanceof SOAPBinding || binding.getBinding() instanceof com.predic8.wsdl.soap12.SOAPBinding) {
+                        List<BindingOperation> operations = binding.getOperations();
+                        for (BindingOperation bindingOperation : operations) {
+                            quantity++;
+                            PortType portType = defs.getPortType(binding.getType());
+                            Operation operation = portType.getOperation(bindingOperation.getName());
+                            long startTime = System.nanoTime();
+                            i.callWS(defs, portType.getName(), operation.getName(), binding.getName(), w.getString("url"), new ArrayList<>());
+                            long endTime = System.nanoTime();
+                            totalTime += (endTime - startTime);
+                        }
+                    }
+                }
+                totalTime += w.getLong("response");
+                w.setLong("response", totalTime / quantity);
+                w.setLong("availability", (w.getLong("availability") + 1) / 2);
+                wsdlCRUD.editStatistics(w);
+            } catch (Exception e) {
+                if (w.getLong("availability") > 1) {
+                    w.setLong("availability", (w.getLong("availability") - 1) / 2);
+                } else {
+                    w.setLong("availability", 0);
                 }
 
             }
-        } catch (Exception e) {
-            System.err.println(e);
         }
     }
+
 }

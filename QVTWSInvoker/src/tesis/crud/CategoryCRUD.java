@@ -1,9 +1,14 @@
 package tesis.crud;
 
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
 import org.javalite.activejdbc.Base;
 import tesis.models.Category;
 import tesis.models.Wsdl;
+import tesis.utils.WsdlComparator;
 
 public class CategoryCRUD {
 
@@ -70,7 +75,16 @@ public class CategoryCRUD {
         return Category.findAll();
     }
 
+    //order by stats ranking
     public List<Wsdl> getChilds(Category c) {
-        return c.getAll(Wsdl.class);
+        Iterator<Wsdl> it = c.getAll(Wsdl.class).iterator();
+        WsdlComparator comparator = new WsdlComparator();
+        PriorityQueue<Wsdl> queue = new PriorityQueue<Wsdl>(comparator);
+        while (it.hasNext()) {
+            queue.add(it.next());
+        }
+        LinkedList<Wsdl> list = new LinkedList<Wsdl>();
+        list.addAll(queue);
+        return list;
     }
 }
