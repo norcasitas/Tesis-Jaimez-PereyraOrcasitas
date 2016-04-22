@@ -6,6 +6,7 @@
 package tesis.utils;
 
 import com.predic8.wsdl.Binding;
+import com.predic8.wsdl.BindingOperation;
 import com.predic8.wsdl.Definitions;
 import com.predic8.wsdl.Operation;
 import com.predic8.wsdl.PortType;
@@ -32,6 +33,7 @@ import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
+import tesis.controllers.Main;
 
 /**
  *
@@ -109,4 +111,28 @@ public class InvokeWS {
         return new String(out.toByteArray());
     }
 
+    public static void main(String[] args) {
+        WSDLParser parser = new WSDLParser();
+        try {
+            Definitions defs = parser.parse("http://localhost:8080/WebApplication1/NewWebService?WSDL");
+            InvokeWS i = new InvokeWS();
+            List<Binding> bindings = defs.getBindings();
+            int j = 0;
+            for (Binding binding : bindings) {
+                //es protocolo SOAP V 1.1 O V 1.2
+                if (binding.getBinding() instanceof SOAPBinding || binding.getBinding() instanceof com.predic8.wsdl.soap12.SOAPBinding) {
+                    List<BindingOperation> operations = binding.getOperations();
+                    for (BindingOperation bindingOperation : operations) {
+                        PortType portType = defs.getPortType(binding.getType());
+                        Operation operation = portType.getOperation(bindingOperation.getName());
+                        System.out.println(j + i.callWS(defs, portType.getName(), operation.getName(), binding.getName(), "http://localhost:8080/WebApplication1/NewWebService?WSDL", new ArrayList<>()));
+                    j++;
+                    }      
+                }
+
+            }
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
 }

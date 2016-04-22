@@ -68,6 +68,10 @@ public class InvokerController implements ActionListener, ItemListener {
         RequestModel request = getDataFromUI();
         DataBase.openDataBase();
         if (e.getSource() == invokerUI.getBtnSearchInvoke()) {
+            //aca debería llamar a getChilds() pero que los retorne ordenados por el mejor
+            //va transformando y si machea, lo invoca, sino llama la que sigue hasta 
+            //agosta las posibilidades
+            
             List<Wsdl> wsdls = categoryCRUD.getChilds(categories.get(invokerUI.getSpnCategory().getSelectedIndex()));
             ArrayList<Pair<String, String>> methods = new ArrayList<>();//tengo (url,method)
             for (Wsdl wsdl : wsdls) {
