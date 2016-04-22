@@ -30,6 +30,7 @@ import tesis.ui.MainUI;
 import tesis.utils.DataBase;
 import tesis.utils.InvokeWS;
 import tesis.utils.StringTreatment;
+import tesis.utils.TypesOfWsdl;
 import utils.Pair;
 import utils.Utils;
 
@@ -66,12 +67,13 @@ public class InvokerController implements ActionListener, ItemListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         RequestModel request = getDataFromUI();
+        Utils.exportRequestModeltoXMI(request);
         DataBase.openDataBase();
         if (e.getSource() == invokerUI.getBtnSearchInvoke()) {
             //aca debería llamar a getChilds() pero que los retorne ordenados por el mejor
             //va transformando y si machea, lo invoca, sino llama la que sigue hasta 
             //agosta las posibilidades
-            
+
             List<Wsdl> wsdls = categoryCRUD.getChilds(categories.get(invokerUI.getSpnCategory().getSelectedIndex()));
             ArrayList<Pair<String, String>> methods = new ArrayList<>();//tengo (url,method)
             for (Wsdl wsdl : wsdls) {
@@ -146,7 +148,19 @@ public class InvokerController implements ActionListener, ItemListener {
             String type = ((JComboBox) (invokerUI.getPanelParamater(i).getComponent(1))).getSelectedItem().toString();
             String value = StringTreatment.deleteAccent(((JTextField) invokerUI.getPanelParamater(i).getComponent(3)).getText());
             //ACA HAY QUE EVALUAR QUE LOS VALUES SEAN DEL TIPO ELEGIDO
-            params.add(value);
+            switch (type) {
+                case TypesOfWsdl.typeDouble:
+                    params.add(Double.valueOf(value));
+                    break;
+                case TypesOfWsdl.typeFloat:
+                    params.add(Float.valueOf(value));
+                    break;
+                case TypesOfWsdl.typeInteger:
+                    params.add(Integer.valueOf(value));
+                    break;
+                default:
+                    params.add(value);
+            }
             //-----------
             Parameter inputParam = factory.createParameter();
             inputParam.setName("param-" + i);

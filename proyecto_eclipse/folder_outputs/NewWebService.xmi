@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<wsdl:Definition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:wsdl="http://www.eclipse.org/wsdl/2003/WSDL" qName="NewWebService">
+  <eMessages qName="hello">
+    <eParts name="name" typeName="string"/>
+  </eMessages>
+  <eMessages qName="helloResponse">
+    <eParts name="return" typeName="string"/>
+  </eMessages>
+  <ePortTypes qName="NewWebService">
+    <eOperations name="hello">
+      <eInput eMessage="//@eMessages.0"/>
+      <eOutput eMessage="//@eMessages.1"/>
+    </eOperations>
+  </ePortTypes>
+</wsdl:Definition>

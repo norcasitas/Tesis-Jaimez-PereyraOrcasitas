@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
 <RequestModel:RequestModel xmlns:RequestModel="http:///request_model.ecore" name="ConvertTemperature">
   <methods name="ConvertTemp">
-    <inParameters type="TemperatureUnit" name="FromUnit"/>
-    <inParameters type="TemperatureUnit" name="ToUnit"/>
+	<inParameters type="string" name="ToUnit"/>
     <inParameters type="double" name="Temperature"/>
+    <inParameters type="string" name="FromUnit"/>
     <outParameters type="double" name="ConvertTempResult"/>
   </methods>
 </RequestModel:RequestModel>

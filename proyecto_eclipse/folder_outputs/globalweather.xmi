@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ASCII"?>
+<wsdl:Definition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:wsdl="http://www.eclipse.org/wsdl/2003/WSDL" qName="globalweather">
+  <eMessages qName="GetWeatherSoapIn">
+    <eParts name="CityName" typeName="string"/>
+    <eParts name="CountryName" typeName="string"/>
+  </eMessages>
+  <eMessages qName="GetWeatherSoapOut">
+    <eParts name="GetWeatherResult" typeName="string"/>
+  </eMessages>
+  <eMessages qName="GetCitiesByCountrySoapIn">
+    <eParts name="CountryName" typeName="string"/>
+  </eMessages>
+  <eMessages qName="GetCitiesByCountrySoapOut">
+    <eParts name="GetCitiesByCountryResult" typeName="string"/>
+  </eMessages>
+  <ePortTypes qName="GlobalWeatherSoap">
+    <eOperations name="GetWeather" documentation="Get weather report for all major cities around the world.">
+      <eInput eMessage="//@eMessages.0"/>
+      <eOutput eMessage="//@eMessages.1"/>
+    </eOperations>
+    <eOperations name="GetCitiesByCountry" documentation="Get all major cities by country name(full / part).">
+      <eInput eMessage="//@eMessages.2"/>
+      <eOutput eMessage="//@eMessages.3"/>
+    </eOperations>
+  </ePortTypes>
+</wsdl:Definition>

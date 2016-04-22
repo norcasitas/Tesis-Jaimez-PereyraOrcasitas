@@ -31,7 +31,7 @@ public class T2Mwsdl {
 
 	private WsdlFactory factory;
 	private Definition definition;
-
+	private Definitions defs;
 	public T2Mwsdl() {
 		factory = WsdlFactory.eINSTANCE;
 	}
@@ -45,7 +45,7 @@ public class T2Mwsdl {
 	public Definition parser(String url) {
 		definition = factory.createDefinition();
 		WSDLParser parser = new WSDLParser();
-		Definitions defs = parser.parse(url);
+		defs = parser.parse(url);
 		if (defs.getName() == null) { // Si la definition no tiene nombre, le
 										// seteo el nombre de la url
 			definition.setQName(QName.valueOf(new File(url).getName().split("\\.")[0]));
@@ -208,13 +208,13 @@ public class T2Mwsdl {
 				Element element = part.getElement();
 				ArrayList<Pair<String, String>> parameters = parserEmbebedType(element);
 				for (Pair<String, String> param : parameters) {
-					// System.out.println(param);
+					 //System.out.println(param);
 					msgFactory.getEParts().add(parserPart(param));
 				}
 			} else {
 				msgFactory.getEParts().add(parserPart(new Pair<String, String>(part.getName(),
 						((com.predic8.schema.BuiltInSchemaType) part.getType()).getQname().getLocalPart())));
-				// System.out.print("name: " + part.getName() + " type: "+
+				// System.out.print(" type: "+
 				// ((com.predic8.schema.BuiltInSchemaType)
 				// part.getType()).getQname().getLocalPart());
 			}
@@ -232,13 +232,17 @@ public class T2Mwsdl {
 	private ArrayList<Pair<String, String>> parserEmbebedType(Element element) {
 		TypeDefinition typeDefinition = element.getEmbeddedType();
 		ArrayList<Pair<String, String>> ret = new ArrayList<Pair<String, String>>();
-		if (typeDefinition != null) {
-			Sequence model = ((Sequence) ((ComplexType) typeDefinition).getModel());
+		if (typeDefinition != null || defs.getSchemaType(element.getType()) instanceof ComplexType) {
+			Sequence model;
+			if(typeDefinition!=null) 
+				model = ((Sequence) ((ComplexType) typeDefinition).getModel());
+			else
+				model = ((Sequence) ((ComplexType) defs.getSchemaType(element.getType())).getModel());
 			for (Element elementAux : model.getElements()) {
 				ret.addAll(parserEmbebedType(elementAux));
 			}
 		} else {
-			ret.add(new Pair<String, String>(element.getQname().getLocalPart(), element.getType().getLocalPart()));
+			ret.add(new Pair<String, String>(element.getQname().getLocalPart(), element.getBuildInTypeName()));
 		}
 		return ret;
 	}

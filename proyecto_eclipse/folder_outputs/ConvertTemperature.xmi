@@ -2,8 +2,8 @@
 <wsdl:Definition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:wsdl="http://www.eclipse.org/wsdl/2003/WSDL" qName="ConvertTemperature">
   <eMessages qName="ConvertTempSoapIn">
     <eParts name="Temperature" typeName="double"/>
-    <eParts name="FromUnit" typeName="TemperatureUnit"/>
-    <eParts name="ToUnit" typeName="TemperatureUnit"/>
+    <eParts name="FromUnit" typeName="string"/>
+    <eParts name="ToUnit" typeName="string"/>
   </eMessages>
   <eMessages qName="ConvertTempSoapOut">
     <eParts name="ConvertTempResult" typeName="double"/>

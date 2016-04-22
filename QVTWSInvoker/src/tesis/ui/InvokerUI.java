@@ -18,22 +18,13 @@ public class InvokerUI extends javax.swing.JInternalFrame {
     }
 
     private void setTypes() {
-        spnType1.addItem(TypesOfWsdl.typeFloat);
-        spnType1.addItem(TypesOfWsdl.typeInteger);
-        spnType1.addItem(TypesOfWsdl.typeString);
-        spnType2.addItem(TypesOfWsdl.typeFloat);
-        spnType2.addItem(TypesOfWsdl.typeInteger);
-        spnType2.addItem(TypesOfWsdl.typeString);
-        spnType3.addItem(TypesOfWsdl.typeFloat);
-        spnType3.addItem(TypesOfWsdl.typeInteger);
-        spnType3.addItem(TypesOfWsdl.typeString);
-        spnType4.addItem(TypesOfWsdl.typeFloat);
-        spnType4.addItem(TypesOfWsdl.typeInteger);
-        spnType4.addItem(TypesOfWsdl.typeString);
-        spnType5.addItem(TypesOfWsdl.typeFloat);
-        spnType5.addItem(TypesOfWsdl.typeInteger);
-        spnType5.addItem(TypesOfWsdl.typeString);
-
+        for (String type : TypesOfWsdl.typesWSDL) {
+            spnType1.addItem(type);
+            spnType2.addItem(type);
+            spnType3.addItem(type);
+            spnType4.addItem(type);
+            spnType5.addItem(type);
+        }
     }
 
     public void setActionListener(ActionListener lis) {

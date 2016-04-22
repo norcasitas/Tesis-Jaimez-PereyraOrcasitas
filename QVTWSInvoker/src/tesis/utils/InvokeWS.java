@@ -62,7 +62,6 @@ public class InvokeWS {
             s = s.replaceFirst(pattern, param.toString());
         }
         s = s.replaceAll(pattern, "");
-
         try {
             // Create SOAP Connection
             SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
