@@ -83,12 +83,19 @@ public class WsdlCRUD {
         }
         return !ret;
     }
-    
-    public boolean  editReputation(Wsdl w) {
+
+    public boolean editReputation(Wsdl w, boolean b) {
         boolean ret = true;
         Wsdl old = findById(w.getId());
         if (old != null) {
             Base.openTransaction();
+            if (b) {
+                w.setLong("reputation", old.getLong("reputation") + 1 / 2);
+            } else if (old.getLong("reputation") > 1) {
+                w.setLong("reputation", old.getLong("reputation") - 1 / 2);
+            } else {
+                w.setLong("reputation", 0);
+            }
             ret &= old.set("reputation", w.get("reputation")).saveIt();
             Base.commitTransaction();
             return ret;
@@ -107,12 +114,28 @@ public class WsdlCRUD {
     public List<Wsdl> searchWSDL(String s) {
         List<Wsdl> result;
         Base.openTransaction();
-        result = Wsdl.where("name like ? or url like?", "%" + s + "%", "%" + s + "%");
+        result = Wsdl.where("name like ? or url like ?", "%" + s + "%", "%" + s + "%");
         Base.commitTransaction();
         return result;
     }
-    
-     public List<Wsdl> findAll() {
+
+    public Wsdl findByUrl(String s) {
+        Wsdl result;
+        Base.openTransaction();
+        result = Wsdl.findFirst("url like ?", s);
+        Base.commitTransaction();
+        return result;
+    }
+
+    public Wsdl findByName(String s) {
+        Wsdl result;
+        Base.openTransaction();
+        result = Wsdl.findFirst("name like ?", s);
+        Base.commitTransaction();
+        return result;
+    }
+
+    public List<Wsdl> findAll() {
         List<Wsdl> result;
         Base.openTransaction();
         result = Wsdl.findAll();

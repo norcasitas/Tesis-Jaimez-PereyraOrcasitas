@@ -17,7 +17,7 @@ public class DataBase {
     private static final String pwd = "tesis";
 
     private static final String scriptTableCategories = "CREATE TABLE `categories` (`id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` VARCHAR(100) NOT NULL);";
-    private static final String scriptTableWsdls = "CREATE  TABLE wsdls (`id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` VARCHAR(100) NOT NULL, `url` VARCHAR(200) NOT NULL, `category_id` INT(11) NOT NULL, `reputation` INT(11)  DEFAULT 0, `response` INT(11)  DEFAULT 99999, `availability` INT(11) DEFAULT 0);";
+    private static final String scriptTableWsdls = "CREATE  TABLE wsdls (`id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` VARCHAR(100) NOT NULL, `url` VARCHAR(200) NOT NULL, `category_id` INT(11) NOT NULL, `reputation` REAL  DEFAULT 0, `response` REAL  DEFAULT 99999, `availability` REAL DEFAULT 0);";
 
     /**
      * retorna la path absoluta donde se está corriendo el jar

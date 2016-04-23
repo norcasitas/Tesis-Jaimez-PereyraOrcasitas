@@ -93,14 +93,9 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane5" alignment="0" pref="291" max="32767" attributes="0"/>
+                              <Component id="jScrollPane5" alignment="0" pref="314" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="wsInvoked" min="-2" max="-2" attributes="0"/>
-                                      </Group>
                                       <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
@@ -111,6 +106,11 @@
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="wsInvoked" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -120,12 +120,12 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="wsInvoked" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jLabel5" max="32767" attributes="0"/>
+                              <Component id="wsInvoked" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jScrollPane5" max="32767" attributes="0"/>
+                          <Component id="jScrollPane5" pref="339" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -159,7 +159,7 @@
                 </Container>
                 <Component class="javax.swing.JLabel" name="jLabel5">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value=" Web service invoked"/>
+                    <Property name="text" type="java.lang.String" value=" Web service invoked:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="wsInvoked">
@@ -290,7 +290,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtMethodName">
                   <Properties>
-                    <Property name="toolTipText" type="java.lang.String" value="Aceite que usa"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel36">
@@ -387,7 +387,7 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="spnType1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="spnType1" alignment="0" pref="27" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="labelType1" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="labelValue1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -447,7 +447,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="spnType2" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="spnType2" alignment="0" pref="27" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="labelType2" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="labelValue2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -507,7 +507,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="spnType3" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="spnType3" alignment="0" pref="27" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="labelType20" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="labelValue20" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -570,7 +570,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="spnType4" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="spnType4" alignment="0" pref="27" max="32767" attributes="0"/>
                                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                           <Component id="labelType21" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="labelValue21" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -633,7 +633,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="spnType5" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="spnType5" alignment="0" pref="27" max="32767" attributes="0"/>
                                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                           <Component id="labelType22" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="labelValue22" alignment="3" min="-2" max="-2" attributes="0"/>

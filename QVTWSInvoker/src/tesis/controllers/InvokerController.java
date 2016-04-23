@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -70,7 +71,6 @@ public class InvokerController implements ActionListener, ItemListener {
         Utils.exportRequestModeltoXMI(request);
         DataBase.openDataBase();
         if (e.getSource() == invokerUI.getBtnSearchInvoke()) {
-            //aca debería llamar a getChilds() pero que los retorne ordenados por el mejor
             //va transformando y si machea, lo invoca, sino llama la que sigue hasta 
             //agosta las posibilidades
 
@@ -93,18 +93,34 @@ public class InvokerController implements ActionListener, ItemListener {
                     Logger.getLogger(InvokerController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+
             //ahora debo quedarme con el mejor metodo de los que machean
             if (methods.size() > 0) {
                 //llamo el primer metodo que macheo
-                String callMethod = methods.get(0).snd();
-                String url = methods.get(0).fst();
-                String result = invokeWS.obtainDataAndCallWS(url, callMethod, params);
-                //muestro el resultado por la gui
-                invokerUI.getTxtResult().setText(result);
-            } else {
-                invokerUI.getTxtResult().setText("There was no coincidence with the method and parameters selected");
-
+                boolean invoke = false;
+                Iterator<Pair<String, String>> it = methods.iterator();
+                while (it.hasNext() && !invoke) {
+                    Pair<String, String> pair = it.next();
+                    String callMethod = pair.snd();
+                    String url = pair.fst();
+                    try {
+                        String result = invokeWS.obtainDataAndCallWS(url, callMethod, params);
+                        invokerUI.getTxtResult().setText(result);
+                        invokerUI.getWsInvoked().setText(wsdlCRUD.findByUrl(url).getString("name"));
+                        invokerUI.enableResult(true);
+                        invoke = true;
+                    } catch (Exception e2) {
+                    }
+                }
             }
+            invokerUI.getTxtResult().setText("There was no coincidence with the method and parameters selected");
+        }
+
+        if (e.getSource() == invokerUI.getBtnYes()) {
+            wsdlCRUD.editReputation(wsdlCRUD.findByName(invokerUI.getWsInvoked().getText()), true);
+        }
+        if (e.getSource() == invokerUI.getBtnNo()) {
+            wsdlCRUD.editReputation(wsdlCRUD.findByName(invokerUI.getWsInvoked().getText()), false);
         }
     }
 
