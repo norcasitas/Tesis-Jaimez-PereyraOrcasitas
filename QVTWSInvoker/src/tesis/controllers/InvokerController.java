@@ -53,6 +53,7 @@ public class InvokerController implements ActionListener, ItemListener {
         invokerUI.setActionListener(this);
         invokerUI.setItemListener(this);
         invokeWS = new InvokeWS();
+        wsdlCRUD = new WsdlCRUD();
     }
 
     private void loadCategories() {
@@ -93,7 +94,6 @@ public class InvokerController implements ActionListener, ItemListener {
                     Logger.getLogger(InvokerController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-
             //ahora debo quedarme con el mejor metodo de los que machean
             if (methods.size() > 0) {
                 //llamo el primer metodo que macheo
@@ -110,17 +110,26 @@ public class InvokerController implements ActionListener, ItemListener {
                         invokerUI.enableResult(true);
                         invoke = true;
                     } catch (Exception e2) {
+                        System.out.println("ERROR " + e2);
                     }
                 }
+                if (!invoke) {
+                    invokerUI.getTxtResult().setText("There is no coincidence with the method and parameters selected");
+                }
+            } else {
+                invokerUI.getTxtResult().setText("There os no coincidence with the method and parameters selected");
             }
-            invokerUI.getTxtResult().setText("There was no coincidence with the method and parameters selected");
         }
 
         if (e.getSource() == invokerUI.getBtnYes()) {
-            wsdlCRUD.editReputation(wsdlCRUD.findByName(invokerUI.getWsInvoked().getText()), true);
+            Wsdl wsdl = wsdlCRUD.findByName(invokerUI.getWsInvoked().getText());
+            wsdlCRUD.editReputation(wsdl, true);
+            invokerUI.enableResult(false);
         }
         if (e.getSource() == invokerUI.getBtnNo()) {
-            wsdlCRUD.editReputation(wsdlCRUD.findByName(invokerUI.getWsInvoked().getText()), false);
+            Wsdl wsdl = wsdlCRUD.findByName(invokerUI.getWsInvoked().getText());
+            wsdlCRUD.editReputation(wsdl, false);
+            invokerUI.enableResult(false);
         }
     }
 

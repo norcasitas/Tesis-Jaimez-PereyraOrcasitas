@@ -74,7 +74,7 @@ public class WsdlCRUD {
 
     public boolean editStatistics(Wsdl w) {
         boolean ret = true;
-        Wsdl old = findById(w.getId());
+        Wsdl old = Wsdl.findById(w.getId());
         if (old != null) {
             Base.openTransaction();
             ret &= old.set("response", w.get("response"), "availability", w.get("availability")).saveIt();
@@ -86,7 +86,7 @@ public class WsdlCRUD {
 
     public boolean editReputation(Wsdl w, boolean b) {
         boolean ret = true;
-        Wsdl old = findById(w.getId());
+        Wsdl old = Wsdl.findById(w.getId());
         if (old != null) {
             Base.openTransaction();
             if (b) {
@@ -122,7 +122,7 @@ public class WsdlCRUD {
     public Wsdl findByUrl(String s) {
         Wsdl result;
         Base.openTransaction();
-        result = Wsdl.findFirst("url like ?", s);
+        result = Wsdl.findFirst("url = ?", s);
         Base.commitTransaction();
         return result;
     }
@@ -130,7 +130,7 @@ public class WsdlCRUD {
     public Wsdl findByName(String s) {
         Wsdl result;
         Base.openTransaction();
-        result = Wsdl.findFirst("name like ?", s);
+        result = Wsdl.findFirst("name = ?", s);
         Base.commitTransaction();
         return result;
     }

@@ -10,6 +10,7 @@ import tesis.ui.InvokerUI;
 import tesis.ui.MainUI;
 import tesis.ui.WSDLUI;
 import tesis.utils.DataBase;
+import tesis.utils.InvokeWS;
 
 public class Main implements ActionListener {
 
@@ -42,6 +43,8 @@ public class Main implements ActionListener {
         mainUI.setVisible(true);
         mainUI.toFront();
         mainUI.setActionListener(this);
+        InvokeWS invkws = new InvokeWS();
+        invkws.qoSStatistics();
         try {
             invoketUI.setMaximum(true);
         } catch (PropertyVetoException e) {

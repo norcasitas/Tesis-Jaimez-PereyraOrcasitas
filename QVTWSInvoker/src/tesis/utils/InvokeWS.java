@@ -116,7 +116,7 @@ public class InvokeWS {
         System.out.println("asdasd");
     }
 
-    public void stadistics() {
+    public void qoSStatistics() {
         WSDLParser parser = new WSDLParser();
         WsdlCRUD wsdlCRUD = new WsdlCRUD();
         for (Wsdl w : wsdlCRUD.findAll()) {
@@ -154,6 +154,7 @@ public class InvokeWS {
 
             }
         }
+  
     }
 
 }

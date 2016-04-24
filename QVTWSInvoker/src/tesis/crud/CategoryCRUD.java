@@ -78,6 +78,7 @@ public class CategoryCRUD {
     //order by stats ranking
     public List<Wsdl> getChilds(Category c) {
         Iterator<Wsdl> it = c.getAll(Wsdl.class).iterator();
+
         WsdlComparator comparator = new WsdlComparator();
         PriorityQueue<Wsdl> queue = new PriorityQueue<Wsdl>(comparator);
         while (it.hasNext()) {
