@@ -12,8 +12,7 @@ import tesis.utils.WsdlComparator;
 public class CategoryCRUD {
 
     /**
-     * (*-)Retorna una categoria dado el nombre cargado en la categoria pasada
-     * por parametro
+     * return a caregory by name
      *
      * @param c
      * @return
@@ -24,7 +23,7 @@ public class CategoryCRUD {
     }
 
     /**
-     * (*-)retorna true si la categoría existe, caso contrario, falso
+     * true if caregory exists
      *
      * @param c
      * @return
@@ -34,8 +33,7 @@ public class CategoryCRUD {
     }
 
     /**
-     * (*-)crea una categoria y la almacena en la base de datos, retorna true si
-     * se almacenó exitosamente, caso contrario false
+     * save a caregory in the database
      *
      * @param c
      * @return
@@ -54,8 +52,7 @@ public class CategoryCRUD {
     }
 
     /**
-     * (*-)borra una categoría dado el id de la misma, retorna true si se borro
-     * exitosamente
+     * delete a caregory from database 
      *
      * @param id
      * @return
@@ -73,7 +70,7 @@ public class CategoryCRUD {
     }
 
     /**
-     * (*-)edita una categoría y retorna true si se modificó exitosamente
+     * edit a caregory
      *
      * @param c
      * @return
@@ -91,7 +88,7 @@ public class CategoryCRUD {
     }
 
     /**
-     * (*-)busca todas las categorías que machean por el nombre
+     * search categories by name
      *
      * @param name
      * @return
@@ -105,7 +102,7 @@ public class CategoryCRUD {
     }
 
     /**
-     * (*-)retorna todas las categorías
+     * return all categories
      *
      * @return
      */
@@ -114,7 +111,7 @@ public class CategoryCRUD {
     }
 
     /**
-     * (*-)order by stats ranking
+     * retirn categories order by rank
      *
      * @param c
      * @return

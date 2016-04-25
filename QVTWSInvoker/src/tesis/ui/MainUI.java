@@ -12,7 +12,7 @@ public class MainUI extends javax.swing.JFrame {
     }
 
     /**
-     * (*-)This method adds an actionListener to the buttons
+     * This method adds an actionListener to the buttons
      *
      * @param lis
      */

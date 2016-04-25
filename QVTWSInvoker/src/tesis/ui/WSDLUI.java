@@ -17,7 +17,7 @@ public class WSDLUI extends javax.swing.JInternalFrame {
     }
 
     /**
-     * (*-) This method adds an actionListener to the buttons
+     * This method adds an actionListener to the buttons
      *
      * @param lis
      */
@@ -29,8 +29,7 @@ public class WSDLUI extends javax.swing.JInternalFrame {
     }
 
     /**
-     * (*-)Click en boton nuevo, limpia los campos,bloquea los botones y deja
-     * solo el boton cancel
+     * Click on newButton, clear fields, lock buttons except cancelButton
      */
     public void clickNew() {
         clear();
@@ -38,7 +37,7 @@ public class WSDLUI extends javax.swing.JInternalFrame {
     }
 
     /**
-     * (*-)habilita los botones de cancel y save
+     * enable cancel and save buttons
      */
     public void clickEdit() {
         btnNewWSDL.setEnabled(false);
@@ -56,7 +55,7 @@ public class WSDLUI extends javax.swing.JInternalFrame {
     }
 
     /**
-     * (*-)limpia los campos
+     * clear fields
      */
     private void clear() {
         txtId.setText("");
@@ -68,7 +67,7 @@ public class WSDLUI extends javax.swing.JInternalFrame {
     }
 
     /**
-     * (*-)limpia los campos, y bloquea los botones dejando solo nuevo
+     * clear fields, lock buttons except nuwButton
      */
     public void clickSave() {
         clear();

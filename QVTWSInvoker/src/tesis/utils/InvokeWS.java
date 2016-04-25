@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package tesis.utils;
 
 import com.predic8.wsdl.Binding;
@@ -35,14 +31,10 @@ import javax.xml.transform.stream.StreamResult;
 import tesis.crud.WsdlCRUD;
 import tesis.models.Wsdl;
 
-/**
- *
- * @author nico
- */
 public class InvokeWS {
 
     /**
-     * (*-) Genera un soapMessage desde un string
+     * generate a soapMessage from a string
      *
      * @param xml
      * @return
@@ -56,8 +48,7 @@ public class InvokeWS {
     }
 
     /**
-     * Invoca un metodo de un ws, toma un Definitions, el nombre del portType
-     * operation, el binging, la url del ws, y los parametros
+     * Invokes a method of a ws
      *
      * @param defs
      * @param portType
@@ -75,11 +66,11 @@ public class InvokeWS {
         creator.createRequest(portType, operation, binding);
         String s = writer.toString();
         String pattern = "\\?.*\\?";
-        //(*-) reemplaza el valor creado por defecto, por el del parametro
+        // replaces default value 
         for (Object param : parameters) {
             s = s.replaceFirst(pattern, param.toString());
         }
-        //(*-) reemplaza todos los parametros que restan por el string vacío
+        // replaces all remaining parameters for empty strings
         s = s.replaceAll(pattern, "");
         try {
             // Create SOAP Connection
@@ -99,7 +90,7 @@ public class InvokeWS {
     }
 
     /**
-     * (*-) invoca el wsdl, solo toma la url, nombre y parametros
+     *  invoke the wsdl only with the url, name and parameters
      *
      * @param url
      * @param name
@@ -111,7 +102,7 @@ public class InvokeWS {
         Definitions defs = parser.parse(url);
         List<Binding> bindings = defs.getBindings();
         for (Binding binding : bindings) {
-            //(*-)es protocolo SOAP V 1.1 O V 1.2
+            //SOAP V 1.1 O V 1.2 protocol
             if (binding.getBinding() instanceof SOAPBinding || binding.getBinding() instanceof com.predic8.wsdl.soap12.SOAPBinding) {
                 PortType portType = defs.getPortType(binding.getType());
                 Operation operation = portType.getOperation(name);
@@ -122,7 +113,7 @@ public class InvokeWS {
     }
 
     /**
-     * (*-) Method used to print the SOAP Response
+     * Method used to print the SOAP Response
      */
     private String printSOAPResponse(SOAPMessage soapResponse) throws Exception {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -136,8 +127,7 @@ public class InvokeWS {
     }
 
     /**
-     * (*-) Invoca a todos los wsdl almacenados en la base de datos y les da un
-     * rank en base a la duración de la invocación y si está disponible o no.
+     *  invoke all wsdl and check its qos
      */
     public void qoSStatistics() {
         WSDLParser parser = new WSDLParser();
@@ -150,7 +140,7 @@ public class InvokeWS {
                 long totalTime = 0;
                 int quantity = 1;
                 for (Binding binding : bindings) {
-                    //(*-)es protocolo SOAP V 1.1 O V 1.2
+                    // SOAP V 1.1 O V 1.2 protocol
                     if (binding.getBinding() instanceof SOAPBinding || binding.getBinding() instanceof com.predic8.wsdl.soap12.SOAPBinding) {
                         List<BindingOperation> operations = binding.getOperations();
                         for (BindingOperation bindingOperation : operations) {

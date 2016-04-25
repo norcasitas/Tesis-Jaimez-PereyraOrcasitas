@@ -18,7 +18,7 @@ public class InvokerUI extends javax.swing.JInternalFrame {
     }
 
     /**
-     * (*-)Agrega los tipos permitidos en la requestModel, a los parametros
+     * Add the allowed types on request Model to Parameters
      */
     private void setTypes() {
         for (String type : TypesOfWsdl.typesWSDL) {
@@ -31,7 +31,7 @@ public class InvokerUI extends javax.swing.JInternalFrame {
     }
 
     /**
-     * (*-) This method adds an actionListener to the buttons
+     * This method adds an actionListener to the buttons
      *
      * @param lis
      */
@@ -43,7 +43,7 @@ public class InvokerUI extends javax.swing.JInternalFrame {
     }
 
     /**
-     * (*-) This method adds an ItemListenerr to the spinner param
+     * This method adds an ItemListenerr to the spinner param
      *
      * @param lis
      */
@@ -52,7 +52,7 @@ public class InvokerUI extends javax.swing.JInternalFrame {
     }
 
     /**
-     * (*-) habilita los botones para votar por el resultado de la invocación
+     * enable yes and no buttons
      *
      * @param b
      */
@@ -66,7 +66,7 @@ public class InvokerUI extends javax.swing.JInternalFrame {
     }
 
     /**
-     * (*-)habilita los parametros que se desean
+     * enable parameters
      *
      * @param i
      */

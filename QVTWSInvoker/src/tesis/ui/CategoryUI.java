@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package tesis.ui;
 
 import java.awt.event.ActionListener;
@@ -20,7 +16,7 @@ public class CategoryUI extends javax.swing.JInternalFrame {
     }
 
     /**
-     * (*-) This method adds an actionListener to the buttons
+     * This method adds an actionListener to the buttons
      *
      * @param lis
      */
@@ -32,8 +28,7 @@ public class CategoryUI extends javax.swing.JInternalFrame {
     }
 
     /**
-     * (*-)Click en boton nuevo, limpia los campos,bloquea los botones y deja
-     * solo el boton cancel
+     * Click on newButton, clear fields, lock buttons except cancelButton
      */
     public void clickNew() {
         clear();
@@ -41,7 +36,7 @@ public class CategoryUI extends javax.swing.JInternalFrame {
     }
 
     /**
-     * (*-)limpia los campos, y bloquea los botones dejando solo nuevo
+     * clear fields, lock buttons except nuwButton
      */
     public void clickSave() {
         clear();
@@ -53,7 +48,7 @@ public class CategoryUI extends javax.swing.JInternalFrame {
     }
 
     /**
-     * (*-)habilita los botones de cancel y save
+     * enable cancel and save buttons
      */
     public void clickEdit() {
         btnNewCat.setEnabled(false);
@@ -64,7 +59,7 @@ public class CategoryUI extends javax.swing.JInternalFrame {
     }
 
     /**
-     * (*-)limpia los campos
+     * clear fields
      */
     private void clear() {
         txtId.setText("");

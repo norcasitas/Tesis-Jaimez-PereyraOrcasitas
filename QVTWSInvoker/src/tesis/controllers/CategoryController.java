@@ -19,13 +19,13 @@ import tesis.utils.DataBase;
 
 public class CategoryController implements ActionListener {
 
-    private CategoryUI categoryUI; //(*-)gui for management of categories
+    private CategoryUI categoryUI; //gui for management of categories
     private DefaultTableModel tableCategoryDefault;
     private JTable tableCategory;
     private MainUI mainUI;
-    private JTextField categoryNameSearch; //(*-)textfield for search
+    private JTextField categoryNameSearch; //textfield for search
     private boolean isNew, editing;
-    private CategoryCRUD categoryCRUD; //(*-)crud for categories
+    private CategoryCRUD categoryCRUD; 
     private java.util.List<Category> categories;
 
     public CategoryController(MainUI mainUI, CategoryUI categoryUI) {
@@ -62,8 +62,7 @@ public class CategoryController implements ActionListener {
     }
 
     /**
-     * (*-)realiza una busqueda cada vez que se teclea sobre el textfield de
-     * búsqueda
+     * it does a search every time you type on the search textfield
      *
      * @param evt
      */
@@ -75,8 +74,7 @@ public class CategoryController implements ActionListener {
     }
 
     /**
-     * (*-)carga los datos para ser mostrados cuando cambia la selección sobre
-     * la tabla
+     * upload the data to be displayed when the selection on the table changes.
      */
     private void tableCategoryEvent() {
         int r = tableCategory.getSelectedRow();

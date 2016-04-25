@@ -7,8 +7,7 @@ import tesis.models.Wsdl;
 public class WsdlCRUD {
 
     /**
-     * (*-)Retorna un wsdl dado el nombre cargado en el wsdl pasado por
-     * parametro
+     * return a wsdl by name
      *
      * @param w
      * @return
@@ -18,7 +17,7 @@ public class WsdlCRUD {
     }
 
     /**
-     * (*-)retorna true si el wsdl existe, caso contrario, falso
+     * true if wsdl exists
      *
      * @param w
      * @return
@@ -28,8 +27,7 @@ public class WsdlCRUD {
     }
 
     /**
-     * (*-)crea un wsdl y lo almacena en la base de datos, retorna true si se
-     * almacenó exitosamente, caso contrario false
+     * save a wsdl in the database
      *
      * @param w
      * @return
@@ -51,8 +49,7 @@ public class WsdlCRUD {
     }
 
     /**
-     * (*-)borra un wsdl dado el id del mismo, retorna true si se borro
-     * exitosamente
+     * delete a wsdl from database 
      *
      * @param id
      * @return
@@ -70,7 +67,7 @@ public class WsdlCRUD {
     }
 
     /**
-     * (*-)edita todos sus datos y retorna true si se modificó exitosamente
+     * edit a wsdl
      *
      * @param w
      * @return
@@ -88,8 +85,7 @@ public class WsdlCRUD {
     }
 
     /**
-     * (*-)edita unicamente la infromacion de un wsdl y retorna true si se
-     * modificó exitosamente
+     * edit only the information of a wsdl
      *
      * @param w
      * @return
@@ -107,8 +103,7 @@ public class WsdlCRUD {
     }
 
     /**
-     * (*-)edita la reputación de un wsdl y retorna true si se modificó
-     * exitosamente
+     * edit only the response and availability of a wsdl
      *
      * @param w
      * @return
@@ -126,8 +121,8 @@ public class WsdlCRUD {
     }
 
     /**
-     * (*-)edita la reputación de un wsdl pasandole true si fue buena, y falso
-     * caso contrario, retorna true si se modificó exitosamente.
+     * edit onyl the reputation of wsdl, 
+     * if boolean param is true, reputation'll raise
      *
      * @param w
      * @param b
@@ -153,7 +148,7 @@ public class WsdlCRUD {
     }
 
     /**
-     * (*-)retorna todos los wsdl que machean con le nombre
+     * search wsdls by name
      *
      * @param name
      * @return
@@ -167,7 +162,7 @@ public class WsdlCRUD {
     }
 
     /**
-     * (*-)retorna todos los wsdl que machean con le nombre o url
+     * search wsdls by name or url
      *
      * @param search
      * @return
@@ -181,7 +176,7 @@ public class WsdlCRUD {
     }
 
     /**
-     * (*-)retorna el wsdl que machea por la url
+     * rsearch a wsdl by url
      *
      * @param url
      * @return
@@ -195,7 +190,7 @@ public class WsdlCRUD {
     }
 
     /**
-     * (*-)retorna el wsdl que machea por el nombre
+     * search a wsdl by name
      *
      * @param name
      * @return
@@ -209,7 +204,7 @@ public class WsdlCRUD {
     }
 
     /**
-     * (*-)retorna todos los wsdl
+     * retunrs all wsdl
      *
      * @return
      */

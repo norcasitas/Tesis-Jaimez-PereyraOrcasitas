@@ -37,8 +37,8 @@ public class InvokerController implements ActionListener, ItemListener {
 
     private InvokerUI invokerUI;
     private MainUI mainUI;
-    private CategoryCRUD categoryCRUD; //(*-) crud for categories
-    private WsdlCRUD wsdlCRUD; //(*-) crud for wsdl
+    private CategoryCRUD categoryCRUD; 
+    private WsdlCRUD wsdlCRUD; 
     private List<Category> categories;
     private ArrayList<Object> params;
     private InvokeWS invokeWS;
@@ -55,7 +55,7 @@ public class InvokerController implements ActionListener, ItemListener {
     }
 
     /**
-     * (*-) this method loads categories into the gui
+     * this method loads categories into the gui
      */
     public void loadCategories() {
         DataBase.openDataBase();
@@ -74,7 +74,7 @@ public class InvokerController implements ActionListener, ItemListener {
         }
         if (e.getSource() == invokerUI.getBtnYes()) {
             /**
-             * (*-) Le sirvió la invocación, calcula la nueva reputación
+             * The invocation served to the user, calculates the new reputation.
              */
             Wsdl wsdl = wsdlCRUD.findByName(invokerUI.getWsInvoked().getText());
             wsdlCRUD.editReputation(wsdl, true);
@@ -82,7 +82,7 @@ public class InvokerController implements ActionListener, ItemListener {
         }
         if (e.getSource() == invokerUI.getBtnNo()) {
             /**
-             * (*-) No le sirvió la invocación, calcula la nueva reputación
+             * The invocation not served to the user, calculates the new reputation.
              */
             Wsdl wsdl = wsdlCRUD.findByName(invokerUI.getWsInvoked().getText());
             wsdlCRUD.editReputation(wsdl, false);
@@ -93,19 +93,18 @@ public class InvokerController implements ActionListener, ItemListener {
     @Override
     public void itemStateChanged(ItemEvent e) {
         /**
-         * (*-)habilita los parametros en base a cuantos desea el usuario
+         * enables parameters based on how many the user wants 
          */
         invokerUI.enableParams(Integer.valueOf((String) e.getItem()));
     }
 
     /**
-     * (*-) obtiene la información desde la gui, y crea una requestModel
-     * retornandola
+     * obtains the information from the gui, and returns a requestModel
      *
      * @return
      */
     private RequestModel getDataFromUI() {
-        //(*-)crea una request model
+        //(*-)creates a request model
         RequestModelFactory factory = RequestModelFactory.eINSTANCE;
         RequestModel requestModel = factory.createRequestModel();
         String methodName = invokerUI.getTxtMethodName().getText();
@@ -120,8 +119,8 @@ public class InvokerController implements ActionListener, ItemListener {
         Integer numParams = Integer.valueOf((String) invokerUI.getSpnNumberParam().getSelectedItem());
         for (int i = 0; i < numParams; i++) {
             /**
-             * (*-)para toda la cantidad de parametros elegidos, obtiene el tipo
-             * y el valor, casteandolo, si falla el cast returna null
+             * (for all chosen parameters, it gets the type and value and casting it
+             * if the cast fails it'll return null
              */
             String type = ((JComboBox) (invokerUI.getPanelParamater(i).getComponent(1))).getSelectedItem().toString();
             String value = StringTreatment.deleteAccent(((JTextField) invokerUI.getPanelParamater(i).getComponent(3)).getText());
@@ -141,7 +140,7 @@ public class InvokerController implements ActionListener, ItemListener {
                 }
             } catch (Exception e) {
                 /**
-                 * (*-)Falló la conversión de un tipo, retorna null
+                 * the conversion of one type failed, returns null
                  */
                 System.err.println(e);
                 return null;
@@ -156,11 +155,11 @@ public class InvokerController implements ActionListener, ItemListener {
     }
 
     /**
-     * (*-)Toma la ruta a un archivo wsdl.ecore y una request, compara los
-     * modelos y si está incluido, retorna los nombres que machean
+     * Take the path of a wsdl.ecore file and a request,
+     * it compares models and if included, returns the matched names
      *
-     * @param pathWsdl ruta al wsdlRequest.ecore
-     * @param request request del usuario
+     * @param pathWsdl wsdlRequest.ecore path
+     * @param request user request 
      * @return
      * @throws IOException
      */
@@ -172,8 +171,7 @@ public class InvokerController implements ActionListener, ItemListener {
     }
 
     /**
-     * (*-)obtiene todos los nombres de los metodos y url que machean con la
-     * request del usuario
+     * get all method names and url that matches with the user request
      *
      * @return
      */
@@ -187,10 +185,8 @@ public class InvokerController implements ActionListener, ItemListener {
             for (Wsdl wsdl : wsdls) {
                 try {
                     /**
-                     * (*-)Realizo una transformación para cada wsdl de la
-                     * categoría elegida,comparo ese wsdl con la request y si
-                     * está incluido retorno los nombres de los métodos que
-                     * machearon
+                     * Transform and compare each wsdl of the chosen category,
+                     * if it is included it'll return the names of the matched methods.
                      */
                     String url = wsdl.getString("url");
                     String nameDefinition = new T2Mwsdl().transformT2M(url);
@@ -210,8 +206,7 @@ public class InvokerController implements ActionListener, ItemListener {
     }
 
     /**
-     * (*-)invoco el mejor wsdl que macheo, si falla la invocación llamo al que
-     * sigue
+     * invoke the best matched wsdl, if the invocation fails, call the next.
      *
      * @param methods
      */

@@ -28,7 +28,7 @@ public class WSDLController implements ActionListener {
     private boolean isNew, editing;
     private WsdlCRUD wsdlCRUD;
 
-    private CategoryCRUD categoryCRUD; //(*-) crud para categorias
+    private CategoryCRUD categoryCRUD; 
     private java.util.List<Wsdl> wsdls;
     private java.util.List<Category> categories;
 
@@ -68,7 +68,7 @@ public class WSDLController implements ActionListener {
     }
 
     /**
-     * (*-)carga en el spinner las categorias
+     * laod category spinner
      */
     private void loadCB() {
         wsdlUI.getSpnCategory().removeAllItems();
@@ -79,8 +79,7 @@ public class WSDLController implements ActionListener {
     }
 
     /**
-     * (*-)Realiza una busqueda cada vez que se teclea sobre el textfield de
-     * búsqueda
+     * it does a search every time you type on the search textfield
      *
      * @param evt
      */
@@ -91,8 +90,7 @@ public class WSDLController implements ActionListener {
     }
 
     /**
-     * (*-)Carga los datos de un wsdl en la gui cuando se cambia la seleccion en
-     * la tabla
+     * upload the data to be displayed when the selection on the table changes.
      */
     private void tableWSDLEvent() {
         int r = tableWSDL.getSelectedRow();
@@ -190,7 +188,7 @@ public class WSDLController implements ActionListener {
     }
 
     /**
-     * (*-)carga en un Wsdl los datos de la gui y lo retorna
+     * load a Wsdl and returns it
      *
      * @param w
      * @return
