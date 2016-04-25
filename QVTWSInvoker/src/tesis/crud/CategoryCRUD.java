@@ -1,6 +1,5 @@
 package tesis.crud;
 
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,21 +11,36 @@ import tesis.utils.WsdlComparator;
 
 public class CategoryCRUD {
 
-    public CategoryCRUD() {
-    }
-
+    /**
+     * (*-)Retorna una categoria dado el nombre cargado en la categoria pasada
+     * por parametro
+     *
+     * @param c
+     * @return
+     */
     public Category getCategory(Category c) {
-        Category b = Category.first("name = ?", c.get("name"));
-        return b;
+        return Category.first("name = ?", c.get("name"));
+
     }
 
+    /**
+     * (*-)retorna true si la categoría existe, caso contrario, falso
+     *
+     * @param c
+     * @return
+     */
     public boolean findCategory(Category c) {
-        boolean b = (Category.first("name = ?", c.get("name")) != null);
-        return b;
+        return (Category.first("name = ?", c.get("name")) != null);
     }
 
+    /**
+     * (*-)crea una categoria y la almacena en la base de datos, retorna true si
+     * se almacenó exitosamente, caso contrario false
+     *
+     * @param c
+     * @return
+     */
     public boolean create(Category c) {
-
         boolean ret = true;
         if (!findCategory(c)) {
             Base.openTransaction();
@@ -39,6 +53,13 @@ public class CategoryCRUD {
         }
     }
 
+    /**
+     * (*-)borra una categoría dado el id de la misma, retorna true si se borro
+     * exitosamente
+     *
+     * @param id
+     * @return
+     */
     public boolean delete(int id) {
         boolean ret = true;
         Category old = Category.findById(id);
@@ -51,6 +72,12 @@ public class CategoryCRUD {
         return !ret;
     }
 
+    /**
+     * (*-)edita una categoría y retorna true si se modificó exitosamente
+     *
+     * @param c
+     * @return
+     */
     public boolean edit(Category c) {
         boolean ret = true;
         Category old = Category.findById(c.getId());
@@ -63,6 +90,12 @@ public class CategoryCRUD {
         return !ret;
     }
 
+    /**
+     * (*-)busca todas las categorías que machean por el nombre
+     *
+     * @param name
+     * @return
+     */
     public List<Category> searchCategory(String name) {
         List<Category> result;
         Base.openTransaction();
@@ -71,20 +104,29 @@ public class CategoryCRUD {
         return result;
     }
 
+    /**
+     * (*-)retorna todas las categorías
+     *
+     * @return
+     */
     public List<Category> getAllCategories() {
         return Category.findAll();
     }
 
-    //order by stats ranking
+    /**
+     * (*-)order by stats ranking
+     *
+     * @param c
+     * @return
+     */
     public List<Wsdl> getChilds(Category c) {
         Iterator<Wsdl> it = c.getAll(Wsdl.class).iterator();
-
         WsdlComparator comparator = new WsdlComparator();
-        PriorityQueue<Wsdl> queue = new PriorityQueue<Wsdl>(comparator);
+        PriorityQueue<Wsdl> queue = new PriorityQueue<>(comparator);
         while (it.hasNext()) {
             queue.add(it.next());
         }
-        LinkedList<Wsdl> list = new LinkedList<Wsdl>();
+        LinkedList<Wsdl> list = new LinkedList<>();
         list.addAll(queue);
         return list;
     }

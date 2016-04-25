@@ -19,7 +19,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.StringWriter;
-import java.io.Writer;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +32,6 @@ import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
-import tesis.controllers.Main;
 import tesis.crud.WsdlCRUD;
 import tesis.models.Wsdl;
 
@@ -43,24 +41,45 @@ import tesis.models.Wsdl;
  */
 public class InvokeWS {
 
+    /**
+     * (*-) Genera un soapMessage desde un string
+     *
+     * @param xml
+     * @return
+     * @throws SOAPException
+     * @throws IOException
+     */
     private SOAPMessage getSoapMessageFromString(String xml) throws SOAPException, IOException {
         MessageFactory factory = MessageFactory.newInstance();
         SOAPMessage message = factory.createMessage(new MimeHeaders(), new ByteArrayInputStream(xml.getBytes(Charset.forName("UTF-8"))));
         return message;
     }
 
+    /**
+     * Invoca un metodo de un ws, toma un Definitions, el nombre del portType
+     * operation, el binging, la url del ws, y los parametros
+     *
+     * @param defs
+     * @param portType
+     * @param operation
+     * @param binding
+     * @param url
+     * @param parameters
+     * @return
+     */
     private String callWS(Definitions defs, String portType, String operation, String binding, String url, ArrayList<Object> parameters) {
-        String result = "";
+        String result;
         StringWriter writer = new StringWriter();
         SOARequestCreator creator = new SOARequestCreator(defs, new RequestTemplateCreator(), new MarkupBuilder(writer));
         creator.setBuilder(new MarkupBuilder(writer));
-        //creator.createRequest(PortType name, Operation name, Binding name);
         creator.createRequest(portType, operation, binding);
         String s = writer.toString();
         String pattern = "\\?.*\\?";
+        //(*-) reemplaza el valor creado por defecto, por el del parametro
         for (Object param : parameters) {
             s = s.replaceFirst(pattern, param.toString());
         }
+        //(*-) reemplaza todos los parametros que restan por el string vacío
         s = s.replaceAll(pattern, "");
         try {
             // Create SOAP Connection
@@ -70,7 +89,6 @@ public class InvokeWS {
             SOAPMessage soapResponse = soapConnection.call(getSoapMessageFromString(s), url);
             result = printSOAPResponse(soapResponse);
             // Process the SOAP Response
-
             soapConnection.close();
         } catch (Exception e) {
             System.err.println("Error occurred while sending SOAP Request to Server");
@@ -80,26 +98,31 @@ public class InvokeWS {
         return result;
     }
 
+    /**
+     * (*-) invoca el wsdl, solo toma la url, nombre y parametros
+     *
+     * @param url
+     * @param name
+     * @param parameters
+     * @return
+     */
     public String obtainDataAndCallWS(String url, String name, ArrayList<Object> parameters) {
         WSDLParser parser = new WSDLParser();
         Definitions defs = parser.parse(url);
         List<Binding> bindings = defs.getBindings();
-        //System.out.println(defs.getPortTypes().get(0).getOperation("GetWeather"));
         for (Binding binding : bindings) {
-            //es protocolo SOAP V 1.1 O V 1.2
+            //(*-)es protocolo SOAP V 1.1 O V 1.2
             if (binding.getBinding() instanceof SOAPBinding || binding.getBinding() instanceof com.predic8.wsdl.soap12.SOAPBinding) {
                 PortType portType = defs.getPortType(binding.getType());
                 Operation operation = portType.getOperation(name);
-                //parameters.add("Argentina");
                 return callWS(defs, portType.getName(), operation.getName(), binding.getName(), url, parameters);
-
             }
         }
         return "Error occurred, not found the operation";
     }
 
     /**
-     * Method used to print the SOAP Response
+     * (*-) Method used to print the SOAP Response
      */
     private String printSOAPResponse(SOAPMessage soapResponse) throws Exception {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -112,10 +135,10 @@ public class InvokeWS {
         return new String(out.toByteArray());
     }
 
-    public static void main(String[] args) {
-        System.out.println("asdasd");
-    }
-
+    /**
+     * (*-) Invoca a todos los wsdl almacenados en la base de datos y les da un
+     * rank en base a la duración de la invocación y si está disponible o no.
+     */
     public void qoSStatistics() {
         WSDLParser parser = new WSDLParser();
         WsdlCRUD wsdlCRUD = new WsdlCRUD();
@@ -127,7 +150,7 @@ public class InvokeWS {
                 long totalTime = 0;
                 int quantity = 1;
                 for (Binding binding : bindings) {
-                    //es protocolo SOAP V 1.1 O V 1.2
+                    //(*-)es protocolo SOAP V 1.1 O V 1.2
                     if (binding.getBinding() instanceof SOAPBinding || binding.getBinding() instanceof com.predic8.wsdl.soap12.SOAPBinding) {
                         List<BindingOperation> operations = binding.getOperations();
                         for (BindingOperation bindingOperation : operations) {
@@ -154,7 +177,7 @@ public class InvokeWS {
 
             }
         }
-  
+
     }
 
 }

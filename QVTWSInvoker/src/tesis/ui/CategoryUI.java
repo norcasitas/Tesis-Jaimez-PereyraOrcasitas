@@ -19,6 +19,11 @@ public class CategoryUI extends javax.swing.JInternalFrame {
         categoriesDefault = (DefaultTableModel) tableCategory.getModel();
     }
 
+    /**
+     * (*-) This method adds an actionListener to the buttons
+     *
+     * @param lis
+     */
     public void setActionListener(ActionListener lis) {
         this.btnSave.addActionListener(lis);
         this.btnDelete.addActionListener(lis);
@@ -26,11 +31,18 @@ public class CategoryUI extends javax.swing.JInternalFrame {
         this.btnEdit.addActionListener(lis);
     }
 
+    /**
+     * (*-)Click en boton nuevo, limpia los campos,bloquea los botones y deja
+     * solo el boton cancel
+     */
     public void clickNew() {
         clear();
         clickEdit();
     }
 
+    /**
+     * (*-)limpia los campos, y bloquea los botones dejando solo nuevo
+     */
     public void clickSave() {
         clear();
         txtName.setEnabled(false);
@@ -40,6 +52,9 @@ public class CategoryUI extends javax.swing.JInternalFrame {
         btnDelete.setEnabled(false);
     }
 
+    /**
+     * (*-)habilita los botones de cancel y save
+     */
     public void clickEdit() {
         btnNewCat.setEnabled(false);
         txtName.setEnabled(true);
@@ -48,6 +63,9 @@ public class CategoryUI extends javax.swing.JInternalFrame {
         btnDelete.setEnabled(true);
     }
 
+    /**
+     * (*-)limpia los campos
+     */
     private void clear() {
         txtId.setText("");
         txtName.setText("");
@@ -172,7 +190,7 @@ public class CategoryUI extends javax.swing.JInternalFrame {
         tableCategory.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(tableCategory);
 
-        txtSearch.setToolTipText("Búsqueda personalizada");
+        txtSearch.setToolTipText("Search");
 
         javax.swing.GroupLayout panelClientesLayout = new javax.swing.GroupLayout(panelClientes);
         panelClientes.setLayout(panelClientesLayout);
@@ -235,32 +253,27 @@ public class CategoryUI extends javax.swing.JInternalFrame {
 
         btnDelete.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Icons/borrar.png"))); // NOI18N
-        btnDelete.setToolTipText("Borrar cliente seleccionado");
+        btnDelete.setToolTipText("Delete or Cancel");
         btnDelete.setEnabled(false);
         btnDelete.setPreferredSize(new java.awt.Dimension(55, 33));
         jPanel4.add(btnDelete);
 
         btnNewCat.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
         btnNewCat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Icons/nuevo.png"))); // NOI18N
-        btnNewCat.setToolTipText("Crear cliente nuevo");
+        btnNewCat.setToolTipText("New");
         btnNewCat.setPreferredSize(new java.awt.Dimension(55, 33));
         jPanel4.add(btnNewCat);
 
         btnEdit.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Icons/modificar.png"))); // NOI18N
-        btnEdit.setToolTipText("Modificar cliente seleccionado");
+        btnEdit.setToolTipText("Edit");
         btnEdit.setEnabled(false);
         btnEdit.setPreferredSize(new java.awt.Dimension(55, 33));
-        btnEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditActionPerformed(evt);
-            }
-        });
         jPanel4.add(btnEdit);
 
         btnSave.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Icons/guardar.png"))); // NOI18N
-        btnSave.setToolTipText("Guardar cambios realizados");
+        btnSave.setToolTipText("Save");
         btnSave.setEnabled(false);
         btnSave.setPreferredSize(new java.awt.Dimension(55, 33));
         jPanel4.add(btnSave);
@@ -298,10 +311,6 @@ public class CategoryUI extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;

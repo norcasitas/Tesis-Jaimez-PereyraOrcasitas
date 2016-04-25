@@ -28,7 +28,7 @@ public class WSDLController implements ActionListener {
     private boolean isNew, editing;
     private WsdlCRUD wsdlCRUD;
 
-    private CategoryCRUD categoryCRUD;
+    private CategoryCRUD categoryCRUD; //(*-) crud para categorias
     private java.util.List<Wsdl> wsdls;
     private java.util.List<Category> categories;
 
@@ -67,20 +67,33 @@ public class WSDLController implements ActionListener {
         wsdlUI.setActionListener(this);
     }
 
+    /**
+     * (*-)carga en el spinner las categorias
+     */
     private void loadCB() {
         wsdlUI.getSpnCategory().removeAllItems();
-        categories = categoryCRUD.searchCategory("");
+        categories = categoryCRUD.getAllCategories();
         for (Category c : categories) {
             wsdlUI.getSpnCategory().addItem(c.getString("name"));
         }
     }
 
+    /**
+     * (*-)Realiza una busqueda cada vez que se teclea sobre el textfield de
+     * búsqueda
+     *
+     * @param evt
+     */
     private void searchKeyReleased(KeyEvent evt) {
         DataBase.openDataBase();
         wsdls = wsdlCRUD.searchWSDL(wsdlUI.getTxtSearch().getText());
         refreshList();
     }
 
+    /**
+     * (*-)Carga los datos de un wsdl en la gui cuando se cambia la seleccion en
+     * la tabla
+     */
     private void tableWSDLEvent() {
         int r = tableWSDL.getSelectedRow();
         if (r != -1) {
@@ -121,6 +134,7 @@ public class WSDLController implements ActionListener {
                 Integer resp = JOptionPane.showConfirmDialog(wsdlUI, "Do you want to cancel the edition? ", "Confirm cancel", JOptionPane.YES_NO_OPTION);
                 if (resp == JOptionPane.YES_OPTION) {
                     wsdlUI.clickSave();
+                    editing = false;
                 }
             }
         }
@@ -175,6 +189,12 @@ public class WSDLController implements ActionListener {
         }
     }
 
+    /**
+     * (*-)carga en un Wsdl los datos de la gui y lo retorna
+     *
+     * @param w
+     * @return
+     */
     private boolean loadData(Wsdl w) {
         boolean ret = true;
         if (!wsdlUI.getTxtId().getText().isEmpty()) {
@@ -199,7 +219,7 @@ public class WSDLController implements ActionListener {
             w.set("category_id", id);
         } catch (ClassCastException e) {
             ret = false;
-            JOptionPane.showMessageDialog(wsdlUI, "Error in the name", "Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(wsdlUI, "Error in the category", "Error!", JOptionPane.ERROR_MESSAGE);
         }
         return ret;
     }

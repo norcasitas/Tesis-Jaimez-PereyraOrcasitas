@@ -3674,3 +3674,18 @@ org.h2.message.DbException: The connection was not closed by the application and
 Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-191]
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
 	... 50 more
+2016-04-25 12:33:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Numeric value out of range: "8740807469"; SQL statement:
+UPDATE wsdls SET AVAILABILITY = ?, RESPONSE = ? WHERE id = ? [22003-191]
+2016-04-25 12:38:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Numeric value out of range: "16307131611"; SQL statement:
+UPDATE wsdls SET AVAILABILITY = ?, RESPONSE = ? WHERE id = ? [22003-191]
+2016-04-25 12:40:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Numeric value out of range: "16290040893"; SQL statement:
+UPDATE wsdls SET AVAILABILITY = ?, RESPONSE = ? WHERE id = ? [22003-191]
+2016-04-25 12:42:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Numeric value out of range: "16298432433"; SQL statement:
+UPDATE wsdls SET AVAILABILITY = ?, RESPONSE = ? WHERE id = ? [22003-191]
+2016-04-25 13:32:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Numeric value out of range: "16376750880"; SQL statement:
+UPDATE wsdls SET AVAILABILITY = ?, RESPONSE = ? WHERE id = ? [22003-191]

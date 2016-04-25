@@ -11,6 +11,11 @@ public class MainUI extends javax.swing.JFrame {
         initComponents();
     }
 
+    /**
+     * (*-)This method adds an actionListener to the buttons
+     *
+     * @param lis
+     */
     public void setActionListener(ActionListener lis) {
         this.category.addActionListener(lis);
         this.wsdl.addActionListener(lis);
@@ -50,8 +55,6 @@ public class MainUI extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         salir = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        authors = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("QVTWSInvoker");
@@ -60,20 +63,12 @@ public class MainUI extends javax.swing.JFrame {
         panelBotones.setLayout(new java.awt.GridLayout(1, 0));
 
         category.setText("Management Categories");
-        category.setToolTipText("");
-        category.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                categoryActionPerformed(evt);
-            }
-        });
         panelBotones.add(category);
 
         wsdl.setText("Management WSDL");
-        wsdl.setToolTipText("");
         panelBotones.add(wsdl);
 
         invoker.setText("Web services Invoker");
-        invoker.setToolTipText("");
         panelBotones.add(invoker);
 
         jMenu1.setText("File");
@@ -87,18 +82,6 @@ public class MainUI extends javax.swing.JFrame {
         jMenu1.add(salir);
 
         jMenuBar1.add(jMenu1);
-
-        jMenu3.setText("About");
-
-        authors.setText("Authors");
-        authors.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                authorsActionPerformed(evt);
-            }
-        });
-        jMenu3.add(authors);
-
-        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -129,23 +112,11 @@ public class MainUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_salirActionPerformed
 
-    private void authorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_authorsActionPerformed
-        /*  AcercaDe acercaDe = new AcercaDe(this, true);
-         acercaDe.setLocationRelativeTo(this);
-         acercaDe.setVisible(true);*/
-    }//GEN-LAST:event_authorsActionPerformed
-
-    private void categoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_categoryActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem authors;
     private javax.swing.JButton category;
     private javax.swing.JDesktopPane container;
     private javax.swing.JButton invoker;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel panelBotones;
     private javax.swing.JMenuItem salir;

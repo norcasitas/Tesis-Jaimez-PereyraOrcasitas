@@ -2,7 +2,6 @@ package tesis.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyVetoException;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import tesis.ui.CategoryUI;
@@ -15,41 +14,36 @@ import tesis.utils.InvokeWS;
 public class Main implements ActionListener {
 
     private CategoryUI categoryUI;
-    private InvokerUI invoketUI;
+    private InvokerUI invokerUI;
     private WSDLUI wsdlUI;
     private MainUI mainUI;
     private CategoryController categoryController;
-    private InvokerController invokertController;
+    private InvokerController invokerController;
     private WSDLController wsdlController;
 
     public Main() {
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println(e);
         }
         DataBase.openDataBase();
         mainUI = new MainUI();
         mainUI.setExtendedState(JFrame.MAXIMIZED_BOTH);
         categoryUI = new CategoryUI();
-        invoketUI = new InvokerUI();
+        invokerUI = new InvokerUI();
         wsdlUI = new WSDLUI();
         categoryController = new CategoryController(mainUI, categoryUI);
-        invokertController = new InvokerController(mainUI, invoketUI);
+        invokerController = new InvokerController(mainUI, invokerUI);
         wsdlController = new WSDLController(mainUI, wsdlUI);
         mainUI.getContainer().add(wsdlUI);
-        mainUI.getContainer().add(invoketUI);
+        mainUI.getContainer().add(invokerUI);
         mainUI.getContainer().add(categoryUI);
         mainUI.setVisible(true);
         mainUI.toFront();
         mainUI.setActionListener(this);
         InvokeWS invkws = new InvokeWS();
         invkws.qoSStatistics();
-        try {
-            invoketUI.setMaximum(true);
-        } catch (PropertyVetoException e) {
-            // Vetoed by internalFrame
-        }
     }
 
     @Override
@@ -59,8 +53,9 @@ public class Main implements ActionListener {
             categoryUI.toFront();
         }
         if (ae.getSource() == mainUI.getInvoker()) {
-            invoketUI.setVisible(true);
-            invoketUI.toFront();
+            invokerController.loadCategories();
+            invokerUI.setVisible(true);
+            invokerUI.toFront();
         }
         if (ae.getSource() == mainUI.getWsdl()) {
             wsdlUI.setVisible(true);
@@ -69,7 +64,7 @@ public class Main implements ActionListener {
     }
 
     public static void main(String[] args) {
-        Main m = new Main();
+        new Main();
     }
 
 }

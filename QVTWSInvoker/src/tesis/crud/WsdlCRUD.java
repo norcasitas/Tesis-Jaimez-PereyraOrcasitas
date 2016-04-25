@@ -2,24 +2,38 @@ package tesis.crud;
 
 import java.util.List;
 import org.javalite.activejdbc.Base;
-import static org.javalite.activejdbc.Model.findById;
 import tesis.models.Wsdl;
 
 public class WsdlCRUD {
 
-    public WsdlCRUD() {
-    }
-
+    /**
+     * (*-)Retorna un wsdl dado el nombre cargado en el wsdl pasado por
+     * parametro
+     *
+     * @param w
+     * @return
+     */
     public Wsdl getWSDL(Wsdl w) {
-        Wsdl ws = Wsdl.first("name = ?", w.get("name"));
-        return ws;
+        return Wsdl.first("name = ?", w.get("name"));
     }
 
+    /**
+     * (*-)retorna true si el wsdl existe, caso contrario, falso
+     *
+     * @param w
+     * @return
+     */
     public boolean findWSDL(Wsdl w) {
-        boolean b = (Wsdl.first("name = ?", w.get("name")) != null);
-        return b;
+        return (Wsdl.first("name = ?", w.get("name")) != null);
     }
 
+    /**
+     * (*-)crea un wsdl y lo almacena en la base de datos, retorna true si se
+     * almacenó exitosamente, caso contrario false
+     *
+     * @param w
+     * @return
+     */
     public boolean create(Wsdl w) {
         boolean ret = true;
         if (!findWSDL(w)) {
@@ -36,6 +50,13 @@ public class WsdlCRUD {
         }
     }
 
+    /**
+     * (*-)borra un wsdl dado el id del mismo, retorna true si se borro
+     * exitosamente
+     *
+     * @param id
+     * @return
+     */
     public boolean delete(int id) {
         boolean ret = true;
         Wsdl old = Wsdl.findById(id);
@@ -48,6 +69,12 @@ public class WsdlCRUD {
         return !ret;
     }
 
+    /**
+     * (*-)edita todos sus datos y retorna true si se modificó exitosamente
+     *
+     * @param w
+     * @return
+     */
     public boolean edit(Wsdl w) {
         boolean ret = true;
         Wsdl old = Wsdl.findById(w.getId());
@@ -60,6 +87,13 @@ public class WsdlCRUD {
         return !ret;
     }
 
+    /**
+     * (*-)edita unicamente la infromacion de un wsdl y retorna true si se
+     * modificó exitosamente
+     *
+     * @param w
+     * @return
+     */
     public boolean editInformation(Wsdl w) {
         boolean ret = true;
         Wsdl old = Wsdl.findById(w.getId());
@@ -72,6 +106,13 @@ public class WsdlCRUD {
         return !ret;
     }
 
+    /**
+     * (*-)edita la reputación de un wsdl y retorna true si se modificó
+     * exitosamente
+     *
+     * @param w
+     * @return
+     */
     public boolean editStatistics(Wsdl w) {
         boolean ret = true;
         Wsdl old = Wsdl.findById(w.getId());
@@ -84,6 +125,14 @@ public class WsdlCRUD {
         return !ret;
     }
 
+    /**
+     * (*-)edita la reputación de un wsdl pasandole true si fue buena, y falso
+     * caso contrario, retorna true si se modificó exitosamente.
+     *
+     * @param w
+     * @param b
+     * @return
+     */
     public boolean editReputation(Wsdl w, boolean b) {
         boolean ret = true;
         Wsdl old = Wsdl.findById(w.getId());
@@ -103,38 +152,67 @@ public class WsdlCRUD {
         return !ret;
     }
 
-    public List<Wsdl> searchWSDLbyName(String s) {
+    /**
+     * (*-)retorna todos los wsdl que machean con le nombre
+     *
+     * @param name
+     * @return
+     */
+    public List<Wsdl> searchWSDLbyName(String name) {
         List<Wsdl> result;
         Base.openTransaction();
-        result = Wsdl.where("name like ?", "%" + s + "%");
+        result = Wsdl.where("name like ?", "%" + name + "%");
         Base.commitTransaction();
         return result;
     }
 
-    public List<Wsdl> searchWSDL(String s) {
+    /**
+     * (*-)retorna todos los wsdl que machean con le nombre o url
+     *
+     * @param search
+     * @return
+     */
+    public List<Wsdl> searchWSDL(String search) {
         List<Wsdl> result;
         Base.openTransaction();
-        result = Wsdl.where("name like ? or url like ?", "%" + s + "%", "%" + s + "%");
+        result = Wsdl.where("name like ? or url like ?", "%" + search + "%", "%" + search + "%");
         Base.commitTransaction();
         return result;
     }
 
-    public Wsdl findByUrl(String s) {
+    /**
+     * (*-)retorna el wsdl que machea por la url
+     *
+     * @param url
+     * @return
+     */
+    public Wsdl findByUrl(String url) {
         Wsdl result;
         Base.openTransaction();
-        result = Wsdl.findFirst("url = ?", s);
+        result = Wsdl.findFirst("url = ?", url);
         Base.commitTransaction();
         return result;
     }
 
-    public Wsdl findByName(String s) {
+    /**
+     * (*-)retorna el wsdl que machea por el nombre
+     *
+     * @param name
+     * @return
+     */
+    public Wsdl findByName(String name) {
         Wsdl result;
         Base.openTransaction();
-        result = Wsdl.findFirst("name = ?", s);
+        result = Wsdl.findFirst("name = ?", name);
         Base.commitTransaction();
         return result;
     }
 
+    /**
+     * (*-)retorna todos los wsdl
+     *
+     * @return
+     */
     public List<Wsdl> findAll() {
         List<Wsdl> result;
         Base.openTransaction();

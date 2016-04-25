@@ -15,9 +15,11 @@ public class InvokerUI extends javax.swing.JInternalFrame {
     public InvokerUI() {
         initComponents();
         setTypes();
-
     }
 
+    /**
+     * (*-)Agrega los tipos permitidos en la requestModel, a los parametros
+     */
     private void setTypes() {
         for (String type : TypesOfWsdl.typesWSDL) {
             spnType1.addItem(type);
@@ -28,6 +30,11 @@ public class InvokerUI extends javax.swing.JInternalFrame {
         }
     }
 
+    /**
+     * (*-) This method adds an actionListener to the buttons
+     *
+     * @param lis
+     */
     public void setActionListener(ActionListener lis) {
         this.btnSearchInvoke.addActionListener(lis);
         this.btnYes.addActionListener(lis);
@@ -35,10 +42,20 @@ public class InvokerUI extends javax.swing.JInternalFrame {
         this.spnCategory.addActionListener(lis);
     }
 
+    /**
+     * (*-) This method adds an ItemListenerr to the spinner param
+     *
+     * @param lis
+     */
     public void setItemListener(ItemListener lis) {
         this.spnNumberParam.addItemListener(lis);
     }
 
+    /**
+     * (*-) habilita los botones para votar por el resultado de la invocación
+     *
+     * @param b
+     */
     public void enableResult(Boolean b) {
         btnYes.setEnabled(b);
         btnNo.setEnabled(b);
@@ -48,9 +65,14 @@ public class InvokerUI extends javax.swing.JInternalFrame {
         return spnNumberParam;
     }
 
+    /**
+     * (*-)habilita los parametros que se desean
+     *
+     * @param i
+     */
     public void enableParams(int i) {
         for (int j = 0; j < 5; j++) {
-            getPanelParamater(j).setVisible(j < i ? true : false);
+            getPanelParamater(j).setVisible((j < i));
         }
 
     }
@@ -152,8 +174,6 @@ public class InvokerUI extends javax.swing.JInternalFrame {
     public JLabel getWsInvoked() {
         return wsInvoked;
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -215,7 +235,7 @@ public class InvokerUI extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
         setTitle("Web services Invoker");
-        setPreferredSize(new java.awt.Dimension(950, 516));
+        setPreferredSize(new java.awt.Dimension(990, 540));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Result", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Schoolbook L", 1, 18))); // NOI18N
 
@@ -283,18 +303,6 @@ public class InvokerUI extends javax.swing.JInternalFrame {
         jLabel35.setText("Category");
 
         spnCategory.setPreferredSize(new java.awt.Dimension(85, 21));
-        spnCategory.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                spnCategoryActionPerformed(evt);
-            }
-        });
-        spnCategory.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                spnCategoryPropertyChange(evt);
-            }
-        });
-
-        txtMethodName.setToolTipText("");
 
         jLabel36.setText("Method name");
 
@@ -332,7 +340,7 @@ public class InvokerUI extends javax.swing.JInternalFrame {
             .addGroup(pnlParam1Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(pnlParam1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spnType1, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(spnType1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlParam1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelType1)
                         .addComponent(labelValue1)
@@ -366,7 +374,7 @@ public class InvokerUI extends javax.swing.JInternalFrame {
             .addGroup(pnlParam2Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(pnlParam2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spnType2, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(spnType2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlParam2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelType2)
                         .addComponent(labelValue2)
@@ -379,11 +387,6 @@ public class InvokerUI extends javax.swing.JInternalFrame {
         labelValue20.setText("Value");
 
         spnType3.setPreferredSize(new java.awt.Dimension(85, 21));
-        spnType3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                spnType3ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnlParam3Layout = new javax.swing.GroupLayout(pnlParam3);
         pnlParam3.setLayout(pnlParam3Layout);
@@ -405,7 +408,7 @@ public class InvokerUI extends javax.swing.JInternalFrame {
             .addGroup(pnlParam3Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(pnlParam3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spnType3, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(spnType3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlParam3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelType20)
                         .addComponent(labelValue20)
@@ -418,11 +421,6 @@ public class InvokerUI extends javax.swing.JInternalFrame {
         labelValue21.setText("Value");
 
         spnType4.setPreferredSize(new java.awt.Dimension(85, 21));
-        spnType4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                spnType4ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnlParam4Layout = new javax.swing.GroupLayout(pnlParam4);
         pnlParam4.setLayout(pnlParam4Layout);
@@ -444,7 +442,7 @@ public class InvokerUI extends javax.swing.JInternalFrame {
             .addGroup(pnlParam4Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(pnlParam4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spnType4, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(spnType4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlParam4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelType21)
                         .addComponent(labelValue21)
@@ -478,7 +476,7 @@ public class InvokerUI extends javax.swing.JInternalFrame {
             .addGroup(pnlParam5Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(pnlParam5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spnType5, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(spnType5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlParam5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelType22)
                         .addComponent(labelValue22)
@@ -608,23 +606,6 @@ public class InvokerUI extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void spnCategoryPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_spnCategoryPropertyChange
-
-
-    }//GEN-LAST:event_spnCategoryPropertyChange
-
-    private void spnCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spnCategoryActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_spnCategoryActionPerformed
-
-    private void spnType3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spnType3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_spnType3ActionPerformed
-
-    private void spnType4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spnType4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_spnType4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

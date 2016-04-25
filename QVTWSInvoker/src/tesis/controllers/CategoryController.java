@@ -2,7 +2,6 @@ package tesis.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -20,13 +19,13 @@ import tesis.utils.DataBase;
 
 public class CategoryController implements ActionListener {
 
-    private CategoryUI categoryUI;
+    private CategoryUI categoryUI; //(*-)gui for management of categories
     private DefaultTableModel tableCategoryDefault;
     private JTable tableCategory;
     private MainUI mainUI;
-    private JTextField categoryNameSearch;
+    private JTextField categoryNameSearch; //(*-)textfield for search
     private boolean isNew, editing;
-    private CategoryCRUD categoryCRUD;
+    private CategoryCRUD categoryCRUD; //(*-)crud for categories
     private java.util.List<Category> categories;
 
     public CategoryController(MainUI mainUI, CategoryUI categoryUI) {
@@ -44,7 +43,7 @@ public class CategoryController implements ActionListener {
         categoryNameSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                searchKeyReleased(evt);
+                searchKeyReleased();
             }
         });
         tableCategory.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -53,7 +52,6 @@ public class CategoryController implements ActionListener {
                 tableCategoryEvent();
             }
         });
-
         tableCategory.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -63,16 +61,25 @@ public class CategoryController implements ActionListener {
         categoryUI.setActionListener(this);
     }
 
-    private void searchKeyReleased(KeyEvent evt) {
+    /**
+     * (*-)realiza una busqueda cada vez que se teclea sobre el textfield de
+     * búsqueda
+     *
+     * @param evt
+     */
+    private void searchKeyReleased() {
         DataBase.openDataBase();
         categories = categoryCRUD.searchCategory(categoryUI.getTxtSearch().getText());
         refreshList();
         Base.close();
     }
 
+    /**
+     * (*-)carga los datos para ser mostrados cuando cambia la selección sobre
+     * la tabla
+     */
     private void tableCategoryEvent() {
         int r = tableCategory.getSelectedRow();
-
         if (r != -1) {
             categoryUI.getTxtId().setText((String) tableCategoryDefault.getValueAt(r, 0));
             categoryUI.getTxtName().setText((String) tableCategoryDefault.getValueAt(r, 1));
@@ -107,6 +114,7 @@ public class CategoryController implements ActionListener {
                 Integer resp = JOptionPane.showConfirmDialog(categoryUI, "Do you want to cancel the edition? ", "Confirm cancel", JOptionPane.YES_NO_OPTION);
                 if (resp == JOptionPane.YES_OPTION) {
                     categoryUI.clickSave();
+                    editing = false;
                 }
             }
         }
@@ -146,6 +154,12 @@ public class CategoryController implements ActionListener {
         Base.close();
     }
 
+    /**
+     * (*-)this method loads a category from the gui
+     *
+     * @param c
+     * @return
+     */
     private boolean loadData(Category c) {
         boolean ret = true;
         if (!categoryUI.getTxtId().getText().isEmpty()) {
@@ -161,6 +175,9 @@ public class CategoryController implements ActionListener {
         return ret;
     }
 
+    /**
+     * (*-)this method updates the table
+     */
     private void refreshList() {
         tableCategoryDefault.setRowCount(0);
         Iterator<Category> it = categories.iterator();
@@ -170,7 +187,6 @@ public class CategoryController implements ActionListener {
             row[0] = c.getString("id");
             row[1] = c.getString("name");
             tableCategoryDefault.addRow(row);
-
         }
     }
 

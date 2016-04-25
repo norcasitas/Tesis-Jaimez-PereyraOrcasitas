@@ -20,7 +20,7 @@ public class DataBase {
     private static final String scriptTableWsdls = "CREATE  TABLE wsdls (`id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` VARCHAR(100) NOT NULL, `url` VARCHAR(200) NOT NULL, `category_id` INT(11) NOT NULL, `reputation` REAL  DEFAULT 0, `response` REAL  DEFAULT 99999, `availability` REAL DEFAULT 0);";
 
     /**
-     * retorna la path absoluta donde se está corriendo el jar
+     * (*-)retorna la path absoluta donde se está corriendo el jar
      *
      * @return
      */
@@ -28,6 +28,9 @@ public class DataBase {
         return new File(System.getProperty("user.dir")).getAbsolutePath();
     }
 
+    /**
+     * (*-)Abre la base de datos
+     */
     public static void openDataBase() {
         if (!Base.hasConnection()) {
             try {
@@ -38,6 +41,9 @@ public class DataBase {
         }
     }
 
+    /**
+     * (*-)crea la base de datos
+     */
     private static void createDataBase() {
         Base.open(driver, url, usr, pwd);
         if (Base.hasConnection()) {

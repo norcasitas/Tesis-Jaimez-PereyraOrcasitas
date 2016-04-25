@@ -16,6 +16,11 @@ public class WSDLUI extends javax.swing.JInternalFrame {
         wsdlDefault = (DefaultTableModel) tableWSDL.getModel();
     }
 
+    /**
+     * (*-) This method adds an actionListener to the buttons
+     *
+     * @param lis
+     */
     public void setActionListener(ActionListener lis) {
         this.btnSave.addActionListener(lis);
         this.btnDelete.addActionListener(lis);
@@ -23,19 +28,24 @@ public class WSDLUI extends javax.swing.JInternalFrame {
         this.btnEdit.addActionListener(lis);
     }
 
+    /**
+     * (*-)Click en boton nuevo, limpia los campos,bloquea los botones y deja
+     * solo el boton cancel
+     */
     public void clickNew() {
         clear();
         clickEdit();
     }
 
+    /**
+     * (*-)habilita los botones de cancel y save
+     */
     public void clickEdit() {
         btnNewWSDL.setEnabled(false);
         txtName.setEnabled(true);
-        txtUrl.setEnabled(true);
-        spnCategory.setEnabled(true);
         btnSave.setEnabled(true);
         btnEdit.setEnabled(false);
-        btnDelete.setEnabled(false);
+        btnDelete.setEnabled(true);
 
     }
 
@@ -45,6 +55,9 @@ public class WSDLUI extends javax.swing.JInternalFrame {
         spnCategory.setEnabled(b);
     }
 
+    /**
+     * (*-)limpia los campos
+     */
     private void clear() {
         txtId.setText("");
         txtName.setText("");
@@ -54,6 +67,9 @@ public class WSDLUI extends javax.swing.JInternalFrame {
         tableWSDL.clearSelection();
     }
 
+    /**
+     * (*-)limpia los campos, y bloquea los botones dejando solo nuevo
+     */
     public void clickSave() {
         clear();
         txtName.setEnabled(false);
@@ -191,7 +207,7 @@ public class WSDLUI extends javax.swing.JInternalFrame {
         tableWSDL.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(tableWSDL);
 
-        txtSearch.setToolTipText("Búsqueda personalizada");
+        txtSearch.setToolTipText("Search");
 
         javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
         panel2.setLayout(panel2Layout);
@@ -282,7 +298,7 @@ public class WSDLUI extends javax.swing.JInternalFrame {
 
         btnDelete.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/Icons/borrar.png"))); // NOI18N
-        btnDelete.setToolTipText("Delete");
+        btnDelete.setToolTipText("Delete or Cancel");
         btnDelete.setEnabled(false);
         btnDelete.setPreferredSize(new java.awt.Dimension(55, 33));
         jPanel4.add(btnDelete);
@@ -298,11 +314,6 @@ public class WSDLUI extends javax.swing.JInternalFrame {
         btnEdit.setToolTipText("Edit");
         btnEdit.setEnabled(false);
         btnEdit.setPreferredSize(new java.awt.Dimension(55, 33));
-        btnEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditActionPerformed(evt);
-            }
-        });
         jPanel4.add(btnEdit);
 
         btnSave.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
@@ -345,10 +356,6 @@ public class WSDLUI extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
