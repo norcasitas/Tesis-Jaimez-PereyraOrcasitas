@@ -29,6 +29,7 @@ import tesis.ui.MainUI;
 import tesis.utils.DataBase;
 import tesis.utils.InvokeWS;
 import tesis.utils.StringTreatment;
+import static tesis.utils.StringTreatment.deleteAccent;
 import tesis.utils.TypesOfWsdl;
 import utils.Pair;
 import utils.Utils;
@@ -107,7 +108,8 @@ public class InvokerController implements ActionListener, ItemListener {
         //(*-)creates a request model
         RequestModelFactory factory = RequestModelFactory.eINSTANCE;
         RequestModel requestModel = factory.createRequestModel();
-        String methodName = invokerUI.getTxtMethodName().getText();
+        String methodName = deleteAccent(invokerUI.getTxtMethodName().getText());
+        methodName = methodName.replace(" ", "");//remove all blank spaces
         requestModel.setName(methodName);
         Method method = factory.createMethod();
         method.setName(methodName);

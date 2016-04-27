@@ -42,8 +42,15 @@ public class Main implements ActionListener {
         mainUI.setVisible(true);
         mainUI.toFront();
         mainUI.setActionListener(this);
-        InvokeWS invkws = new InvokeWS();
-        invkws.qoSStatistics();
+        //runs the QoS statistics
+        new Runnable() {
+
+            @Override
+            public void run() {
+                InvokeWS invkws = new InvokeWS();
+                invkws.qoSStatistics();
+            }
+        }.run();
     }
 
     @Override

@@ -20,12 +20,11 @@ import org.eclipse.m2m.qvt.oml.ModelExtent;
 import org.eclipse.m2m.qvt.oml.TransformationExecutor;
 import utils.Utils;
 
-
 public class Transformation {
 
 	/**
-	 * las paths deben ser absolutas por ejemplo /home/user/desktop...
-	 * o la url de un wsdl 
+	 * (*+)las paths deben ser absolutas por ejemplo /home/user/desktop... o la
+	 * url de un wsdl
 	 * 
 	 * @param qvtoPath
 	 * @param ginpath
@@ -33,13 +32,13 @@ public class Transformation {
 	 * @throws IOException
 	 */
 	public void startTransformation(String inpath, String outpath) throws IOException {
-		// esta es la ruta de la transformacion
+		// (*+) esta es la ruta de la transformacion
 		URI uriTransformation = URI.createURI("platform:/resource/transforms/wsdlToRequest.qvto");
 		ExecutionContextImpl context = new ExecutionContextImpl();
 		EList<EObject> inObjects = Utils.getFromXMI(inpath);
 		TransformationExecutor fExecutor = new TransformationExecutor(uriTransformation);
-		// para	debugear la transformacion qvto
-		//context.setLog(new WriterLog(new OutputStreamWriter(System.out)));
+		// (*+) para debugear la transformacion qvto
+		// context.setLog(new WriterLog(new OutputStreamWriter(System.out)));
 		// create the input extent with its initial contents
 		ModelExtent input = new BasicModelExtent(inObjects);
 		// create an empty extent to catch the output
@@ -55,25 +54,15 @@ public class Transformation {
 			// let's persist them using a resource
 			ResourceSet resourceSet2 = new ResourceSetImpl();
 			resourceSet2.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*", new XMLResourceFactoryImpl());
-			Resource outResource = resourceSet2.createResource(URI.createURI("file://"+outpath));
+			Resource outResource = resourceSet2.createResource(URI.createURI("file://" + outpath));
 			outResource.getContents().addAll(outObjects);
 			outResource.save(Collections.emptyMap());
 		} else {
 			// turn the result diagnostic into status and send it to error log
 			IStatus status = BasicDiagnostic.toIStatus(result);
-			System.out.println(status.getMessage());
+			System.err.println(status.getMessage());
 		}
 
 	}
-
-	/*public static void main(String[] args) throws IOException {
-		//realizo transformacion y obtengo los nombres de las definitions que puede contener un wsdl, a esos le realizo la transformacion
-		//String nameDefinition = new T2Mwsdl().transformT2M(Utils.getAbsolutePathRunning()+"/folder_inputs/helloService.wsdl");
-		String nameDefinition = new T2Mwsdl().transformT2M("http://www.webservicex.com/globalweather.asmx?WSDL");
-
-		//for(String nameDefinition : namesOfDefinitions ){
-		new Transformation().startTransformation(Utils.getAbsolutePathRunning()+"/folder_outputs/"+nameDefinition+".xmi", Utils.getAbsolutePathRunning()+"/folder_outputs/"+nameDefinition+"s.xmi");
-
-	}*/
 
 }
