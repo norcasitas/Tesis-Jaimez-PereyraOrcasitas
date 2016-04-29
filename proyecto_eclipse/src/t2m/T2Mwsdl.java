@@ -202,13 +202,14 @@ public class T2Mwsdl {
 		Message msgFactory = factory.createMessage();
 		msgFactory.setQName(QName.valueOf(msg.getName()));
 		for (com.predic8.wsdl.Part part : msg.getParts()) {
-			if (part.getElement() != null) {
+			if (part.getElement() != null) { //(*+) es un parametro de tipo embebido
 				Element element = part.getElement();
+				//(*+) debo "desenvolver" el tipo embebido en varios simples
 				ArrayList<Pair<String, String>> parameters = parserEmbebedType(element);
 				for (Pair<String, String> param : parameters) {
 					msgFactory.getEParts().add(parserPart(param));
 				}
-			} else {
+			} else { //(*+) es un parametro de tipo simple
 				msgFactory.getEParts().add(parserPart(new Pair<String, String>(part.getName(),
 						((com.predic8.schema.BuiltInSchemaType) part.getType()).getQname().getLocalPart())));
 			}
@@ -226,13 +227,17 @@ public class T2Mwsdl {
 	private ArrayList<Pair<String, String>> parserEmbebedType(Element element) {
 		TypeDefinition typeDefinition = element.getEmbeddedType();
 		ArrayList<Pair<String, String>> ret = new ArrayList<Pair<String, String>>();
+		//(*+) es un tipo complejo definido en el mismo esquema, o se encuentra en otro esquema
 		if (typeDefinition != null || defs.getSchemaType(element.getType()) instanceof ComplexType) {
 			Sequence model;
-			if (typeDefinition != null)
+			if (typeDefinition != null) //(*+) el tipo está en el mismo esquema, obteno el modelo
 				model = ((Sequence) ((ComplexType) typeDefinition).getModel());
-			else
+			else//(*+)  el tipo se encuentra en otro esquema, obtengo el modelo desde ese esquema
 				model = ((Sequence) ((ComplexType) defs.getSchemaType(element.getType())).getModel());
 			for (Element elementAux : model.getElements()) {
+				/*(*+) para cada parametro de este tipo, llamo recursivamente por si 
+				 * está definido como tipo embebido
+				 */
 				ret.addAll(parserEmbebedType(elementAux));
 			}
 		} else {

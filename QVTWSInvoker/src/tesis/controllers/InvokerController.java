@@ -38,8 +38,8 @@ public class InvokerController implements ActionListener, ItemListener {
 
     private InvokerUI invokerUI;
     private MainUI mainUI;
-    private CategoryCRUD categoryCRUD; 
-    private WsdlCRUD wsdlCRUD; 
+    private CategoryCRUD categoryCRUD;
+    private WsdlCRUD wsdlCRUD;
     private List<Category> categories;
     private ArrayList<Object> params;
     private InvokeWS invokeWS;
@@ -71,7 +71,7 @@ public class InvokerController implements ActionListener, ItemListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == invokerUI.getBtnSearchInvoke()) {
             ArrayList<Pair<String, String>> methods = getMethodsMatch();
-
+            invokeWS(methods);
         }
         if (e.getSource() == invokerUI.getBtnYes()) {
             /**
@@ -83,7 +83,8 @@ public class InvokerController implements ActionListener, ItemListener {
         }
         if (e.getSource() == invokerUI.getBtnNo()) {
             /**
-             * The invocation not served to the user, calculates the new reputation.
+             * The invocation not served to the user, calculates the new
+             * reputation.
              */
             Wsdl wsdl = wsdlCRUD.findByName(invokerUI.getWsInvoked().getText());
             wsdlCRUD.editReputation(wsdl, false);
@@ -94,7 +95,7 @@ public class InvokerController implements ActionListener, ItemListener {
     @Override
     public void itemStateChanged(ItemEvent e) {
         /**
-         * enables parameters based on how many the user wants 
+         * enables parameters based on how many the user wants
          */
         invokerUI.enableParams(Integer.valueOf((String) e.getItem()));
     }
@@ -118,14 +119,17 @@ public class InvokerController implements ActionListener, ItemListener {
         outputParam.setType("string");
         method.getOutParameters().add(outputParam);
         params = new ArrayList<>();
-        Integer numParams = Integer.valueOf((String) invokerUI.getSpnNumberParam().getSelectedItem());
+        Integer numParams = Integer.valueOf(
+                (String) invokerUI.getSpnNumberParam().getSelectedItem());
         for (int i = 0; i < numParams; i++) {
             /**
-             * (for all chosen parameters, it gets the type and value and casting it
-             * if the cast fails it'll return null
+             * (for all chosen parameters, it gets the type and value and
+             * casting it if the cast fails it'll return null
              */
-            String type = ((JComboBox) (invokerUI.getPanelParamater(i).getComponent(1))).getSelectedItem().toString();
-            String value = StringTreatment.deleteAccent(((JTextField) invokerUI.getPanelParamater(i).getComponent(3)).getText());
+            String type = ((JComboBox)(invokerUI.getPanelParamater(i).getComponent(1)))
+                    .getSelectedItem().toString();
+            String value = StringTreatment.deleteAccent(((JTextField) invokerUI
+                    .getPanelParamater(i).getComponent(3)).getText());
             try {
                 switch (type) {
                     case TypesOfWsdl.typeDouble:
@@ -157,11 +161,11 @@ public class InvokerController implements ActionListener, ItemListener {
     }
 
     /**
-     * Take the path of a wsdl.ecore file and a request,
-     * it compares models and if included, returns the matched names
+     * Take the path of a wsdl.ecore file and a request, it compares models and
+     * if included, returns the matched names
      *
      * @param pathWsdl wsdlRequest.ecore path
-     * @param request user request 
+     * @param request user request
      * @return
      * @throws IOException
      */
@@ -188,7 +192,8 @@ public class InvokerController implements ActionListener, ItemListener {
                 try {
                     /**
                      * Transform and compare each wsdl of the chosen category,
-                     * if it is included it'll return the names of the matched methods.
+                     * if it is included it'll return the names of the matched
+                     * methods.
                      */
                     String url = wsdl.getString("url");
                     String nameDefinition = new T2Mwsdl().transformT2M(url);
