@@ -3689,3 +3689,6 @@ UPDATE wsdls SET AVAILABILITY = ?, RESPONSE = ? WHERE id = ? [22003-191]
 2016-04-25 13:32:31 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLException: Numeric value out of range: "16376750880"; SQL statement:
 UPDATE wsdls SET AVAILABILITY = ?, RESPONSE = ? WHERE id = ? [22003-191]
+2016-05-13 12:57:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Numeric value out of range: "2859225774"; SQL statement:
+UPDATE wsdls SET AVAILABILITY = ?, RESPONSE = ? WHERE id = ? [22003-191]

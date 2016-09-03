@@ -62,7 +62,5 @@ public class Transformation {
 			IStatus status = BasicDiagnostic.toIStatus(result);
 			System.err.println(status.getMessage());
 		}
-
 	}
-
 }

@@ -23,7 +23,8 @@ public class Comparsion {
 		this.requestModelClient = requestClient;
 		ArrayList<String> ret = new ArrayList<String>();
 		for (Method method : requestModelWSDL.getMethods()) {
-			if (method.getName().toLowerCase().equals(requestClient.getMethods().get(0).getName().toLowerCase())) {
+			if (method.getName().toLowerCase().equals(requestClient.getMethods().get(0)
+				.getName().toLowerCase())) {
 				if (matchInputParams(method.getInParameters())) {
 					ret.add(method.getName());
 				}

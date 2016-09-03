@@ -247,7 +247,7 @@ public class T2Mwsdl {
 	}
 
 	/**
-	 * (*+)Transforma un wsdl y retorna el nombre con el cual se almacenó en
+	 * (*+)Transforma un wsdl y retorna el nombre con el cual se almaceno en
 	 * disco
 	 * 
 	 * @param inputFile
