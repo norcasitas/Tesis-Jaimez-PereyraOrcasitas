@@ -1,0 +1,100 @@
+\chapter{Introducci\'on}
+\label{Introduccion}
+
+
+
+\pagenumbering{arabic} 
+\setcounter{page}{1}
+
+La globalización y los cambios de paradigmas empresariales, la evolución de las tecnologías de la información y la política liberal imperante hoy en el mundo, ubican a las organizaciones en el juego de la competitividad internacional. Las iniciativas sobre calidad y la mejora continua de los procesos ya no son suficientes. Se deben considerar nuevos paradigmas empresariales que permitan a las organizaciones obtener mejoras radicales mediante el uso de nuevas y potentes herramientas que faciliten el diseño del trabajo. Las organizaciones se orientan a ser más horizontales hacia el enfoque de redes de procesos, las que deben ser diseñadas de principio a fin, empleando nuevas tecnologías. El cambio radical de procesos comprende la visualización de nuevas estrategias de trabajo, el desarrollo de la propia actividad de diseño del proceso con tecnologías de la información innovadoras y la implementación del cambio en todas sus dimensiones: la tecnológica, la humana y la organizativa, a fin de establecer los mecanismos para un constante crecimiento del valor de las organizaciones. Para lograr un adecuado cambio integral de los procesos, es conveniente confeccionar un mapa de los mismos a fin de determinar los niveles de cambios a realizar. Por lo tanto, la identificación y el modelado de negocio necesario para generar un producto o ejecutar un servicio, es de gran importancia en el desarrollo de cualquier industria. Un conocimiento claro y ordenado de los procesos de negocio facilita su optimización y adaptación. Estas características proporcionan a la organización una gran capacidad de reacción cuando el proceso es automático.	\\	
+Un proceso de negocio es un conjunto de tareas relacionadas lógicamente que se ejecuta con la intención de obtener un resultado de negocio particular, el cual incluye recursos humanos así como los recursos materiales con el objetivo de producir un beneficio para la organización. El modelado de procesos de negocio permite visualizar las tareas, actividades y flujos, así como las diferentes unidades organizacionales que son afectadas por el proceso. La ingeniería de procesos de negocio se ha definido como el planteo fundamental y diseño del proceso de negocio para lograr un mejoramiento en las medidas de rendimientos tales como costo, calidad de servicio y velocidad. Estos procesos de negocio se describen y automatizan a través de los Workflow Management System (WFMS) . Los WFMS proporcionan herramientas integradas para automatizar los procesos de negocio, permitiendo a las organizaciones estandarizar y racionalizar las tareas repetitivas, y supervisar el progreso de las mismas, eliminando rutinas en las que es fácil cometer errores. La eliminación de los procesos que consumen tiempo y las costosas rutinas manuales, brinda la posibilidad de conectar al personal con la información y los procesos que necesitan para mejorar los ingresos y recortar los gastos \cite{WfMCa}.\\
+Por otra parte, el ambiente donde las organizaciones operan es cada vez más competitivo y agresivo. En estos días, debido a la globalización de los mercados, las compañías tienen que operar “globalmente”, lo cual implica la posibilidad de interoperar unas con otras. En la actualidad existe la Coalición de Administración de Workflow (Workflow Management Coalition - WfMC), fundada en 1993 y con más de 180 miembros en 25 países, la cual está abocada al avance en la tecnología de workflow y su uso en la industria con el propósito de estandarizar en esta materia. El Modelo de Referencia de Workflow, desarrollado por la WfMC, define un marco genérico para la construcción de WFMS, permitiendo la interoperabilidad entre ellos y con otras aplicaciones involucradas. Dicho modelo define cinco interfaces, que permiten a las aplicaciones del workflow la comunicación a distintos niveles. En particular, para permitir la interacción de los usuarios con el motor del workflow utiliza una lista de trabajo, que es manejada por un administrador. La Interfaz de las Aplicaciones de Clientes es la encargada de manejar la interacción entre el motor del workflow y el administrador de la lista de trabajo. Por otro lado, la Interfaz de las Aplicaciones Invocadas se define para la invocación de las aplicaciones externas. La WfMC ha especificado un conjunto de WAPI's (Workflow Aplication Programming Interfaces) para la administración de los Workflow. Estas WAPI's definen las funciones de las interfaces como llamadas a APIs en un lenguaje de tercera generación, obligando a conocer la información acerca de la aplicación y su invocación en tiempo de desarrollo. Si bien en muchos WFMS's se conocen a priori las aplicaciones que se desean utilizar, también existen sistemas donde diferentes aplicaciones que brindan un mismo servicio podrían ser requeridas por el motor del WFMS \cite{WfMC09}.\\
+Los Web Services (WS) proveen esencialmente un medio estándar de comunicación entre diferentes aplicaciones de software, ofreciendo la capacidad de acceder a servicios heterogéneos de forma unificada e interoperable a través de Internet. Los WS's pueden ser registrados a través del protocolo denominado Universal Description, Discovery and Integration (UDDI) para ser localizados y usados por las aplicaciones. Este protocolo presenta algunos inconvenientes al momento de seleccionar un servicio \cite{UDDI}. Uno de estos inconvenientes está dado por el hecho de que no tiene en cuenta las características de calidad (QoS) de los WS's, las cuales se refieren a la habilidad del servicio de responder a las invocaciones y llevarlas a cabo en consonancia con las expectativas del proveedor y de los clientes. Diversos factores de calidad que reflejan las expectativas del cliente, como la disponibilidad, conectividad y alta respuesta, se vuelven clave para mantener un negocio competitivo y viable. Otro de los inconvenientes que presenta el protocolo UDDI es la dificultad de establecer una correspondencia entre los requerimientos del solicitante y las múltiples especificaciones de WS's existentes en la actualidad que proveen similares funcionalidades, aunque tienen diferente descripción sintáctica. \\\\
+
+Esta tesis apunta a optimizar la selección de WS's conocidos usando técnicas de transformación de modelos y a desarrollar una herramienta que haga uso de este método, para que por ejemplo, sea utilizado para automatizar la comunicación de los WFMS con aplicaciones de externas.\\\\
+
+
+\section{Objetivos}
+\label{Objetivos}
+
+La presente Tesis de grado tiene como objetivo permitir un manejo transparente y automático de aplicaciones externas basadas en servicios web. Para lograrlo, se propone especificar la interfaz que permite dicha comunicación con WS, y valerse de la técnica de transformación de modelo para encontrar el WS más adecuado según los requerimientos del usuario, es decir, la construcción de un mecanismo que optimice el proceso de selección e invocación a WS’s y la automatización del mismo. \\
+
+La herramienta obtenida puede ser utilizada como un middleware desde la interfaz  de aplicaciones externas de un Workflow, considerando que los Workflow's son una de las aplicaciones que se ven más beneficiadas con este desarrollo, no obstante, puede ser utilizada en otros contextos.\\
+
+En función de ello, se propone la realización e implementación de una aplicación que, dado un listado de WS's categorizados y el tipo de la aplicación que se necesite invocar, los requerimientos del sistema y ciertas normas de calidad, localice, seleccione y ejecute el WS disponible  más adecuado que cumpla con los requerimientos especificados. De esta forma, el Workflow se abstrae tanto de la ubicación específica como de la aplicación misma y su ejecución, lo cual simplifica su definición.\\
+
+Concretamente se define a continuación un conjunto de metas a alcanzar:
+\begin{itemize}
+	\item A fin de definir un mecanismo de comparación y selección de WS's se proporciona una especificación precisa (modelo) que represente los requerimientos tanto del Workflow como del WS.
+	
+	\item Definir un método cuantitativo de ponderación de los WS en función de sus QoS.
+	
+	\item Implementar una aplicación que, de acuerdo a los requerimientos del WFMS y un listado de WS's conocidos, proporcione el WS más adecuado que cumpla con estos requisitos. Y que a su vez, la obtención y ejecución del WS resulte transparente al motor de Workflow.
+	
+\end{itemize}
+
+\subsection{Estructura del documento}
+\label{Estructura del documento}
+
+El documento se ha estructurado como se muestra a continuación:
+\begin{itemize}
+	\item El capítulo \ref{Introduccion} comprende una introducción general a los principales temas abordados por este trabajo y hace mención de los trabajos relacionados con esta investigación.
+	
+	\item El capítulo \ref{Nociones Preliminares} describe las nociones preliminares y teoría general que dan la base a la problemática planteada.
+	
+	\item El capítulo \ref{Método para evaluar la calidad de servicio de Web Services} describe el método que permite la evaluación de calidad de servicio de los WS's.
+	
+	\item El capítulo \ref{Mecanismo de selección de Web Services} exhibe las transformaciones QVT necesarias para llevar a cabo el mecanismo de preselección de WS's. 
+	
+	\item El capítulo \ref{Caso de estudio: QVTWSInvoker} presenta el caso de estudio, relacionado al proceso de desarrollo de software a realizar y la invocación de aplicaciones externas durante la ejecución de las tareas propuesta en este proceso.
+	
+	\item El capítulo \ref{Conclusiones y trabajos futuros} presenta las conclusiones de la Tesis.
+	
+	\item Finalmente se presentan los anexos del trabajo.
+	
+\end{itemize}
+
+ \section{Trabajos relacionados}
+ \label{Trabajos relacionados}
+ 
+
+\subsection{Comunicación de los WFMS con las aplicaciones externas}
+\label{Comunicación de los WFMS con las aplicaciones externas}
+
+La Interfaz 3 de un Workflow permite la comunicación (en la actualidad estática) entre este tipo de sistemas y el software disponible en el exterior de los mismos, no sólo a nivel invocación sino también a la hora de transferir datos en formatos entendibles por ambos componentes y la obtención e interpretación de los resultados \cite{WfMCb}. Para llevar a cabo esta comunicación, la presente tesis se apoya en la propuesta del siguiente trabajo:
+
+En \cite{1}, la autora propone una Especificación Funcional y otra no funcional de la Interfaz de Aplicaciones Invocadas, y de esta forma mejorar la selección de aplicaciones en tiempo de ejecución, permitiendo al motor del WFMS invocarlas dinámicamente independizándose de la ubicación exacta de las mismas. En la especificación funcional plantea definir las WAPI's de la Interfaz de Aplicaciones Invocadas con WS's que declaren la información de entrada, los datos de salida y los posibles errores en la invocación. Esto no sólo brinda mayor flexibilidad al motor del WFMS sino que también permite el requerimiento y la actualización de datos de la aplicación y otras funcionalidades importantes en tiempo de ejecución. En la especificación no funcional de la Interfaz de Aplicaciones Invocadas, propone incorporar al proceso de selección de WS's el análisis de los atributos de calidad requeridos por el solicitante. De esta forma se complementa la selección en tiempo de ejecución con la obtención del mejor WS disponible que satisfaga las necesidades del solicitante. Esta tesis propone una optimización y automatización del mecanismo presentado en \cite{1}.
+
+\subsection{Búsqueda e invocación de Web Services}
+\label{Búsqueda e invocación de Web Services}
+
+Existen diversas herramientas que implementan formas de buscar e invocar WS's tanto en servidores locales como en servidores distribuidos en la web. A continuación se mencionan y describen algunas herramientas que fueron estudiadas en este trabajo:\\\\
+
+JUDDI Console\\\\
+
+\cite{JUDDI-Console} es una herramienta web que trabaja localmente sobre un servidor de aplicaciones el cual permite al desarrollador visualizar y comprender de forma transparente cómo se manipulan los WS's en un servidor UDDI. Entre todas sus funcionalidades se destacan las siguientes:
+	\begin{itemize}
+		\item find\_service()  realiza una búsqueda sintáctica sobre los WS's alojados en el servidor local. 
+		
+		\item get\_serviceDetail(), como su nombre lo especifica, retorna el detalle de un WS determinado identificado por su clave. 
+						
+		\item save\_service()  se encarga de almacenar y publicar un WS en el servidor.
+		
+	\end{itemize}
+	
+\cite{GG-WSfinder} utiliza dos plantillas genéricas, la primera es de entrada. Consiste de un conjunto de parámetros que son los encargados de transportar los requerimientos del usuario a la herramienta. Teniendo en cuenta que este usuario será en reiteradas ocasiones un WFMS, el conjunto de parámetros ha sido planteado simple y estándar. Esta plantilla está formada por los siguientes atributos: tipo de WS, el o los nombres posibles del mismo, nombres de la operación a ejecutar con sus respectivos parámetros (valores para los cuales se deseen obtener los resultados correspondientes) y las normas de calidad que el WS debe cumplir. Esta parametrización le posibilita a la herramienta acceder de manera estándar a los requerimientos del sistema siempre de una misma forma, para luego comenzar el proceso de búsqueda con los criterios y filtros correspondientes. \\
+La salida de la herramienta depende del tipo de WS seleccionado. Para cada uno de estos tipos se define una plantilla de salida que consiste del conjunto de atributos necesarios para poder retornar el resultado obtenido de la ejecución. De esta manera, para un mismo caso, es decir un mismo tipo de WS's, no importa que aplicación provea el resultado, siempre el retorno de la herramienta será una instancia de la plantilla.\\\\
+
+
+En el esquema propuesto en \cite{QoS-WS-invoked}, el componente principal del motor WFMS es un agente de descubrimiento de servicios basado en los requisitos funcionales y QoS especificadas por el usuario y los requisitos mínimos establecidos por el propio motor. De este modo, el motor proporciona una clasificación de los WS's disponibles y elige el más adecuado. También es responsable de la recolección y procesamiento de información de los WS's ofrecidos por los proveedores y de mantener esta información actualizada a medida que se realizan las llamadas. Para llevar a cabo la asignación y selección final, el motor realiza los siguientes pasos\\
+\begin{itemize}
+	\item Especificar pre- y post-condición del solicitante que se refieren a los atributos de calidad del WS;
+	\item Especificar pre y post-condiciones de los proveedores de WS  que contienen información que está disponible en el registro UDDI, refiriéndose principalmente a las características funcionales del WS.
+\end{itemize}
+
+Al realizar el proceso de contraste a nivel semántico el motor del workflow busca en el registro UDDI y obtiene una lista preliminar de los WS's que responden a las exigencias funcionales del solicitante. \\
+Al realizar el proceso de contraste en el nivel de calidad de servicio, el motor analiza las características no funcionales considerando los QoS del solicitante. Además, evalúa las características especificadas en el registro de QoS del motor del workflow si el WS previamente se ha invocado, el motor del workflow busca en su historia y utiliza la información almacenada del mismo. Si el WS no se ha invocado antes, se analizan las características durante el proceso de verificación. Este proceso es un filtro de la lista preliminar de candidatos obtenidos previamente el cual devuelve el WS que mejor se adapte a las exigencias del solicitante. Si más de un WS cumple con las características exigidas por los requisitos, el motor del workflow aplicará unos criterios adicionales para elegir uno de ellos.\\
+Por último, el motor del workflow invoca el WS seleccionado y almacena la ejecución en la historia de las ejecuciones anteriores.\\\\
+
+\cite{Sumathi-Niranjan-2014} presenta la selección de WS's compuestos y complejos de forma dinámica de acuerdo a las necesidades del usuario utilizando diferentes métodos de búsqueda y procesamiento de WSDL. La metodología utilizada para la búsqueda de los términos solicitados son búsquedas simples, busca los requisitos del usuario en un solo WS;  también búsqueda horizontal y vertical la cual intenta combinar y componer distintos WS's con el objetivo de satisfacer las necesidades del usuario. La búsqueda se realiza en base al apoyo (support) y la confianza (confidence) de los términos solicitados en los resultados de búsqueda.
+

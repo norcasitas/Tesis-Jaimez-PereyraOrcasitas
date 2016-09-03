@@ -1,0 +1,98 @@
+\begin{thebibliography}{10}
+
+\bibitem{JUDDI-Console}
+Apache.
+\newblock {\em JUDDI. Versión 3.3.2}, último acceso Enero 2016.
+
+\bibitem{HTTP}
+IETF.
+\newblock {\em Hypertext Transfer Protocol - HTTP/1.1}, último acceso Abril
+  2015.
+
+\bibitem{5}
+J. Miller and J. Mukerji.
+\newblock {\em “Mda guide version 1.0.1,” Object Management Group (OMG)},
+  2003.
+
+\bibitem{QoS-WS-invoked}
+Daniel Riesco German Montejano Narayan~Debnath Marcela~Daniele,
+  Paola~Martelotto.
+\newblock {\em Chapter: "Defining and using metrics to evaluate the QoS of Web
+  Services invoked from a Workflow engine" Book: “Engineering High Quality
+  Software: Correctness, Testing, and Verification”}.
+\newblock 2011.
+\newblock Editors: Dr. Mark Burgin (UCLA, USA) and Dr. Narayan Debnath (Winona
+  State University, USA) (Editores), IRM Press. Idea Group Inc. (IGI).
+
+\bibitem{UDDI}
+OASIS.
+\newblock {\em Universal Description, Discovery and Integration of
+  WebServices–UDDI. Versión 3.0.2}.
+\newblock último acceso Abril 2015.
+
+\bibitem{1}
+Martelloto Paola.
+\newblock Definición de reglas de transformación de grafos y qos para la
+  interfaz entre aplicaciones externas a un workflow con ws's.
+
+\bibitem{GG-WSfinder}
+Garat M.~Gil P.M.
+\newblock Un web service que automatiza la invocación de aplicaciones externas
+  a un workflow optimizando la selección de las mismas en base a
+  característica de calidad.
+
+\bibitem{3}
+S. J. Mellor, A. N. Clark, and T. Futagami.
+\newblock {\em “Guest editors' introduction: Model- driven development,”
+  IEEE Software, vol. 20}, 2003.
+
+\bibitem{Sumathi-Niranjan-2014}
+Sumathi-Niranjan.
+\newblock {\em Dynamic search and selection of WS's}.
+\newblock 2014.
+
+\bibitem{W3C03-QoS}
+W3C Working Group.
+\newblock {\em QoS for Web Services: Requirements and Possible Approaches},
+  último acceso Abril 2015.
+
+\bibitem{WfMC09}
+Workflow Management Coalition.
+\newblock {\em A Common Object Model Discussion Paper. WfMC Document
+  WfMC-TC10-22}, último acceso Abril 2015.
+
+\bibitem{WfMCb}
+Workflow Management Coalition.
+\newblock {\em Programming Interface 2 and 3 Specification WfMC-TC-1009. V2.0},
+  último acceso Abril 2015.
+
+\bibitem{WfMCa}
+Workflow Management Coalition.
+\newblock {\em The Workflow Reference Model. WfMC-TC00-1003}, último acceso
+  Abril 2015.
+
+\bibitem{XML}
+World Wide Web Consortium.
+\newblock {\em Extensible Markup Language (XML)1.0(Fifth Edition)}, último
+  acceso Abril 2015.
+
+\bibitem{SOAP}
+World Wide Web Consortium.
+\newblock {\em SOAP Version 1.2 Part 1: Messaging Framework}, último acceso
+  Abril 2015.
+
+\bibitem{WSA}
+World Wide Web Consortium.
+\newblock {\em WS's Architecture}, último acceso Abril 2015.
+
+\bibitem{WSDL2.0-0}
+World Wide Web Consortium.
+\newblock {\em WS's Description Language(WSDL) Version 2.0 Part 0: Primer},
+  último acceso Abril 2015.
+
+\bibitem{WSDL2.0-1}
+World Wide Web Consortium.
+\newblock {\em WS's Description Language(WSDL) Version 2.0 Part 1: Core
+  Language}, último acceso Abril 2015.
+
+\end{thebibliography}

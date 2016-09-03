@@ -1,0 +1,32 @@
+\chapter{Conclusiones y trabajos futuros}
+\label{Conclusiones y trabajos futuros}
+
+\section{Conclusiones}
+
+Si se puntualiza en el contexto de los Workflows, se puede concluir que en la actualidad la automatización de los procesos de negocio se ha convertido en un objetivo primordial para el crecimiento y desarrollo de las organizaciones. El conflicto de hoy en día en orden de lograr una plena automatización de los procesos, radica en la comunicación de los mismos. Y es en este sentido que la interfaz 3 de un Workflow, la de Invocación de Aplicaciones Externas, toma preponderante significado e importancia. Por ello, en función de aportar una significativa mejoría a esta comunicación, esta tesis ha llevado a cabo las siguientes propuestas expuestas con detalle a lo largo de los capítulos anteriores:
+
+\begin{itemize}
+	\item El uso del programa no solo como parte de la Interfaz de las Aplicaciones Invocadas de los Workflow Management System (WFMS), sino como un módulo externo a cualquier sistema capaz de manipular y automatizar la selección del servicio más optimo.
+	\item La definición y automatización de un método de búsqueda, selección, ejecución e interpretación de resultados de Web Services (WS) ya conocidos.
+	\item La incorporación de modelos Ecore, la transformación de modelo QVT y la medición de las características de calidad (QoS) para describir los aspectos no funcionales de los WS's y con ello la optimización de las invocaciones externas a un Workflow en cuanto a este tipo de aplicaciones.	
+	\item La aplicación e implementación de todo lo propuesto a un caso de estudio concreto.
+\end{itemize}
+
+Por otro lado, la utilización de WS's en el contexto de la Interfaz de Aplicaciones Invocadas, tiene el principal beneficio o ventaja de aprovechar Internet. Es decir, tener la posibilidad de que las aplicaciones externas al WFMS estén distribuidas en la red, en cualquier parte del mundo, y que ello resulte completamente transparente al WFMS, e incluso al motor del mismo. Así se fundamenta que tanto la búsqueda, como la selección y la ejecución de estas aplicaciones previamente conocidas, se realice de forma dinámica y automática.\\
+Otra contribución importante de esta tesis es la optimización de la invocación (y con ello la comunicación) entre un WFMS y las aplicaciones con quienes debe interactuar. Esta optimización consiste en tener en cuenta a la hora de la selección de aplicaciones los atributos no funcionales, o QoS, de los WS's. Ello permite compartir recursos distribuidos a gran escala, lo cual puede implicar por ejemplo la integración entre Workflows.
+El uso de WS's plantea una forma unificada de acceder a las aplicaciones. Este acceso posibilita la interacción con servicios y/o métodos comunes favoreciendo la interoperabilidad a través de las diferentes plataformas. Existen numerosas ventajas que benefician la distribución de las aplicaciones y la interoperabilidad de los sistemas al utilizar este tipo de aplicaciones:\\
+permiten la utilización de aplicaciones de componentes abiertas y auto descriptas, la composición rápida de aplicaciones distribuidas, el uso de aplicaciones modulares y desacopladas, la independencia de la plataforma subyacente y el lenguaje de programación, el acoplamiento débil.\\
+
+Por todas estas razones es que se convierten en un excelente recurso para permitir la distribución transparente de las aplicaciones externas a los WFMS.
+
+\section{Trabajos Futuros}
+
+A continuación se enumeran las posibles extensiones para este trabajo:\\
+
+En primer lugar, se considera importante que la herramienta otorgue diferentes posibilidades en cuanto a la selección de las QoS deseadas en la aplicación que se quiera buscar. Resulta muy interesante ampliar este espectro y así permitir al usuario de la herramienta escoger entre un conjunto de QoS.\\
+
+También es necesario que la herramienta sea apta para manipular intercambio de mensajes REST, debido al gran auge que están teniendo , y así dar la posibilidad de que esta comunicación no se realice únicamente a través del protocolo SOAP.\\
+
+Al mismo tiempo, la herramienta necesita el uso de la plantilla de salida estándar para desligar al usuario de la responsabilidad de interpretar las diferentes sintaxis de los resultados obtenidos. Esto no solo reduciría la complejidad que implica implementar en un Workflow la interfaz de invocación de aplicaciones, sino que también logra estandarizar el resultado para cualquier tipo de WS especificado.\\
+
+Una variante a lo propuesto en este trabajo, es el hecho de utilizar procesamiento del lenguaje a la hora de hacer la comparación de modelos y así poder utilizar otra información, como por ejemplo la descripción. 

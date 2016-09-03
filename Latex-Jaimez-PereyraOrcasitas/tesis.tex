@@ -1,0 +1,170 @@
+%=============================================================================
+% Tesis de Licenciatura: .....
+%=============================================================================
+   
+%=============================================================================
+%                                Preambulo Latex
+%=============================================================================
+\documentclass[oneside,letterpaper,10pt, spanish]{report}
+
+\usepackage[spanish]{babel} % division de silabas en español.
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc} %%%Para poner acentos directamente
+
+
+\usepackage{babel}
+\setcounter{secnumdepth}{3} 
+\setcounter{tocdepth}{3}  
+\usepackage{makeidx}
+\usepackage{graphics}  
+\usepackage[boxed]{algorithm}
+\usepackage{algorithmic}
+\usepackage[dvips]{graphicx}
+\usepackage{latexsym}
+\usepackage{amssymb} 
+\usepackage{amsthm}
+\usepackage{url}
+\usepackage{color}
+\usepackage{cite} % para contraer referencias
+ \usepackage{enumerate} 
+ \usepackage{listings}
+ \usepackage{color}
+ \usepackage{afterpage}
+ 
+\addtolength{\textwidth}{1cm} % Ancho del texto
+
+% traducción de algunos nombres del paquete algorithm
+\floatname{algorithm}{Algoritmo}
+\renewcommand{\listalgorithmname}{Indice de algoritmos}
+
+\usepackage{vmargin}
+
+\setpapersize{A4}
+\setmargins{2.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{16.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}                           % espacio entre el texto y el pie de página
+
+
+%parametros para escribir codigo java
+
+
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\renewcommand{\lstlistingname}{Código}
+\lstset{frame=tb,
+	language=Java,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=4,
+	literate={á}{{\'a}}1 {ã}{{\~a}}1 {é}{{\'e}}1,
+}
+
+%%%%%%%%%%%%%%%% DEFINICIONES DE ALGUNOS COMANDOS Y AMBIENTES %%%%%%%%%%%%%%%
+
+
+
+
+\newcounter{ruleAGcounter}
+\newenvironment{AG}
+{
+	\setcounter{ruleAGcounter}{0} \begin{center} \begin{figure}[!hb]
+			\rule{\textwidth}{.5pt} \footnotesize
+		}
+		{\normalsize \rule{\textwidth}{.5pt} \end{figure} \end{center}}
+
+\newcommand{\newproduction}[2]{$p_\arabic{ruleAGcounter}$:
+	\emph{#1} $\rightarrow$ \emph{#2}
+	\addtocounter{ruleAGcounter}{1}\\}
+
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$\ast$}
+\makeatother
+\makeindex
+
+\newcommand{\letraEcore} [1] {\texttt{#1}}
+
+
+%============================================================================
+
+
+\begin{document}
+	
+	
+	\title{
+		Universidad Nacional de Río Cuarto\\
+		$\;$\\
+		$\;$\\
+		\small{Trabajo de tesis para la obtención del grado de Licenciatura en Ciencias de la Computación}
+		$\;$\\$\;$\\
+		\Large{\textbf{QVTSInvoker\\
+				Automatización y Optimización de la invocación de aplicaciones externas a un Workflow, usando servicios web y transformaciones de modelos.
+				 }}
+	} 
+	
+	\author{
+		Autores\\
+		Jaimez Jacinto \\
+		Pereyra Orcasitas Nicolás\\
+		\\ \\ \\
+		Director de Tesis: \emph{Mg. Marcela Daniele}\\ 
+		Co-Director de Tesis: \emph{Mg. Ariel Gonzalez}\\ 
+	}
+	
+	\date{Río Cuarto, Argentina\\ Septiembre 2016}
+	
+	
+	\maketitle
+	
+%Para dejar una página en blanco
+\newpage
+\mbox{}
+\thispagestyle{empty} % para que no se numere esta página
+
+
+\include{abstract}
+
+
+\listoffigures
+\addcontentsline{toc}{chapter}{Lista de figuras} % para que aparezca en el indice de contenidos
+%Las siguintes 3 lineas es para sacarle la numeracion de paginas al Indice
+%\addtocontents{toc}{\protect\thispagestyle{empty}}
+\tableofcontents %put toc in
+%\cleardoublepage %start new page
+
+
+
+
+
+
+\include{introduccion}
+
+\include{nocionesPreliminares}
+\include{capitulo3}
+\include{capitulo4}
+\include{capitulo5}
+\include{capitulo6}
+\include{biblio}
+
+\include{Anexos}
+
+\printindex
+
+\end{document}

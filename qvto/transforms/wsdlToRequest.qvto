@@ -1,0 +1,60 @@
+modeltype WSDL uses wsdl('http://www.eclipse.org/wsdl/2003/WSDL');
+modeltype REQUEST uses RequestModel('http:///request_model.ecore');
+
+
+transformation WSDL_to_RequestModel(in source : WSDL, out output:REQUEST);
+
+main() {
+	log('starting transformation...');
+	source.rootObjects()[WSDL::Definition]->map modelT2model();
+	log('ending transformation...');
+	}
+	
+mapping Definition :: modelT2model() : RequestModel {
+	init {
+		result := object RequestModel{};		
+	}
+	result.name := self.qName.toString();
+	result.methods := result.methods ->union(self.ePortTypes -> map portTypeT2Methods());
+	
+}
+
+mapping OrderedSet(PortType) :: portTypeT2Methods() : OrderedSet(Method) {
+	init {
+		result := OrderedSet{};
+		result += result -> union(
+			self -> collect(porType| porType -> map portTypeT2Method() ) -> asOrderedSet());
+	}
+}
+
+mapping PortType :: portTypeT2Method(): OrderedSet(Method){
+	init {
+		result := OrderedSet{};
+		result += result -> union(self.allInstances(Operation)-> asOrderedSet()
+			->collect(op| op -> map operationT2Method()) ->asOrderedSet());
+	}
+}
+
+
+mapping Operation :: operationT2Method(): Method{
+	init {
+		result := object Method{};
+	}
+	result.name := self.name;
+	result.description := self.documentation;
+	result.inParameters +=result.inParameters
+		->union(self.eInput.eMessage 
+		-> allInstances(Part)
+		-> collect(p| p -> map partT2Parameter())->asOrderedSet());
+	
+	result.outParameters += result.outParameters
+		->union(self.eOutput.eMessage 
+		-> allInstances(Part)
+		-> collect(p| p -> map partT2Parameter())->asOrderedSet());	
+}
+
+mapping Part :: partT2Parameter(): Parameter{
+	result.name := self.name;
+	result.type := self.typeName.toString();
+}
+

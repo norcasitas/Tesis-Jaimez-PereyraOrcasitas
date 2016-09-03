@@ -1,0 +1,70 @@
+This is BibTeX, Version 0.99d (TeX Live 2016/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: tesis.aux
+A level-1 auxiliary file: abstract.aux
+A level-1 auxiliary file: introduccion.aux
+A level-1 auxiliary file: nocionesPreliminares.aux
+A level-1 auxiliary file: capitulo3.aux
+A level-1 auxiliary file: capitulo4.aux
+A level-1 auxiliary file: capitulo5.aux
+A level-1 auxiliary file: capitulo6.aux
+A level-1 auxiliary file: biblio.aux
+The style file: plain.bst
+A level-1 auxiliary file: Anexos.aux
+Database file #1: bibliografia.bib
+Warning--entry type for "1" isn't style-file defined
+--line 1 of file bibliografia.bib
+Warning--entry type for "GG-WSfinder" isn't style-file defined
+--line 10 of file bibliografia.bib
+Too many commas in name 1 of "Marcela Daniele, Paola Martelotto, Daniel Riesco, German Montejano, Narayan Debnath" for entry QoS-WS-invoked
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Marcela Daniele, Paola Martelotto, Daniel Riesco, German Montejano, Narayan Debnath" for entry QoS-WS-invoked
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Marcela Daniele, Paola Martelotto, Daniel Riesco, German Montejano, Narayan Debnath" for entry QoS-WS-invoked
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "Marcela Daniele, Paola Martelotto, Daniel Riesco, German Montejano, Narayan Debnath" for entry QoS-WS-invoked
+while executing---line 1090 of file plain.bst
+Warning--empty publisher in QoS-WS-invoked
+Warning--empty publisher in Sumathi-Niranjan-2014
+You've used 18 entries,
+            2118 wiz_defined-function locations,
+            578 strings with 6413 characters,
+and the built_in function-call counts, 2930 in all, are:
+= -- 295
+> -- 42
+< -- 0
++ -- 28
+- -- 8
+* -- 129
+:= -- 444
+add.period$ -- 40
+call.type$ -- 18
+change.case$ -- 56
+chr.to.int$ -- 0
+cite$ -- 20
+duplicate$ -- 150
+empty$ -- 327
+format.name$ -- 8
+if$ -- 654
+int.to.chr$ -- 0
+int.to.str$ -- 18
+missing$ -- 4
+newline$ -- 79
+num.names$ -- 8
+pop$ -- 76
+preamble$ -- 1
+purify$ -- 54
+quote$ -- 0
+skip$ -- 100
+stack$ -- 0
+substring$ -- 106
+swap$ -- 18
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 68
+warning$ -- 2
+while$ -- 8
+width$ -- 20
+write$ -- 149
+(There were 4 error messages)
