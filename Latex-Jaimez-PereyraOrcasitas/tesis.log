@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2016.8.14)  3 SEP 2016 11:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2016.9.11)  24 SEP 2016 21:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -626,20 +626,10 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [1]
 \openout2 = `abstract.aux'.
 
- (./abstract.tex
-Underfull \hbox (badness 10000) in paragraph at lines 7--10
-
- []
-
-[1
+ (./abstract.tex [1
 
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 19--23
-
- []
-
-) [2
+]) [2
 
 ] (./tesis.lof
 LaTeX Info: Redefining \. on input line 1.
@@ -648,7 +638,8 @@ LaTeX Info: Redefining \% on input line 1.
 \tf@lof=\write4
 \openout4 = `tesis.lof'.
 
- [3
+
+[3
 
 
 ] (./tesis.toc
@@ -666,12 +657,17 @@ LaTeX Info: Redefining \% on input line 1.
  (./introduccion.tex
 Cap\'{\i }tulo 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 9--13
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 9--13
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
 
  []
 
@@ -679,57 +675,52 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--13
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 14--15
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--15
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--21
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 22--23
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 24--25
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 71--72
+Underfull \hbox (badness 10000) in paragraph at lines 72--73
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 71--72
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 85--87
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 85--87
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
 
  []
 
@@ -739,12 +730,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 89--90
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--98
+Underfull \hbox (badness 10000) in paragraph at lines 95--96
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--98
+Underfull \hbox (badness 10000) in paragraph at lines 97--98
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
 
  []
 
@@ -759,16 +755,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 10--11
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 10--11
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 12--13
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 12--13
 
  []
@@ -779,27 +765,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 14--15
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--15
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 16--17
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 16--17
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 23--24
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 23--24
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
 
  []
 
@@ -808,80 +774,49 @@ Underfull \hbox (badness 10000) in paragraph at lines 23--24
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 54--56
+Underfull \hbox (badness 10000) in paragraph at lines 52--53
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 54--56
-
- []
-
-[6]
-<imagenes/Interfaces_del_Modelo_de_Referencia.png, id=59, 638.385pt x 394.47375
+<imagenes/Interfaces_del_Modelo_de_Referencia.png, id=55, 638.385pt x 394.47375
 pt>
 File: imagenes/Interfaces_del_Modelo_de_Referencia.png Graphic file (type png)
  <use imagenes/Interfaces_del_Modelo_de_Referencia.png>
 Package pdftex.def Info: imagenes/Interfaces_del_Modelo_de_Referencia.png used 
-on input line 59.
+on input line 58.
 (pdftex.def)             Requested size: 319.19171pt x 197.23639pt.
- [7 <./imagenes/Interfaces_del_Modelo_de_Referencia.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 93--94
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 92--93
+
+ []
+
+[7 <./imagenes/Interfaces_del_Modelo_de_Referencia.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 93--94
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--96
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--96
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 97--98
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 97--98
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 99--100
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 99--100
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 101--102
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 101--102
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 103--104
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 103--104
+Underfull \hbox (badness 10000) in paragraph at lines 102--103
 
  []
 
@@ -891,20 +826,20 @@ File: imagenes/Composicion_del_protocolo_SOAP.png Graphic file (type png)
 
 <use imagenes/Composicion_del_protocolo_SOAP.png>
 Package pdftex.def Info: imagenes/Composicion_del_protocolo_SOAP.png used on in
-put line 121.
+put line 119.
 (pdftex.def)             Requested size: 110.41222pt x 117.94034pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 127--129
+Underfull \hbox (badness 10000) in paragraph at lines 125--127
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--133
+Underfull \hbox (badness 10000) in paragraph at lines 130--131
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 146--147
+Underfull \hbox (badness 10000) in paragraph at lines 144--145
 
  []
 
@@ -919,22 +854,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 148--149
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 148--149
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 150--151
+Underfull \hbox (badness 10000) in paragraph at lines 197--198
 
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 199--200
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 214--215
+Underfull \hbox (badness 10000) in paragraph at lines 215--216
 
  []
 
@@ -943,130 +868,142 @@ File: imagenes/Relacion_modelo_metamodelo.png Graphic file (type png)
 
 <use imagenes/Relacion_modelo_metamodelo.png>
 Package pdftex.def Info: imagenes/Relacion_modelo_metamodelo.png used on input 
-line 271.
+line 272.
 (pdftex.def)             Requested size: 132.49265pt x 227.24496pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 280--281
+Underfull \hbox (badness 10000) in paragraph at lines 281--282
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 285--286
 
  []
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 284--285
+Underfull \hbox (badness 10000) in paragraph at lines 297--298
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 296--297
+Underfull \hbox (badness 10000) in paragraph at lines 299--300
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 298--299
+Underfull \hbox (badness 10000) in paragraph at lines 301--302
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 300--301
-
- []
-
-[13 <./imagenes/Relacion_modelo_metamodelo.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 302--303
+Underfull \hbox (badness 10000) in paragraph at lines 303--304
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 304--305
+Underfull \hbox (badness 10000) in paragraph at lines 305--306
 
  []
 
-<imagenes/Relacion_MDE_MDD_MDA.png, id=88, 674.52pt x 533.995pt>
+<imagenes/Relacion_MDE_MDD_MDA.png, id=84, 674.52pt x 533.995pt>
 File: imagenes/Relacion_MDE_MDD_MDA.png Graphic file (type png)
 
 <use imagenes/Relacion_MDE_MDD_MDA.png>
 Package pdftex.def Info: imagenes/Relacion_MDE_MDD_MDA.png used on input line 3
-10.
+11.
 (pdftex.def)             Requested size: 337.25917pt x 266.99684pt.
 
-Runaway argument?
-{Transformaciones de modelos 
-! Paragraph ended before \label was complete.
-<to be read again> 
-                   \par 
-l.318 
-      
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
 
-[14 <./imagenes/Relacion_MDE_MDD_MDA.png>]
-<imagenes/Transformacion_modelo.png, id=93, 690.58pt x 273.02pt>
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[13 <./imagenes/Relacion_modelo_metamodelo.png>]
+<imagenes/Transformacion_modelo.png, id=89, 690.58pt x 273.02pt>
 File: imagenes/Transformacion_modelo.png Graphic file (type png)
 
 <use imagenes/Transformacion_modelo.png>
 Package pdftex.def Info: imagenes/Transformacion_modelo.png used on input line 
-344.
+345.
 (pdftex.def)             Requested size: 345.28915pt x 136.50966pt.
- [15 <./imagenes/Transformacion_modelo.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 383--384
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[14 <./imagenes/Relacion_MDE_MDD_MDA.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 384--385
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 385--386
+Underfull \hbox (badness 10000) in paragraph at lines 386--387
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 396--397
+Underfull \hbox (badness 10000) in paragraph at lines 397--398
+
+ []
+
+[15 <./imagenes/Transformacion_modelo.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 399--400
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 398--399
+Underfull \hbox (badness 10000) in paragraph at lines 424--425
 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 423--424
+Underfull \hbox (badness 10000) in paragraph at lines 459--460
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 461--462
 
  []
 
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 456--458
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 463.
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 459--461
-
- []
-
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 462.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 462--463
+Underfull \hbox (badness 10000) in paragraph at lines 463--464
 
  []
 
-)
-Underfull \hbox (badness 10000) in paragraph at lines 464--159
+
+Underfull \hbox (badness 10000) in paragraph at lines 465--466
 
  []
 
-[18]
+
+Underfull \hbox (badness 10000) in paragraph at lines 469--470
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 471--472
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 473--474
+
+ []
+
+) [18]
 \openout2 = `capitulo3.aux'.
 
  (./capitulo3.tex
 Cap\'{\i }tulo 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 4--6
+Underfull \hbox (badness 10000) in paragraph at lines 6--7
 
  []
 
@@ -1075,36 +1012,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--6
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 45--46
+Underfull \hbox (badness 10000) in paragraph at lines 48--49
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 45--46
+Underfull \hbox (badness 10000) in paragraph at lines 50--51
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 47--48
+Underfull \hbox (badness 10000) in paragraph at lines 52--53
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--50
+Underfull \hbox (badness 10000) in paragraph at lines 54--55
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 51--52
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 53--54
-
- []
-
-) [20] [21]
+[20]) [21]
 \openout2 = `capitulo4.aux'.
 
  (./capitulo4.tex
@@ -1115,7 +1042,7 @@ Cap\'{\i }tulo 4.
 File: imagenes/Transformacion_Wsdl_Ecore_Request.jpg Graphic file (type jpg)
  <use imagenes/Transformacion_Wsdl_Ecore_Request.jpg>
 Package pdftex.def Info: imagenes/Transformacion_Wsdl_Ecore_Request.jpg used on
- input line 21.
+ input line 22.
 (pdftex.def)             Requested size: 356.83224pt x 94.85414pt.
 
 
@@ -1126,14 +1053,14 @@ File: imagenes/Comparacion_Ecore_Wsdl.jpg Graphic file (type jpg)
 
 <use imagenes/Comparacion_Ecore_Wsdl.jpg>
 Package pdftex.def Info: imagenes/Comparacion_Ecore_Wsdl.jpg used on input line
- 29.
+ 30.
 (pdftex.def)             Requested size: 385.28587pt x 105.6939pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 43--44
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
 
  []
 
@@ -1142,12 +1069,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 43--44
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 45--46
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 47--48
+Underfull \hbox (badness 10000) in paragraph at lines 48--49
 
  []
 
@@ -1158,24 +1085,19 @@ File: imagenes/Diagrama_UML_RequestModel.png Graphic file (type png)
 
 <use imagenes/Diagrama_UML_RequestModel.png>
 Package pdftex.def Info: imagenes/Diagrama_UML_RequestModel.png used on input l
-ine 57.
+ine 58.
 (pdftex.def)             Requested size: 178.8666pt x 210.9361pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--64
+Underfull \hbox (badness 10000) in paragraph at lines 64--65
 
  []
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 88--89
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 90--91
+Underfull \hbox (badness 10000) in paragraph at lines 89--90
 
  []
 
@@ -1197,18 +1119,22 @@ Overfull \hbox (11.4166pt too wide) in paragraph at lines 55--56
 
 ) (../proyecto_eclipse/src/t2m/T2Mwsdl.java)
 (../proyecto_eclipse/src/t2m/T2Mwsdl.java [26])
-(../proyecto_eclipse/src/t2m/T2Mwsdl.java [27])
+(../proyecto_eclipse/src/t2m/T2Mwsdl.java)
 Underfull \hbox (badness 10000) in paragraph at lines 110--111
 
  []
 
-
+[27]
 Underfull \hbox (badness 10000) in paragraph at lines 112--113
 
  []
 
-(../proyecto_eclipse/src/t2m/Transformation.java) [28]
-(../proyecto_eclipse/transforms/wsdlToRequest.qvto)
+(../proyecto_eclipse/src/t2m/Transformation.java)
+
+LaTeX Warning: Reference `code:Perfiles y modelos de la transformaci\IeC {\'o}n
+' on page 28 undefined on input line 118.
+
+(../proyecto_eclipse/transforms/wsdlToRequest.qvto [28])
 (../proyecto_eclipse/transforms/wsdlToRequest.qvto)
 (../proyecto_eclipse/transforms/wsdlToRequest.qvto)
 Underfull \hbox (badness 10000) in paragraph at lines 131--132
@@ -1227,7 +1153,7 @@ File: imagenes/Ecores_de_Peticion_de_usuario_y_WS_1.jpg Graphic file (type jpg)
 
  <use imagenes/Ecores_de_Peticion_de_usuario_y_WS_1.jpg>
 Package pdftex.def Info: imagenes/Ecores_de_Peticion_de_usuario_y_WS_1.jpg used
- on input line 150.
+ on input line 152.
 (pdftex.def)             Requested size: 301.12732pt x 301.12732pt.
 
 <imagenes/Ecores_de_Peticion_de_usuario_y_WS_2.jpg, id=154, 501.875pt x 501.875
@@ -1236,7 +1162,7 @@ File: imagenes/Ecores_de_Peticion_de_usuario_y_WS_2.jpg Graphic file (type jpg)
 
  <use imagenes/Ecores_de_Peticion_de_usuario_y_WS_2.jpg>
 Package pdftex.def Info: imagenes/Ecores_de_Peticion_de_usuario_y_WS_2.jpg used
- on input line 158.
+ on input line 160.
 (pdftex.def)             Requested size: 301.12732pt x 301.12732pt.
 
 
@@ -1340,17 +1266,13 @@ File: imagenes/paquete_controllers.png Graphic file (type png)
 <use imagenes/paquete_controllers.png>
 Package pdftex.def Info: imagenes/paquete_controllers.png used on input line 97
 .
-(pdftex.def)             Requested size: 407.7238pt x 646.21512pt.
- [38]
-Overfull \vbox (13.79561pt too high) has occurred while \output is active []
+(pdftex.def)             Requested size: 305.7948pt x 484.66441pt.
 
-
-[39 <./imagenes/paquete_controllers.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 104--105
 
  []
 
-
+[38 <./imagenes/paquete_controllers.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 106--107
 
  []
@@ -1360,7 +1282,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 108--109
 
  []
 
-<imagenes/diagrama_clases_general.png, id=191, 1004.25188pt x 889.82437pt>
+<imagenes/diagrama_clases_general.png, id=188, 1004.25188pt x 889.82437pt>
 File: imagenes/diagrama_clases_general.png Graphic file (type png)
 
 <use imagenes/diagrama_clases_general.png>
@@ -1368,60 +1290,60 @@ Package pdftex.def Info: imagenes/diagrama_clases_general.png used on input lin
 e 112.
 (pdftex.def)             Requested size: 451.90918pt x 400.41727pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
+Underfull \hbox (badness 10000) in paragraph at lines 124--125
 
  []
 
-[40 <./imagenes/diagrama_clases_general.png>]
-<imagenes/modelo_persistente.png, id=196, 556.0775pt x 164.615pt>
+[39 <./imagenes/diagrama_clases_general.png>]
+<imagenes/modelo_persistente.png, id=193, 556.0775pt x 164.615pt>
 File: imagenes/modelo_persistente.png Graphic file (type png)
 
 <use imagenes/modelo_persistente.png>
-Package pdftex.def Info: imagenes/modelo_persistente.png used on input line 129
+Package pdftex.def Info: imagenes/modelo_persistente.png used on input line 128
 .
 (pdftex.def)             Requested size: 250.23256pt x 74.07605pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 135--136
+Underfull \hbox (badness 10000) in paragraph at lines 134--135
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 137--138
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 142--143
+Underfull \hbox (badness 10000) in paragraph at lines 141--142
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--145
+Underfull \hbox (badness 10000) in paragraph at lines 143--144
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 146--147
+Underfull \hbox (badness 10000) in paragraph at lines 145--146
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 148--149
+Underfull \hbox (badness 10000) in paragraph at lines 147--148
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--151
+Underfull \hbox (badness 10000) in paragraph at lines 149--150
 
  []
 
-) [41 <./imagenes/modelo_persistente.png>]
+) [40 <./imagenes/modelo_persistente.png>]
 \openout2 = `capitulo6.aux'.
 
  (./capitulo6.tex
 Cap\'{\i }tulo 6.
 
-Underfull \hbox (badness 10000) in paragraph at lines 15--19
+Underfull \hbox (badness 10000) in paragraph at lines 16--19
 
  []
 
@@ -1430,7 +1352,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 24--25
 
  []
 
-[42
+[41
 
 
 
@@ -1449,17 +1371,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 30--31
 
  []
 
-) [43]
+) [42]
 \openout2 = `biblio.aux'.
 
- (./biblio.tex (./tesis.bbl)) [44
+ (./biblio.tex (./tesis.bbl [43
 
 
 
-]
+])) [44]
 \openout2 = `Anexos.aux'.
 
- (./Anexos.tex (./wsdl.tex [45
+ (./Anexos.tex (./wsdl.tex
+[45
 
 
 
@@ -1553,14 +1476,14 @@ LaTeX Info: Redefining \% on input line 6.
 3.aux) (./capitulo4.aux) (./capitulo5.aux) (./capitulo6.aux)
 (./biblio.aux) (./Anexos.aux))
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6224 strings out of 493013
- 85678 string characters out of 6135682
- 222551 words of memory out of 5000000
- 9482 multiletter control sequences out of 15000+600000
+ 6229 strings out of 493013
+ 85789 string characters out of 6135682
+ 218551 words of memory out of 5000000
+ 9487 multiletter control sequences out of 15000+600000
  28117 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,7n,40p,1962b,1735s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1579,7 +1502,7 @@ e1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/s
 fti1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt0900.pfb></usr/sh
 are/texmf/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texmf/fonts/type
 1/public/cm-super/sfxc1000.pfb>
-Output written on tesis.pdf (59 pages, 1269502 bytes).
+Output written on tesis.pdf (59 pages, 1271642 bytes).
 PDF statistics:
  307 PDF objects out of 1000 (max. 8388607)
  188 compressed objects within 2 object streams

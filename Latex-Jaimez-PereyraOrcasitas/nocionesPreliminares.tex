@@ -2,7 +2,7 @@
 \label{Nociones Preliminares}
 
 
-En este capítulo se exhiben los principales conceptos sobre las áreas de base que conforman este trabajo, estas son: Workflow y Workflow Management System (WFMS), Web Services (WS), el lenguaje WSDL, el protocolo SOAP y  desarrollo dirigido por modelos.
+En este capítulo se exhiben los principales conceptos sobre las áreas de base que conforman este trabajo, estas son: Workflow y Workflow Management System (WFMS), Web Services (WS), el lenguaje WSDL, el Protocolo de Acceso a Objetos Simple (Simple Object Access Protocol - SOAP) y desarrollo y  desarrollo dirigido por modelos.
 
 \section{Workflows}
 \label{Workflows}
@@ -50,13 +50,14 @@ Por un lado, está la ejecución de dicho modelo. La ejecución del Workflow en 
 \label{Invocación de Aplicaciones Externas a un WFMS según el Modelo de referencia de la WfMC}
 
 La WfMC ha estandarizado la automatización de los procesos de negocio. Dicho estándar define un marco genérico para la construcción de WFMS, permitiendo la interoperabilidad entre ellos y con otras aplicaciones. Entonces, el modelo de referencia de Workflow fue desarrollado desde estructuras genéricas de aplicaciones de Workflow, identificando las interfaces con estas estructuras, de forma de permitir a los productos comunicarse a distintos niveles. Todos los sistemas de Workflow contienen componentes genéricas que interactúan de forma definida. Para poder tener cierto nivel de interoperabilidad entre los diversos productos de Workflow, es necesario definir un conjunto de interfaces y formatos para el intercambio de datos entre dichas componentes \cite{WfMC09}.\\
+
 En la figura \ref{fig:Interfaces del Modelo de Referencia} se muestran las distintas interfaces y componentes que se pueden encontrar en la arquitectura del Workflow.
 
 \begin{figure}[!h] 
 	\begin{center}
 		\includegraphics [scale=0.50]{imagenes/Interfaces_del_Modelo_de_Referencia.png}
 	\end{center}
-	\caption{Interfaces del Modelo de Referencia}
+	\caption{Interfaces del Modelo de Referencia.}
 	\label{fig:Interfaces del Modelo de Referencia}
 \end{figure} 
 
@@ -104,8 +105,7 @@ Así, el uso de protocolos estándares como WSDL en el contexto de los WS's es n
 \begin{itemize}
 	
 	\item \textbf{Protocolo HTTP (Hiper Text Transport Protocol) \cite{HTTP}:}
-	 HTTP es la abreviatura de HyperText Transfer Protocol, HTTP es el protocolo utilizado por la World Wide Web. HTTP define cual es el formato de los mensajes, y cómo se transmiten los mismos.\\
-	HTTP es un protocolo sin estado, se lo llama así  ya que cada comando se ejecuta de forma independiente, sin ningún conocimiento de los comandos que vinieron antes que él. Esta es la razón principal por la que es difícil de implementar sitios Web que reaccionan de forma inteligente a la entrada del usuario. Esta deficiencia de HTTP está siendo abordada en una serie de nuevas tecnologías, incluyendo ActiveX, Java, JavaScript y las cookies.
+	 HTTP es la abreviatura de HyperText Transfer Protocol, HTTP es el protocolo utilizado por la World Wide Web. HTTP define cual es el formato de los mensajes, y cómo se transmiten los mismos. HTTP es un protocolo sin estado, se lo llama así  ya que cada comando se ejecuta de forma independiente, sin ningún conocimiento de los comandos que vinieron antes que él. Esta es la razón principal por la que es difícil de implementar sitios Web que reaccionan de forma inteligente a la entrada del usuario. Esta deficiencia de HTTP está siendo abordada en una serie de nuevas tecnologías, incluyendo ActiveX, Java, JavaScript y las cookies.
 	
 	\item \textbf{Protocolo SOAP (Simple Object Access Protocol) \cite{SOAP}: }
 	SOAP (Simple Object Access Protocol) es el protocolo base de los WS's. Este protocolo está basado en XML y no se encuentra atado a ninguna plataforma o lenguaje de programación. A su vez, también es el protocolo más aceptado por la mayoría de las plataformas. 
@@ -118,7 +118,7 @@ Así, el uso de protocolos estándares como WSDL en el contexto de los WS's es n
 	\begin{center}
 		\includegraphics [scale=0.50]{imagenes/Composicion_del_protocolo_SOAP.png}
 	\end{center}
-	\caption{Composición del protocolo SOAP}
+	\caption{Composición del protocolo SOAP.}
 	\label{fig:Composición del protocolo SOAP}
 \end{figure} 
 
@@ -201,9 +201,12 @@ En este trabajo se propone una forma de incorporar las QoS en los WS's a partir 
 \section{Desarrollo de software dirigido por modelos}
 \label{Desarrollo de software dirigido por modelos}
 
-El desarrollo de software dirigido por modelos surge como respuesta a los principales problemas que actualmente tienen las compañías de desarrollo de software: por un lado, para gestionar la creciente complejidad de los sistemas que construyen y mantienen, y por otro para adaptarse a la rápida evolución de las tecnologías software.\\
+El desarrollo de software dirigido por modelos surge como respuesta a los principales problemas que actualmente tienen las compañías de desarrollo de software, por un lado, para gestionar la creciente complejidad de los sistemas que construyen y mantienen, y por otro para adaptarse a la rápida evolución de las tecnologías software.
+
 En primer lugar, se usan modelos para representar tanto los sistemas como los propios artefactos del software. Cada modelo trata un aspecto del sistema, que puede ser especificado a un nivel más elevado de abstracción y de forma independiente de la tecnología utilizada. Este hecho permite que la evolución de las plataformas tecnológicas sea independiente del propio sistema, disminuyendo así sus dependencias.
-En segundo lugar, se consigue también proteger gran parte de la inversión que se realiza en la informatización de un sistema, pues los modelos son los verdaderos artífices de su funcionamiento final y, por tanto, no será necesario empezar desde cero cada vez que se plantee un nuevo proyecto o se desee realizar algún tipo de mantenimiento sobre el producto.\\
+
+En segundo lugar, se consigue también proteger gran parte de la inversión que se realiza en la informatización de un sistema, pues los modelos son los verdaderos artífices de su funcionamiento final y, por tanto, no será necesario empezar desde cero cada vez que se plantee un nuevo proyecto o se desee realizar algún tipo de mantenimiento sobre el producto.
+
 En tercer lugar, en MDA los modelos constituyen la propia documentación del sistema, disminuyendo considerablemente el coste asociado y aumentando su mantenibilidad, puesto que la implementación se realiza de forma automatizada a partir de la propia documentación.
 
 \subsection{Modelos}
@@ -211,7 +214,7 @@ En tercer lugar, en MDA los modelos constituyen la propia documentación del sis
 
 De forma sencilla podríamos definir un modelo como una abstracción simplificada de un sistema o concepto del mundo real. Un modelo de un cierto <X>  es una especificación o descripción de ese <X> desde un determinado punto de vista, expresado en un lenguaje bien definido y con un propósito determinado.\\
 
-Según Bran Selic, uno de los fundadores del MDD y pionero en el uso de sus técnicas los modelos deberían ser:
+Según Bran Selic, uno de los fundadores del MDD y pionero en el uso de sus técnicas, los modelos deberían ser:
 \begin{itemize}
 	\item \textbf{Adecuados:} Construidos con un propósito concreto, desde un punto de vista determinado y dirigidos a un conjunto de usuarios bien definido.
 	
@@ -268,7 +271,7 @@ De esta forma, cada modelo se escribe en el lenguaje que define su metamodelo (s
 	\begin{center}
 		\includegraphics [scale=0.40]{imagenes/Relacion_modelo_metamodelo.png}
 	\end{center}
-	\caption{Relación modelo metamodelo}
+	\caption{Relación modelo metamodelo.}
 	\label{fig:Relación modelo metamodelo}
 \end{figure} 
 
@@ -307,18 +310,18 @@ En la figura \ref{fig:Relacíon entre los contextos de MDE, MDD y MDA} se puede 
 	\begin{center}
 		\includegraphics [scale=0.50]{imagenes/Relacion_MDE_MDD_MDA.png}
 	\end{center}
-	\caption{Relación entre los contextos de MDE, MDD y MDA}
+	\caption{Relación entre los contextos de MDE, MDD y MDA.}
 	\label{fig:Relacíon entre los contextos de MDE, MDD y MDA}
 \end{figure} 
 
 \subsection{Transformaciones de modelos}
-\label{Transformaciones de modelos
+\label{Transformaciones de modelos}
 
 \subsubsection*{La necesidad de las transformaciones de modelos} 
 \label{La necesidad de las transformaciones de modelos} 
 
 Las transformaciones de modelos proporcionan los mecanismos que permiten especificar el modo de producir modelos de salida a partir de modelos de entrada.\\
-El concepto de transformación en el mundo de la informática no es nuevo. De hecho, las transformaciones son algo fundamental en la ingeniería del software, pudiendo verse la computación como un proceso de transformación de datos.
+El concepto de transformación en el mundo de la informática no es nuevo, de hecho, las transformaciones son algo fundamental en la ingeniería del software, pudiendo verse la computación como un proceso de transformación de datos.
 
 Entre las aplicaciones de las transformaciones de modelo en el ámbito de MDE nos encontramos:
 
@@ -341,7 +344,7 @@ La figura \ref{fig:Transformación de modelo} demuestra como se lleva a cabo una
 	\begin{center}
 		\includegraphics [scale=0.50]{imagenes/Transformacion_modelo.png}
 	\end{center}
-	\caption{Transformación de modelo}
+	\caption{Transformación de modelo.}
 	\label{fig:Transformación de modelo}
 \end{figure} 
 
@@ -378,7 +381,7 @@ En MDE se describen diferentes tipos de transformaciones entre modelos, dependie
 \subsubsection*{Transformaciones de modelos en MDA}
 \label{Transformaciones de modelos en MDA}
 
-Una transformación de modelos es el proceso de convertir un modelo de un sistema en otro modelo del mismo sistema. Asimismo, dícese de la especificación de dicho proceso.\\
+Una transformación de modelos es el proceso de convertir un modelo de un sistema en otro modelo del mismo sistema.\\
 
 En esencia, una transformación establece un conjunto de reglas que describen cómo un modelo expresado en un lenguaje origen puede ser transformado en un modelo en un lenguaje destino.\\
 
@@ -410,7 +413,7 @@ El estándar QVT define tres abstracciones fundamentales, que se corresponden co
 \begin{itemize}
 	\item \textbf{Consultas (Queries)} Una consulta es una expresión que se evalúa sobre un modelo. Los resultados de una consulta son una o varias instancias de los tipos definidos en el modelo transformado, o en el propio lenguaje de consulta. Para la realización de consultas se utilizará un lenguaje de consultas.	 	 	 	
 	\item \textbf{Vistas (Views)} Una vista es un modelo obtenido en su totalidad a partir de otro modelo base. Una vista es una proyección realizada sobre un modelo, creada mediante una transformación. Una vista puede verse como el resultado de una consulta sobre un modelo, ofreciendo como resultado un punto de vista de éste, restringiéndolo de acuerdo a alguna condición impuesta.	
-	\item \textbf{Transformaciones (Transformations)} Una transformación genera un modelo a partir de otro modelo de origen. Ambos modelos podrán ser dependientes o independientes, según exista o no una relación que mantenga ambos sincronizados una vez se produzca la transformación. Las vistas son un tipo específico de transformación. Las relaciones especifican las transformaciones y las correspondencias (mappings) las implementan. Son especificaciones que toman como entrada uno o varios modelos, y lo relacionan de manera que cumplan las condiciones de la transformación, o crean uno nuevo a partir de los modelos de entrada. Si se modifica una vista, la correspondiente transformación debe ser bidireccional para reflejar los cambios en el modelo fuente. Las transformaciones se definirán utilizando un lenguaje de transformación. El lenguaje de transformación debe servir para generar vistas de un metamodelo, debe ser capaz de expresar toda la información necesaria para generar automáticamente la transformación de un modelo origen a uno destino, y debe además soportar cambios incrementales en un modelo origen que se ven reflejados en el modelo destino.
+	\item \textbf{Transformaciones (Transformations)} Una transformación genera un modelo a partir de otro modelo de origen. Ambos modelos podrán ser dependientes o independientes, según exista o no una relación que mantenga ambos sincronizados una vez se produzca la transformación. Las vistas son un tipo específico de transformación que toman como entrada uno o varios modelos, y lo relacionan de manera que cumplan las condiciones de la transformación, o crean uno nuevo a partir de los modelos de entrada. Si se modifica una vista, la correspondiente transformación debe ser bidireccional para reflejar los cambios en el modelo fuente. Las transformaciones se definirán utilizando un lenguaje de transformación. El lenguaje de transformación debe servir para generar vistas de un metamodelo, debe ser capaz de expresar toda la información necesaria para generar automáticamente la transformación de un modelo origen a uno destino, y debe además soportar cambios incrementales en un modelo origen que se ven reflejados en el modelo destino.
 \end{itemize}
 
 De estas abstracciones se desprenden por lo tanto dos lenguajes, de consulta y de transformación, a los que se impuso como requisito que estuvieran definidos como metamodelos MOF 2.0. Un último requisito fundamental de la propuesta QVT es relativo a los modelos manipulados: todos los modelos manipulados por los mecanismos de transformación serán además instancias de metamodelos MOF 2.0.
@@ -451,12 +454,22 @@ Todos QVT depende del paquete EssentialOCL de OCL 2,0, y todos los paquetes de i
 \label{Lenguaje Relation}
 
 
-El lenguaje Relations ofrece una aproximación declarativa para la especificación de transformaciones. Dado un par de modelos candidatos para la transformación, que deberán ser instancias de metamodelos MOF, ésta quedará definida como un conjunto de restricciones que los elementos de los modelos deben satisfacer.\\
+El lenguaje Relations ofrece una aproximación declarativa para la especificación de transformaciones. Dado un par de modelos candidatos para la transformación, que deberán ser instancias de metamodelos MOF, ésta quedará definida como un conjunto de restricciones que los elementos de los modelos deben satisfacer.
+
 Estas restricciones constituyen el concepto de relación del lenguaje Relations: se definen mediante dos o más dominios y mediante una pareja de predicados when (cuándo) y where (cómo). Los dominios especifican, mediante un patrón, qué elementos de los modelos candidatos participarán en la transformación. Por su parte, la cláusula when especifica la relaciones que determinan cuándo la relación indicada debe sostenerse; y la cláusula where especifica la condición que deben satisfacer todos los elementos de modelos que participan en la relación.\\
 
-En el lenguaje Relations, una transformación entre modelos candidatos se especifica como un conjunto de relaciones que han de tener lugar para llevar a cabo la transformación.\\
-Un modelo candidato es cualquier modelo que conforme a un tipo de modelo o metamodelo, que es una especificación de los diferentes tipos que pueden tener los elementos del modelo que lo conforma. Los modelos candidatos tienen un nombre y los tipos de los elementos que pueden contener, los cuales quedan restringidos al paquete al que se hace referencia en la declaración del modelo candidato. Por ejemplo:\\
+En el lenguaje Relations, una transformación entre modelos candidatos se especifica como un conjunto de relaciones que han de tener lugar para llevar a cabo la transformación. Un modelo candidato es cualquier modelo que conforme a un tipo de modelo o metamodelo, que es una especificación de los diferentes tipos que pueden tener los elementos del modelo que lo conforma. Los modelos candidatos tienen un nombre y los tipos de los elementos que pueden contener, los cuales quedan restringidos al paquete al que se hace referencia en la declaración del modelo candidato. Por ejemplo:\\
 
 \letraEcore{transformation uml2Rdbms (uml : SimpleUML, rdbms : SimpleRDBMS)}\\
 
 En esta declaración de transformación llamada \letraEcore{uml2Rdbms}, hay dos modelos candidatos: \letraEcore{uml} y \letraEcore{rdbms}. El modelo \letraEcore{uml} se declara referenciando el paquete \letraEcore{SimpleUML} como su metamodelo, y el modelo \letraEcore{rdbms} hace lo propio con el paquete \letraEcore{SimpleRDBMS}. Una \letraEcore{transformation} puede invocarse tanto para comprobar la consistencia de dos modelos como para transformar un modelo en otro.\\
+
+\subsection{El Lenguaje Operational}
+
+El lenguaje Operational permite definir transformaciones utilizando bien una aproximación imperativa o bien una aproximación híbrida, complementando las transformaciones relacionales declarativas con operaciones imperativas que implementen las relaciones.\\
+
+Una transformación operacional define una transformación unidireccional expresada de forma imperativa. Se compone de una signatura que indica los modelos involucrados en la transformación y de una definición de la ejecución de la transformación. En la práctica, una transformación operacional se trata de una entidad instanciable con propiedades y operaciones.\\
+
+Este lenguaje de QVT permite la definición de transformaciones mediante un lenguaje imperativo. Permite también definir  mappings para complementar las relaciones desarrolladas con el lenguaje Relational (enfoque híbrido).\\
+
+Entidad instanciable que posee operaciones y propiedades. Representa la definición de una transformación unidireccional expresada de manera imperativa.

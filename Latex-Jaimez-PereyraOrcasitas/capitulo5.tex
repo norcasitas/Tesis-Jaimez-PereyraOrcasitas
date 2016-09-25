@@ -1,7 +1,7 @@
 \chapter{Caso de estudio: QVTWSInvoker}
 \label{Caso de estudio: QVTWSInvoker}
 
-En este capítulo se presenta un caso de estudio que plantea el uso de Web Services (WS) seleccionados automáticamente en la invocación de aplicaciones externas al Workflow Management System (WFMS), a través de su aplicación en el marco de las tareas involucradas en el proceso de desarrollo de software denominado QVTWSInvoker.
+En este capítulo se presenta un caso de estudio que plantea el uso de Web Services (WS) seleccionados automáticamente en la invocación de aplicaciones externas desde un Workflow, a través de su aplicación en el marco de las tareas involucradas en el proceso de desarrollo de software denominado QVTWSInvoker.
 
 
 \section{Descripción general de la herramienta}
@@ -13,7 +13,7 @@ Es importante destacar, que la herramienta provee al usuario las diferentes alte
 
 \section{Proceso de selección de WS's}
 
-El proceso de selección de WS's con sus respectivas ejecuciones, consiste en la transformación de los requerimientos del usuario en una instancia salida. Este proceso lo realiza QVTWSinvoker implementando los mecanismos descritos en los capítulos \ref{Mecanismo de selección de Web Services} y \ref{Caso de estudio: QVTWSInvoker} que se describe en los siguientes puntos:\\
+El proceso de selección de WS's con sus respectivas ejecuciones, consiste en la transformación de los requerimientos del usuario en una instancia de salida. Este proceso lo realiza QVTWSinvoker implementando los mecanismos descritos en los capítulos \ref{Mecanismo de selección de Web Services} y \ref{Caso de estudio: QVTWSInvoker} que se describe en los siguientes puntos:\\
 
 \textbf{Fase 1: Obtención de Parámetros}\\
 
@@ -29,7 +29,7 @@ En esta fase la herramienta obtiene desde la plantilla de entrada los parámetro
 
 \textbf{Fase 2: Obtención de WS's de la base de datos}\\
 
-La base de datos contiene los WS's conocidos por la herramienta. Se compone de la información los WSDL y las QoS.  En esta fase la herramienta, en base al tipo ingresadas por el usuario en la plantilla de entrada y las QoS , obtiene de la base de datos la lista de descripciones de los WS's ordenada por valor de ponderación de las QoS (mecanismo de calificación descrito en el capítulo \ref{Mecanismo de selección de Web Services}). 
+La base de datos contiene los WS's conocidos por la herramienta. Se compone de la información los WSDL y las QoS.  En esta fase la herramienta, en base al tipo ingresado por el usuario en la plantilla de entrada y las QoS , obtiene de la base de datos la lista de descripciones de los WS's ordenada por valor de ponderación de las QoS (mecanismo de calificación descrito en el capítulo \ref{Mecanismo de selección de Web Services}). 
 
 \lstinputlisting[ firstline=113, lastline=129,caption={Método que obtiene de la base de datos la lista de descripciones},label={code:Método que obtiene de la base de datos la lista de descripciones}]{../QVTWSInvoker/src/tesis/crud/CategoryCRUD.java}
 
@@ -38,7 +38,7 @@ La base de datos contiene los WS's conocidos por la herramienta. Se compone de l
 
 \textbf{Fase 3: Transformaciones y Filtro por nombre, descripción y parámetros de la operación}\\
 
-A partir del conjunto de WS's generado en la fase previa, la herramienta procede a transformarlos siguiendo el mecanismo descripto en el cap 5 y filtrarlas teniendo en cuenta nombre, descripción y parámetros de la operación que se especificaron en la plantilla de entrada.\\	
+A partir del conjunto de WS's generado en la fase previa, la herramienta procede a transformarlas siguiendo el mecanismo descripto en el cap 5 y filtrarlos teniendo en cuenta nombre, descripción y parámetros de la operación que se especificaron en la plantilla de entrada.\\	
 
 \textbf{Fase 4. Ejecución de WS's}\\
 
@@ -79,7 +79,7 @@ Esta última fase le solicita al usuario información respecto a la calidad del 
 	\label{fig:Paquetes del proyecto}
 \end{figure} 
 
-El programa fue construido con el patrón modelo–vista–controlador (MVC), el cual separa los datos y la lógica de negocio de una aplicación de la interfaz de usuario y el módulo encargado de gestionar los eventos y las comunicaciones . A continuación se describen los paquetes de la figura:
+La arquitectura del programa se basa en el patrón modelo–vista–controlador (MVC) \cite{MVC}, el cual separa los datos y la lógica de negocio de una aplicación de la interfaz de usuario y el módulo encargado de gestionar los eventos y las comunicaciones. A continuación se describen los paquetes de la figura:
 
 \begin{itemize}
 	\item \textbf{controllers:} Clases que gestionan los eventos y las comunicaciones entre los modelos y la interfaz de usuario.
@@ -90,20 +90,20 @@ El programa fue construido con el patrón modelo–vista–controlador (MVC), el
 	\item \textbf{request\_model:} Contiene el modelo de los requisitos del usuario.
 \end{itemize}
 
-MVC propone la construcción de tres componentes distintos que son el modelo, la vista y el controlador, es decir, por un lado define componentes para la representación de la información, y por otro lado para la interacción del usuario. Por ejemplo, el módulo de gestión de categorías está diseñado de la forma en que se observa en la figura \ref{fig:Paquete controllers ejemplo category}\\
+MVC propone la construcción de tres componentes distintos que son el modelo, la vista y el controlador, es decir, por un lado define componentes para la representación de la información, y por otro lado componentes para la interacción del usuario. Por ejemplo, el módulo de gestión de categorías está diseñado de la forma en que se observa en la figura \ref{fig:Paquete controllers ejemplo category}.\\
 
  \begin{figure}[H]  
  	\begin{center}
- 		\includegraphics [scale=0.80]{imagenes/paquete_controllers.png}
+ 		\includegraphics [scale=0.60]{imagenes/paquete_controllers.png}
  	\end{center}
- 	\caption{Paquete controllers ejemplo Category}
+ 	\caption{Paquete controllers ejemplo Category.}
  	\label{fig:Paquete controllers ejemplo category}
  \end{figure} 
 
 
  Claramente se puede observar que CategoryUI implementa la interfaz de usuario, CategoryCrud el modelo y CategoryController el controlador.\\
  
- El diagrama de clase para WsdlCrud es similar al de CategoryCrud, solo difiere en los atributos\\
+ El diagrama de clase para WsdlCrud es similar al de CategoryCrud, solo difiere en los atributos.\\
  
  El diagrama de clases de diseño de la herramienta QVTWSInvoker ilustrado en la figura \ref{fig:Diagrama de clases general}, muestra cómo se relacionan las principales clases.\\
 
@@ -111,37 +111,36 @@ MVC propone la construcción de tres componentes distintos que son el modelo, la
   	\begin{center}
   		\includegraphics [scale=0.45]{imagenes/diagrama_clases_general.png}
   	\end{center}
-  	\caption{Diagrama de clases general}
+  	\caption{Diagrama de clases general.}
   	\label{fig:Diagrama de clases general}
   \end{figure}
 
 
    En este diagrama (figura \ref{fig:Diagrama de clases general}) se puede observar que las clases InvokeWS y InvokerController son las más importantes. \\
-  La clase InvokeController es la encargada de obtener la petición desde la interfaz de usuario, para luego obtener los wsdl de la categoría elegida a través del CRUD wsdlCRUD. Una vez que se tienen los wsdl y se le realiza la transformación QVT y obtención del mejor método explicado en el capítulo anterior, se pasa a la etapa de ejecución del método del wsdl. Para ello, se utiliza la clase InvokeWS,\\
-  esta fue construida con la ayuda de la librería SOA\_Distribution la cual permite automatizar la invocación a un método SOAP, una vez invocado, el resultado es mostrado por la interfaz de usuario a través del controlador InvokerController.
+  La clase InvokeController es la encargada de obtener la petición desde la interfaz de usuario, para luego obtener los wsdl de la categoría elegida a través del CRUD wsdlCRUD. Una vez que se tienen los wsdl y se le realiza la transformación QVT y obtención del mejor WS, se pasa a la etapa de ejecución del método del wsdl. Para ello, se utiliza la clase InvokeWS, esta fue construida con la ayuda de la librería SOA\_Distribution la cual permite automatizar la invocación a un método SOAP, una vez invocado, el resultado es mostrado por la interfaz de usuario a través del controlador InvokerController.
   
   \subsection{Modelo de Persistencia}
   
-  El diagrama de clases persistentes de la herramienta QVTWSInvoker se muestra en la figura. Este conjunto de clases es responsable de almacenar la información de los WS's por cada ejecución. (ver figura \ref{fig:Modelo persistente de la herramienta QVTWSInvoker})\\
+  El diagrama de clases persistentes de la herramienta QVTWSInvoker se muestra en la figura \ref{fig:Modelo persistente de la herramienta QVTWSInvoker}. Este conjunto de clases es responsable de almacenar la información de los WS's por cada ejecución. \\
   
   \begin{figure}[!h] 
   	\begin{center}
   		\includegraphics [scale=0.45]{imagenes/modelo_persistente.png}
   	\end{center}
-  	\caption{Modelo persistente de la herramienta QVTWSInvoker}
+  	\caption{Modelo persistente de la herramienta QVTWSInvoker.}
   	\label{fig:Modelo persistente de la herramienta QVTWSInvoker}
   \end{figure}
   
   A continuación se describen las tablas de la figura:\\
   
-  La tabla Category representa las categorías de los WS'ss, tiene un id único que funciona como clave y un nombre, por su parte, la tabla Wsdl se encarga de mantener la información sintáctica básica de cualquier wsdl: identificador, nombre, url y categoría, además de guardar la información respecto a su calidad de servicio (reputación, tiempo de respuesta y disponibilidad).\\
+  La tabla Category representa las categorías de los WS's, tiene un identificador que es clave y un nombre, por su parte, la tabla Wsdl se encarga de mantener la información sintáctica básica de cualquier wsdl: identificador, nombre, url y categoría, además de guardar la información respecto a su calidad de servicio (reputación, tiempo de respuesta y disponibilidad).\\
   
   
 \section{Herramientas utilizadas}
   
-En esta sección describiremos las diferentes herramientas y tecnología utilizadas a lo largo de la construcción de este trabajo:\\
+En esta sección se describen las diferentes herramientas y tecnologías utilizadas para el desarrollo de este proyecto:\\
 
-\textbf{NetBeans y Eclipse IDE} son entornos de desarrollo herramientas para que los programadores puedan escribir, compilar, depurar y ejecutar programas fácilmente.\\ 		
+\textbf{NetBeans y Eclipse IDE} son entornos de desarrollo integrado, que proporcionan servicios integrales para facilitarle al desarrollador o programador el desarrollo de software. Normalmente, un IDE consiste de un editor de código fuente, herramientas de construcción automáticas y un depurador.\\
 
 \textbf{Java 1.8} es un lenguaje de programación orientado a objetos que pertenece a la empresa Sun Microsystems. Entre sus características podemos nombrar: simple, distribuido, robusto, portable, interpretado, multitareas. Se utilizó como lenguaje de programación base dentro de la herramienta NetBeans.\\
 

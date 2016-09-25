@@ -1,19 +1,22 @@
 \chapter{Método para evaluar la calidad de servicio de Web Services}
 \label{Método para evaluar la calidad de servicio de Web Services}
 
-El número cada vez mayor de Web Service (WS) disponibles dentro de una organización y en la web, plantea un problema de la búsqueda de ellos, y destaca la importante necesidad de encontrar un mejor WS que cumpla con ciertos requisitos del solicitante. Por esta razón, los requisitos de un WS no deben centrarse solamente en sus propiedades funcionales, sino también en la descripción del entorno en el que se desarrolla, es decir, la descripción de características de calidad (QoS). Cada servicio puede ofrecer varias opciones para QoS basados en normas técnicas, tales como la disponibilidad, el rendimiento y la escalabilidad, las políticas de seguridad y privacidad, etc., todos los cuales deben ser descritos y analizados. En este punto, es de vital importancia contar con un procedimiento para evaluar la calidad de la WS. Este procedimiento proporcionará una herramienta para estimar la calidad de los WS de una manera específica. \\
+El número cada vez mayor de Web Service (WS) disponibles dentro de una organización y en la web, plantea un problema de la búsqueda de ellos y destaca la importante necesidad de encontrar un mejor WS que cumpla con ciertos requisitos del solicitante. Por esta razón, los requisitos de un WS no deben centrarse solamente en sus propiedades funcionales, sino también en la descripción del entorno en el que se desarrolla, es decir, la descripción de características de calidad (QoS). Cada servicio puede ofrecer varias opciones para QoS basados en normas técnicas, tales como la disponibilidad, el rendimiento y la escalabilidad, las políticas de seguridad y privacidad, etc., los cuales deben ser descritos y analizados. En este punto, es de vital importancia contar con un procedimiento para evaluar la calidad de la WS. Este procedimiento proporcionará una herramienta para estimar la calidad de los WS de una manera específica. 
+
 En consecuencia de lo expuesto hasta ahora, este capítulo propone un procedimiento para medir la calidad de la WS, desarrollado en base a la publicación \cite{QoS-WS-invoked}.\\
 
 \section{Características de calidad de Web Services}
 \label{Características de calidad de Web Services}
 
-La descripción de un WS tiene dos componentes principales: sus características funcionales y no funcionales. La descripción funcional, como mencionamos anteriormente, es una descripción sintáctica que se centra en los aspectos funcionales, detallando las características operativas que definen el comportamiento general de un WS. Un requisito importante para las aplicaciones basadas en SOA es operar de forma fiable y ofrecer un servicio consistente a una variedad de niveles. Por lo tanto, los requisitos de un WS no deben centrarse sólo en sus propiedades funcionales, sino también en la descripción del entorno que lo aloja, es decir, las capacidades no funcionales o QoS del servicio. Cada servicio puede ofrecer varias opciones para características no funcionales en base a los requisitos técnicos que resultan de la demanda de disponibilidad, el rendimiento, la escalabilidad, las políticas de seguridad, privacidad, etc., todo lo cual debe ser descrito.\\
-La descripción no funcional define la QoS del servicio, obligan a el solicitante a especificar, en tiempo de ejecución, los atributos de calidad que pueden influir en la elección de un WS ofrecido por un proveedor.
+La descripción de un WS tiene dos componentes principales: sus características funcionales y no funcionales. La descripción funcional, como mencionamos anteriormente, es una descripción sintáctica que se centra en los aspectos funcionales, detallando las características operativas que definen el comportamiento general de un WS. Un requisito importante para las aplicaciones basadas en SOA es operar de forma fiable y ofrecer un servicio consistente a una variedad de niveles. Por lo tanto, los requisitos de un WS no deben centrarse sólo en sus propiedades funcionales, sino también en la descripción del entorno que lo aloja, es decir, las capacidades no funcionales o QoS del servicio. Cada servicio puede ofrecer varias opciones para características no funcionales en base a los requisitos técnicos que resultan de la demanda de disponibilidad, el rendimiento, la escalabilidad, las políticas de seguridad, privacidad, etc., todo lo cual debe ser descrito.
+
+La descripción no funcional define la QoS del servicio, obligan al solicitante a especificar, en tiempo de ejecución, los atributos de calidad que pueden influir en la elección de un WS ofrecido por un proveedor.
 
 \section{Marco general de selección de WS de un WFMS}
 \label{Marco general de selección de WS de un WFMS}
 
-La descripción y la automatización de procesos de negocio se realizan a través de los Workflow Management System (WFMS). El modelo de referencia del workflow, desarrollado por la WfMC define un marco genérico para la construcción de WFMS, lo que permite la interoperabilidad entre ellos y otras aplicaciones implicadas. Este modelo define una interfaz para la invocación de aplicaciones externas. \\
+La descripción y la automatización de procesos de negocio se realizan a través de los Workflow Management System (WFMS). El modelo de referencia del workflow, desarrollado por la WfMC, define un marco genérico para la construcción de WFMS, lo que permite la interoperabilidad entre ellos y otras aplicaciones implicadas. Este modelo define una interfaz para la invocación de aplicaciones externas. 
+
 Para seleccionar la aplicación más adecuada entre varias semánticamente correctas que se comportan de la misma manera pero que tienen diferentes descripciones sintácticas y QoS, se propone optimizar la selección al incorporar las QoS. El esquema propuesto para la invocación de WS presenta inicialmente una muestra de los WS disponibles en una base de datos conocida, el WS requerido en la invocación de aplicaciones externas que corresponden al motor del workflow y la selección WS que eventualmente será invocado. En el método propuesto se consideran dos elementos importantes para que el proceso contraste entre los servicios ofrecidos y la aplicación requerida:
 
 \begin{itemize}
@@ -34,7 +37,7 @@ En el esquema propuesto, el componente principal es el descubrimiento de servici
 \section{Método para seleccionar un WS teniendo en cuenta su calidad de servicio}
 \label{Método para seleccionar un WS teniendo en cuenta su calidad de servicio}
 
-Hemos propuesto un método de medición para obtener un valor cuantitativo de cada servicio que permite la comparación entre ellos.
+Proponemos un método de medición para obtener un valor cuantitativo de cada servicio que permite la comparación entre ellos.
 
 
 En primer lugar, se define una unidad de medida que depende de la característica que está siendo evaluado. Aquí hemos considerado:
@@ -42,18 +45,21 @@ En primer lugar, se define una unidad de medida que depende de la característic
 	\item Unidad de tiempo: le asigna un valor en milisegundos, segundos, minutos u horas, dependiendo de las características que se evalúa.
 	\item Porcentaje: asignado un valor numérico entre 0 y 100, que se toma de una muestra representativa, y que depende de la propiedad que está siendo evaluada.
 \end{itemize}
-El tiempo de respuesta (TR) se evalúan teniendo en cuenta la unidad de medida de tiempo en milisegundos. La disponibilidad (D) y la reputación (R) se mide en porcentaje.\\
+El tiempo de respuesta (TR) se evalúa teniendo en cuenta la unidad de medida de tiempo en milisegundos. La disponibilidad (D) y la reputación (R) se mide en porcentaje.\\
 
-La función de prioridad (Fp) asignado a cada WS un peso se define por:\\
+La función de prioridad (Fp) que asigna a cada WS un peso se define por:\\
 
 \emph{Fp = D + R - TR}\\
 
-Es fácil visualizar que mientras más grande sea la disponibilidad y la reputación y menor sea el tiempo de respuesta mayor será el peso de clasificación del WS.\\
+La ecuación anterior permite que la prioridad de un WS aumente en función del incremento de su disponibilidad y reputación, y en la medida que sus tiempos de respuestas sean menores.\\
 
-La evaluación del sistema se puede hacer usando técnicas cualitativas o cuantitativas. Las técnicas cualitativas se basan en el análisis de una lista de características ,ventajas y desventajas, que se comparan de manera intuitiva para generar una clasificación final de los sistemas propuestos.\\
+La evaluación del sistema se puede hacer usando técnicas cualitativas o cuantitativas. Las técnicas cualitativas se basan en el análisis de una lista de características, ventajas y desventajas, que se comparan de manera intuitiva para generar una clasificación final de los sistemas propuestos.
  
-Los métodos cuantitativos dan indicadores cuantitativos generales que serán utilizadas para encontrar y justificar la decisión óptima.
-Generalmente, los métodos cuantitativos basados en técnicas de puntuación tienen dos indicadores para cada sistema, estas son una puntuación de preferencia global y un indicador de costo total. Esta propuesta no tiene en cuenta el costo.\\
-Los WS se utilizan mucho hoy en día, y con el creciente número de servicios disponibles que realizan la misma función, es necesario decidir qué servicio será elegido para completar una tarea dada. El objetivo es elegir el servicio más adecuado que satisfaga tanto los requisitos funcionales y no funcionales.\\
-La automatización de los procesos de negocio se considera como parte de un interés principal de las organizaciones para el crecimiento, el desarrollo y la competitividad. El uso de programas como parte de Interfaz de las Aplicaciones Invocadas de los WFMS ofrece beneficios importantes, tales como la distribución transparente de las aplicaciones fuera del workflow, permitiendo que el motor invoque la aplicación sin conocer su ubicación exacta, con el importante beneficio que puede cambiar su ubicación en la red sin que suponga un cambio en su invocación. Además, los sistemas de gestión deben invocar la aplicación de workflow que es más adecuada a sus necesidades, y esto requiere la especificación de algunas restricciones que se escribirán en la memoria no funcional de una solicitud de WS.\\
-Existe una clara necesidad de desarrollar mecanismos rápidos y eficaces que se pueden utilizar para la selección dinámica de los servicios a partir de un conjunto de proveedores de servicios. En este capítulo se presentó un método cuantitativo para medir las características no funcionales de los servicios que proporcionan la misma funcionalidad. El método puede medir y luego comparar las puntuaciones obtenidas por todos los servicios candidatos y seleccionar el WS que mejor se adapte a las necesidades del solicitante. En este capítulo, el método presentado se aplica a la selección dinámica de WS que puede ser utilizado por un motor de workflow cuando se requiere aplicaciones externas para llevar a cabo los procesos de negocio. 
+Los métodos cuantitativos dan indicadores cuantitativos generales que serán utilizadas para encontrar y justificar una buena decisión óptima.
+Generalmente, los métodos cuantitativos basados en técnicas de puntuación tienen dos indicadores para cada sistema, una puntuación de preferencia global y un indicador de costo total. El presente trabajo no tiene en cuenta el costo.
+
+El creciente aumento de los WS's en los últimos años permite que los sistemas que los utilizan puedan realizar una selección del servicio en función de ciertos criterios. El objetivo es elegir el servicio más adecuado que satisfaga tanto los requisitos funcionales y no funcionales.
+
+La automatización de los procesos de negocio se considera como parte de un interés principal de las organizaciones para el crecimiento, el desarrollo y la competitividad. El uso de programas como parte de Interfaz de las Aplicaciones Invocadas de los WFMS ofrece beneficios importantes, tales como la distribución transparente de las aplicaciones fuera del workflow, permitiendo que el motor invoque la aplicación sin conocer su ubicación exacta, con el importante beneficio que puede cambiar su ubicación en la red sin que suponga un cambio en su invocación. Además, los sistemas de gestión deben invocar la aplicación de workflow que es más adecuada a sus necesidades, y esto requiere la especificación de algunas restricciones que se escribirán en la memoria no funcional de una solicitud de WS.
+
+Existe una clara necesidad de desarrollar mecanismos rápidos y eficaces que se pueden utilizar para la selección dinámica de los servicios a partir de un conjunto de proveedores de servicios. En este capítulo se presentó un método cuantitativo para medir las características no funcionales de los servicios que proporcionan la misma funcionalidad. El método puede medir y luego comparar las puntuaciones obtenidas por todos los servicios candidatos y seleccionar el WS que mejor se adapte a las necesidades del solicitante. En este capítulo, el método se aplica a la selección dinámica de WS que puede ser utilizado por un motor de workflow cuando se requiere aplicaciones externas para llevar a cabo las tareas de los procesos de negocio. 
