@@ -50,8 +50,10 @@ El metalenguaje XML consta de cuatro especificaciones :
 \item \textbf{XSL (eXtensible Stylesheet Language)} Define o implementa el lenguaje de estilo de los documentos escritos para XML.. Permite modificar el aspecto de un documento.
 Se puede lograr múltiple columnas, texto girado, orden de visualización de los datos de una tabla, múltiples tipos de letra con amplia variedad en los tamaños. Este estándar está basado en el lenguaje de semántica y especificación de estilo de documento (DSSSL, Document Style Semantics  and Specification Language, ISO/IEC 10179).
 
-\item \textbf{XLL (eXtensible Linking Language)} Define el modo de enlace entre diferentes enlaces. Se considera que es un subconjunto de HyTime (Hipermedia/Timed-based structuring Language ó Lenguaje de estructuración hipermedia/basado en el tiempo, ISO 10744) y sigue algunas especificaciones del TEI (Text Encoding Initiative o Iniciativa de codificación de texto). \\
-Este lenguaje de enlaces extensible tiene dos importantes componentes: Xlink y el Xpointer. Va más allá de los enlaces simples que sólo soporta el HTML. Se podrá implementar con enlaces extendidos. Jon Bosak establece los siguientes mecanismos hipertextuales que soportará esta especificación:\\
+\item \textbf{XLL (eXtensible Linking Language)} Define el modo de enlace entre diferentes enlaces. Se considera que es un subconjunto de HyTime (Hipermedia/Timed-based structuring Language ó Lenguaje de estructuración hipermedia/basado en el tiempo, ISO 10744) y sigue algunas especificaciones del TEI (Text Encoding Initiative o Iniciativa de codificación de texto). 
+
+Este lenguaje de enlaces extensible tiene dos importantes componentes: Xlink y el Xpointer. Va más allá de los enlaces simples que sólo soporta el HTML. Se podrá implementar con enlaces extendidos. Jon Bosak establece los siguientes mecanismos hipertextuales que soportará esta especificación:
+
 \begin{itemize}
 	\item Denominación independiente de la ubicación.
 	\item Enlaces que pueden especificarse y gestionarse desde fuera del documento a los que se apliquen.
@@ -62,13 +64,15 @@ Este lenguaje de enlaces extensible tiene dos importantes componentes: Xlink y e
 \end{itemize}
 
 
-\item \textbf{XUA (XML User Agent)} Estandarización de navegadores XML.\\
+\item \textbf{XUA (XML User Agent)} Estandarización de navegadores XML.
+
 Todavía está en proceso de creación de borradores de trabajo. Se aplicará a los navegadores para que compartan todas las especificaciones XML
 \end{enumerate}
 
 \subsection{WSDL y la documentación de WS's}
 
-El lenguaje de descripción de WS's (WSDL, Web Service Description Language) es un dialecto basado en XML sobre el esquema que describe un WS. Un documento WSDL proporciona la información necesaria al cliente para interaccionar con el WS. \\
+El lenguaje de descripción de WS's (WSDL, Web Service Description Language) es un dialecto basado en XML sobre el esquema que describe un WS. Un documento WSDL proporciona la información necesaria al cliente para interaccionar con el WS. 
+
 Los documentos WSDL definen los servicios como colecciones de puntos finales de red o puertos. En WSDL, la definición abstracta de puntos finales y de mensajes se separa de la instalación concreta de red o de los enlaces del formato de datos. Esto permite la reutilización de definiciones abstractas: mensajes, que son descripciones abstractas de los datos que se están intercambiando y tipos de puertos, que son colecciones abstractas de operaciones. Las especificaciones concretas del protocolo y del formato de datos para un tipo de puerto determinado constituyen un enlace reutilizable. Un puerto se define por la asociación de una dirección de red y un enlace reutilizable; una colección de puertos define un servicio. Por esta razón, un documento WSDL utiliza los siguientes elementos en la definición de servicios de red: 
 
 \begin{itemize}
@@ -83,7 +87,8 @@ Los documentos WSDL definen los servicios como colecciones de puntos finales de 
 
 \subsection{WSDL y la descripción de los WS's}
 
-WSDL separa la descripción de un servicio en dos partes. Una de ellas es la interfaz abstracta, la cual describe las operaciones soportadas por el servicio, los parámetros de la operación y los tipos de datos abstractos. La otra parte es la implementación concreta, la cual liga la interfaz abstracta a una dirección de red, protocolo y estructuras de datos concretas. WSDL provee toda esta información a través de elementos XML. \\
+WSDL separa la descripción de un servicio en dos partes. Una de ellas es la interfaz abstracta, la cual describe las operaciones soportadas por el servicio, los parámetros de la operación y los tipos de datos abstractos. La otra parte es la implementación concreta, la cual liga la interfaz abstracta a una dirección de red, protocolo y estructuras de datos concretas. WSDL provee toda esta información a través de elementos XML. 
+
 Además, la descripción de un WS tiene dos componentes principales: sus características funcionales y no funcionales. La descripción funcional detalla las características operacionales que definen el comportamiento general de un WS. La descripción no funcional se concentra en sus atributos de calidad (Quality of Service - QoS), forzando al solicitante del servicio a especificar, los atributos de calidad que pueden influir en la elección de un WS ofrecido por un proveedor.
 
 \subsection{Estructura de un documento WSDL}
@@ -99,16 +104,23 @@ En la primera versión de este lenguaje, WSDL 1.1, el documento que describe un 
 	\item \textbf{service:} se usa para agrupar un conjunto de puertos relacionados.
 \end{itemize}
 
-La nueva versión de este lenguaje, WSDL 2.0 \cite{WSDL2.0-0}, hereda la mayoría de los principios arquitecturales de WSDL 1.1 e incorpora, los conceptos de interface abstracta, protocolo de enlace (binding), y puntos finales de servicios (service endpoints). Algunos de los cambios incorporados en WSDL 2.0 son:\\
-Agrega más semántica al lenguaje de descripción;\\
-Remueve el elemento message: este se especifica dentro del elemento types, usando XML Schema Type System;\\
-No soporta la sobrecarga de operadores;\\
+La nueva versión de este lenguaje, WSDL 2.0 \cite{WSDL2.0-0}, hereda la mayoría de los principios arquitecturales de WSDL 1.1 e incorpora, los conceptos de interface abstracta, protocolo de enlace (binding), y puntos finales de servicios (service endpoints). Algunos de los cambios incorporados en WSDL 2.0 son:
 
-Renombra el elemento portTypes a interfaces: La herencia de interfaces se consigue el atributo extends en el elemento interface;\\
-Renombra los ports a endpoints;\\
-Incorpora patrones de mensajes abstractos.\\
+Agrega más semántica al lenguaje de descripción;
 
-En esta versión los elementos principales que componen el documento que describe el WS, los cuales están contenidos en el elemento description, son: \\
+Remueve el elemento message: este se especifica dentro del elemento types, usando XML Schema Type System;
+
+No soporta la sobrecarga de operadores;
+
+Renombra el elemento portTypes a interfaces: La herencia de interfaces se consigue el atributo extends en el elemento interface;
+
+Renombra los ports a endpoints;
+
+Incorpora patrones de mensajes abstractos.
+
+
+En esta versión los elementos principales que componen el documento que describe el WS, los cuales están contenidos en el elemento description, son: 
+
 \begin{itemize}
 	\item \textbf{types:} provee la definición de los tipos de datos utilizados para describir los mensajes a intercambiar.
 	\item \textbf{interface:} describe la secuencia de mensajes que el servicio envía o recibe.
@@ -122,26 +134,28 @@ La sección abstracta contiene los elementos types e interface (message y operat
 	\begin{center}
 		\includegraphics [scale=0.70]{imagenes/descripcion_ws.png}
 	\end{center}
-	\caption{Descripción de un WS}
+	\caption{Descripción de un WS.}
 	\label{fig:Descripción de un WS}
 \end{figure} 
 
 \subsubsection*{El Elemento Types}
 
-El elemento types incluye la definición de los tipos de datos que son relevantes para el intercambio de mensajes y que se necesitarán posteriormente para la definición. Ellos son los parámetros de entrada y salida respectivamente.(ver figura \ref{fig:Elemento Types de un WS})
+El elemento types incluye la definición de los tipos de datos que son relevantes para el intercambio de mensajes y que se necesitarán posteriormente para la definición. Ellos son los parámetros de entrada y salida respectivamente (ver figura \ref{fig:Elemento Types de un WS}).
 
 \begin{figure}[!h] 
 	\begin{center}
 		\includegraphics [scale=0.43]{imagenes/elemento_types.png}
 	\end{center}
-	\caption{Elemento Types de un WS}
+	\caption{Elemento Types de un WS.}
 	\label{fig:Elemento Types de un WS}
 \end{figure} 
 
 \subsubsection*{El Elemento Interface}
 
-El elemento interface describe la secuencia de mensajes que el servicio envía o recibe. Para ello agrupa los mensajes en operaciones. Una operación es una secuencia de mensajes de entrada y salida, y una interface es un conjunto de operaciones.(ver figura \ref{fig:Elemento Interface de un WS})\\
-El conjunto de operaciones disponibles en un interface incluye todas las operaciones definidas por las interfaces que ella extiende, directa o indirectamente, más las operaciones que ella define directamente. Las propiedades de una interface son:\\
+El elemento interface describe la secuencia de mensajes que el servicio envía o recibe. Para ello agrupa los mensajes en operaciones. Una operación es una secuencia de mensajes de entrada y salida, y una interface es un conjunto de operaciones (ver figura \ref{fig:Elemento Interface de un WS}).
+
+El conjunto de operaciones disponibles en un interface incluye todas las operaciones definidas por las interfaces que ella extiende, directa o indirectamente, más las operaciones que ella define directamente. Las propiedades de una interface son:
+
 
 \begin{itemize}
 	\item Nombre (name).
@@ -154,24 +168,25 @@ El conjunto de operaciones disponibles en un interface incluye todas las operaci
 	\begin{center}
 		\includegraphics [scale=0.70]{imagenes/elemento_interface.png}
 	\end{center}
-	\caption{Elemento Interface de un WS}
+	\caption{Elemento Interface de un WS.}
 	\label{fig:Elemento Interface de un WS}
 \end{figure} 
 
 \subsubsection*{El Elemento Binding}
 
-El elemento Binding define los detalles de implementación concretos, que serán necesarios para acceder al servicio.(ver figura \ref{fig:Elemento Binding de un WS})
+El elemento Binding define los detalles de implementación concretos, que serán necesarios para acceder al servicio(ver figura \ref{fig:Elemento Binding de un WS}).
 
 \begin{figure}[!h] 
 \begin{center}
 	\includegraphics [scale=0.70]{imagenes/elemento_binding.png}
 \end{center}
-\caption{Elemento Binding de un WS}
+\caption{Elemento Binding de un WS.}
 \label{fig:Elemento Binding de un WS}
 \end{figure} 
 
 El binding debe especificar la interface a la que se aplica y definir bindings para todas las fallas definidas en la interface, que son referenciadas en las operaciones.
-Las propiedades de este componente son:\\
+Las propiedades de este componente son:
+
 \begin{itemize}
 	\item nombre (name).
 	\item interface (interface), para la cual se especifica el componente binding.
@@ -182,13 +197,13 @@ Las propiedades de este componente son:\\
 
 \subsubsection*{El Elemento Service}
 
-El elemento Service asocia un binding con el URL donde está realmente el servicio a través de un endpoint. Los endpoints son lugares alternativos que proveen el servicio. (ver figura \ref{fig:Elemento Service de un WS})
+El elemento Service asocia un binding con el URL donde está realmente el servicio a través de un endpoint. Los endpoints son lugares alternativos que proveen el servicio (ver figura \ref{fig:Elemento Service de un WS}).
 
 \begin{figure}[!h] 
 	\begin{center}
 		\includegraphics [scale=0.70]{imagenes/elemento_service.png}
 	\end{center}
-	\caption{Elemento Service de un WS}
+	\caption{Elemento Service de un WS.}
 	\label{fig:Elemento Service de un WS}
 \end{figure} 
 
