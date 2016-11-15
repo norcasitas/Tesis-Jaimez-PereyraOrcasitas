@@ -60,6 +60,7 @@ public class InvokerController implements ActionListener, ItemListener {
      */
     public void loadCategories() {
         DataBase.openDataBase();
+         invokerUI.getSpnCategory().removeAllItems();
         categories = categoryCRUD.getAllCategories();
         for (Category c : categories) {
             invokerUI.getSpnCategory().addItem(c.get("name"));
