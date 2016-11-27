@@ -5,7 +5,7 @@ Dentro de la misma se encuentra:
 
 	Carpeta ecore_models
 		Contiene los modelos ecore RequestModel y WSDL con su respectivos genmodel y diagrama.
-		Para abrirlos, se debe tener el plugin EMF - Eclipse Modeling Framework SDK y el Diagram Editor for Ecore (SDK) instalado.
+		Para abrirlos, se debe tener el plugin EMF - Eclipse Modeling Framework SDK y el Diagram Editor for Ecore (SDK)  instalado (tutorial de instalacion http://www.vogella.com/tutorials/EclipseEMF/article.html).
 		
 	Carpeta transforms
 		Contiene el archivo wsdlToRequest.qvto , este es un archivo de transformación qvto,
