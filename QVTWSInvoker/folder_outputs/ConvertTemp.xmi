@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="ASCII"?>
-<RequestModel:RequestModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:RequestModel="http:///request_model.ecore" name="ConvertTemp">
-  <methods name="ConvertTemp">
-    <inParameters type="double" name="param-0"/>
-    <inParameters type="string" name="param-1"/>
-    <inParameters type="string" name="param-2"/>
-    <outParameters type="string" name="output"/>
-  </methods>
-</RequestModel:RequestModel>

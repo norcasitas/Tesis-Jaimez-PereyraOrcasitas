@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints version="2.0" xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime">
+  <endpoint implementation="webservices.Calculator2" name="Calculator2" url-pattern="/Calculator2"/>
+  <endpoint implementation="webservices.TempConvert" name="TempConvert" url-pattern="/TempConvert"/>
+  <endpoint implementation="webservices.calculator" name="Calculator" url-pattern="/Calculator"/>
+</endpoints>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <definitions 
+ xmlns="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="Calculator2" targetNamespace="http://webservices/" xmlns:tns="http://webservices/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" xmlns:sc="http://schemas.sun.com/2006/03/wss/server" xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy" 
+ >
+    <message name="add"/>
+    <message name="addResponse"/>
+    <message name="substract"/>
+    <message name="substractResponse"/>
+    <message name="divide"/>
+    <message name="divideResponse"/>
+    <message name="multiply"/>
+    <message name="multiplyResponse"/>
+    <message name="pow"/>
+    <message name="powResponse"/>
+    <portType name="Calculator2">
+        <operation name="add">
+            <input message="tns:add"/>
+            <output message="tns:addResponse"/>
+        </operation>
+        <operation name="substract">
+            <input message="tns:substract"/>
+            <output message="tns:substractResponse"/>
+        </operation>
+        <operation name="divide">
+            <input message="tns:divide"/>
+            <output message="tns:divideResponse"/>
+        </operation>
+        <operation name="multiply">
+            <input message="tns:multiply"/>
+            <output message="tns:multiplyResponse"/>
+        </operation>
+        <operation name="pow">
+            <input message="tns:pow"/>
+            <output message="tns:powResponse"/>
+        </operation>
+    </portType>
+    <binding name="Calculator2PortBinding" type="tns:Calculator2">
+        <operation name="add">
+            <input></input>
+            <output></output>
+        </operation>
+        <operation name="substract">
+            <input></input>
+            <output></output>
+        </operation>
+        <operation name="divide">
+            <input></input>
+            <output></output>
+        </operation>
+        <operation name="multiply">
+            <input></input>
+            <output></output>
+        </operation>
+        <operation name="pow">
+            <input/>
+            <output/>
+        </operation>
+    </binding>
+    <service name="Calculator2">
+        <port name="Calculator2Port" binding="tns:Calculator2PortBinding"/>
+    </service>
+    <wsp:Policy wsu:Id="Calculator2PortBinding_pow_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="Calculator2PortBinding_pow_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+</definitions>

@@ -234,11 +234,13 @@ public class T2Mwsdl {
 				model = ((Sequence) ((ComplexType) typeDefinition).getModel());
 			else//(*+)  el tipo se encuentra en otro esquema, obtengo el modelo desde ese esquema
 				model = ((Sequence) ((ComplexType) defs.getSchemaType(element.getType())).getModel());
+			if(model!=null){
 			for (Element elementAux : model.getElements()) {
 				/*(*+) para cada parametro de este tipo, llamo recursivamente por si 
 				 * está definido como tipo embebido
 				 */
 				ret.addAll(parserEmbebedType(elementAux));
+			}
 			}
 		} else {
 			ret.add(new Pair<String, String>(element.getQname().getLocalPart(), element.getBuildInTypeName()));

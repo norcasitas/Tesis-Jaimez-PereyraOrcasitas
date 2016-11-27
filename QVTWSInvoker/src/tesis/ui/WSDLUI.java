@@ -41,7 +41,7 @@ public class WSDLUI extends javax.swing.JInternalFrame {
      */
     public void clickEdit() {
         btnNewWSDL.setEnabled(false);
-        txtName.setEnabled(true);
+        enableFields(true);
         btnSave.setEnabled(true);
         btnEdit.setEnabled(false);
         btnDelete.setEnabled(true);
@@ -71,10 +71,8 @@ public class WSDLUI extends javax.swing.JInternalFrame {
      */
     public void clickSave() {
         clear();
-        txtName.setEnabled(false);
         btnNewWSDL.setEnabled(true);
-        txtUrl.setEnabled(false);
-        spnCategory.setEnabled(false);
+        enableFields(false);
         btnSave.setEnabled(false);
         btnEdit.setEnabled(false);
         btnDelete.setEnabled(false);
@@ -155,7 +153,7 @@ public class WSDLUI extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         txtUrl = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        spnCategory = new javax.swing.JComboBox<String>();
+        spnCategory = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         btnDelete = new javax.swing.JButton();
         btnNewWSDL = new javax.swing.JButton();
@@ -203,6 +201,7 @@ public class WSDLUI extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableWSDL.setRowSorter(null);
         tableWSDL.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(tableWSDL);
 
@@ -240,7 +239,7 @@ public class WSDLUI extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Category");
 
-        spnCategory.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        spnCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         spnCategory.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

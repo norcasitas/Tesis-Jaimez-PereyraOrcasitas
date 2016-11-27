@@ -6,5 +6,6 @@ public class TypesOfWsdl {
     public final static String typeFloat = "float";
     public final static String typeInteger = "int";
     public final static String typeDouble = "double";
-    public static String[] typesWSDL = {typeString, typeFloat, typeInteger, typeDouble};
+    public final static String typeDecimal = "decimal";
+    public static String[] typesWSDL = {typeString, typeFloat, typeInteger, typeDouble,typeDecimal};
 }

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
+  <services>
+    <service name="Calculator2">
+      <implementation-class>webservices.Calculator2</implementation-class>
+    </service>
+    <service name="TempConvert">
+      <implementation-class>webservices.TempConvert</implementation-class>
+    </service>
+    <service name="calculator">
+      <implementation-class>webservices.calculator</implementation-class>
+      <wsdl-url>file:/home/nico/Descargas/calculator.wsdl</wsdl-url>
+      <local-wsdl-file>calculator.wsdl</local-wsdl-file>
+      <service-name>Calculator</service-name>
+      <port-name>ICalculator</port-name>
+      <package-name>com.parasoft.wsdl.calculator</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <use-provider>false</use-provider>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>fork</wsimport-option-name>
+          <wsimport-option-value>false</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xendorsed</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </service>
+  </services>
+  <clients/>
+  <jsr109>false</jsr109>
+</jax-ws>

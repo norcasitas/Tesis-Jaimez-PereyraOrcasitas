@@ -182,6 +182,7 @@ public class CategoryUI extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableCategory.setRowSorter(null);
         tableCategory.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(tableCategory);
 
