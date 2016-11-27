@@ -1,5 +1,6 @@
 package tesis.controllers;
 
+import com.predic8.xml.util.ResourceDownloadException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -203,11 +204,9 @@ public class InvokerController implements ActionListener, ItemListener {
                     for (String methodName : comparsion(outputPath, request)) {
                         methods.add(new Pair<>(url, methodName));
                     }
-                } catch (MalformedURLException ex) {
-                    Logger.getLogger(InvokerController.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
-                    Logger.getLogger(InvokerController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                } catch (Exception ex) {
+                    System.err.println("Ups, el wsdl "+wsdl.getString("url")+" no existe o esta mal formado");
+                } 
             }
         }
         return methods;

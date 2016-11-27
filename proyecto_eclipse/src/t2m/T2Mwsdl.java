@@ -17,6 +17,7 @@ import com.predic8.wsdl.Operation;
 import com.predic8.wsdl.PortType;
 import com.predic8.wsdl.WSDLParser;
 import com.predic8.wsdl.soap11.SOAPBinding;
+import com.predic8.xml.util.ResourceDownloadException;
 
 import tesis.wsdl_ecore.wsdl.Definition;
 import tesis.wsdl_ecore.wsdl.Input;
@@ -43,7 +44,7 @@ public class T2Mwsdl {
 	 * @param url
 	 * @return
 	 */
-	public Definition parser(String url) {
+	public Definition parser(String url) throws ResourceDownloadException{
 		definition = factory.createDefinition();
 		WSDLParser parser = new WSDLParser();
 		defs = parser.parse(url);
@@ -256,7 +257,7 @@ public class T2Mwsdl {
 	 * @return
 	 * @throws MalformedURLException
 	 */
-	public String transformT2M(String inputFile) throws MalformedURLException {
+	public String transformT2M(String inputFile) throws MalformedURLException,ResourceDownloadException {
 		T2Mwsdl t2Model = new T2Mwsdl();
 		Definition def = t2Model.parser(inputFile);
 		Utils.exportWSDLtoXMI(def);
